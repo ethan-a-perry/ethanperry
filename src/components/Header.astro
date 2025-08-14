@@ -1,41 +1,79 @@
-<header class="content-grid">
+<header class="content-grid full-width">
     <nav>
-        <ul class="nav-pages">
+        <ul>
             <li><a href="/" aria-current="page">Home</a></li>
-            <li><a href="/">Experience</a></li>
             <li><a href="/">Projects</a></li>
+            <li><a href="/">Writings</a></li>
+            <li><a href="/">Reading</a></li>
+            <li><a href="/work/">Work</a></li>
             <li><a href="/">Contact</a></li>
         </ul>
 
-        <ul class="nav-socials">
+        <ul>
             <li>
                 <a href="/">
                     <svg class="icon">
-                        <use href="assets/icons/icons.svg#linkedin"></use>
+                        <use href="../../public/icons.svg#linkedin"></use>
                     </svg>
                 </a>
             </li>
             <li>
                 <a href="/">
                     <svg class="icon">
-                        <use href="assets/icons/icons.svg#github"></use>
+                        <use href="../../public/icons.svg#github"></use>
                     </svg>
                 </a>
             </li>
             <li>
                 <a href="/">
                     <svg class="icon">
-                        <use href="assets/icons/icons.svg#instagram"></use>
+                        <use href="../../public/icons.svg#instagram"></use>
                     </svg>
                 </a>
             </li>
             <li>
                 <a href="/">
                     <svg class="icon">
-                        <use href="assets/icons/icons.svg#goodreads"></use>
+                        <use href="../../public/icons.svg#goodreads"></use>
                     </svg>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
+
+<style>
+    header {
+        position: sticky;
+        top: 0;
+
+        margin-bottom: 14rem;
+        padding-block: 2rem;
+
+        background: var(--color-site-background);
+        z-index: 1;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    nav ul {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .icon {
+        display: block;
+        width: 25px;
+        height: 25px;
+        border-radius: 5px;
+    }
+
+    .icon:hover {
+        fill: var(--color-text-50);
+    }
+</style>

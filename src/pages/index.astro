@@ -1,10 +1,45 @@
 ---
 import Base from '../layouts/Base.astro';
 const pageTitle = "Ethan Perry"
+
+import image1 from "../wwwroot/assets/images/menu.webp";
+import image2 from "../wwwroot/assets/images/leica.webp";
 ---
 
 <Base pageTitle={pageTitle}>
-    <section class="hero thing">
-        <h1>Hello, my name is Ethan Perry</h1>
+    <section class="hero">
+        <h1>Ethan Perry</h1>
+        <p>I write things and code things—and attempt do to it very well.</p>
     </section>
+
+    <section>
+        <h2>Featured Projects</h2>
+        <ul role="list" class="projects">
+            <li>
+                <figure>
+                    <img src={image1.src} alt="ex1">
+                    <figcaption>
+                        <h4>Sudoku App</h4>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ipsum optio totam alias, porro enim repellendus? Eligendi neque aut labore eius ex.</p>
+                        <a href="/" class="with-arrow">View Project</a>
+                    </figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src={image2.src} alt="ex2">
+                    <figcaption>
+                        <h4>Portfolio Website</h4>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ipsum optio totam alias, porro enim repellendus? Eligendi neque aut labore eius ex.</p>
+                        <a href="/" class="with-arrow">View Project</a>
+                    </figcaption>
+                </figure>
+            </li>
+        </ul>
+    </section>
+
+    <div class="full-width">
+        <h1>testing full-width</h1>
+    </div>
 </Base>
+

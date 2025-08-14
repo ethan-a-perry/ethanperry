@@ -1,61 +1,220 @@
 @import "reset.css";
 
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
+:root {
+    --heading-font: 'myriad-pro';
+    --content-font: 'minion-pro';
+
+    --font-size-0: .95rem;
+    --font-size-1: 1rem;
+    --font-size-2: 1.125rem;
+    --font-size-3: 1.563rem;
+    --font-size-4: 1.953rem;
+    --font-size-5: 2.441rem;
+    --font-size-6: 3.052rem;
+
+    --color-site-background: hsl(51, 41%, 97%);
+
+    --color-text-100: hsl(0, 0%, 10%);
+    --color-text-50: hsl(0, 0%, 41%);
+    --color-text-20: hsl(0, 0%, 85%);
+
+    --_color-accent: 122, 39%, 49%;
+    --color-accent-100: hsla(var(--_color-accent), 1);
+    --color-accent-70: hsla(var(--_color-accent), 0.7);
+    --color-accent-30: hsla(var(--_color-accent), 0.3);
 }
 
-.content-grid {
+body {
+    font-family: var(--content-font), serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.125rem;
+
+    background: var(--color-site-background);
+}
+
+h1, h2, h3, h4, h5, h6, a, .skills li {
+    font-family: var(--heading-font), serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 { font-size: 4rem; }
+
+h4 { font-size: 1.2rem; }
+
+a { font-size: var(--font-size-2); }
+
+a:not(nav a),
+nav a[aria-current="page"] {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent-30);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+}
+
+a:hover:not(nav a) {
+    text-decoration-color: var(--color-text-100);
+}
+
+a.with-arrow::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    vertical-align: middle;
+    background-image: url("../../../public/arrow-outward.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.caption {
+    font-family: var(--heading-font), serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: var(--font-size-0);
+    margin-top: 0.5rem;
+    color: var(--color-text-50);
+}
+
+.content-grid, .full-width {
     --padding-inline: 2rem;
     --content-max-width: 1100px;
 
     display: grid;
-    grid-template-columns: 1fr [content-start] min(100% - var(--padding-inline) * 2, var(--content-max-width)) [content-end] 1fr;
+    grid-template-columns: [full-width-start] 1fr [content-start] min(100% - var(--padding-inline) * 2, var(--content-max-width)) [content-end] 1fr [full-width-end];
+    gap: 20rem;
+    margin-bottom: 20rem;
 }
 
-.content-grid > * {
+.content-grid > :not(.full-width),
+.full-width > * {
     grid-column: content;
 }
 
-header {
-    position: sticky;
-    top: 0;
-    margin-bottom: 10rem;
-    padding-block: 2rem;
-    background: rgba(241, 241, 241);
-    z-index: 1000;
+.content-grid > .full-width {
+    grid-column: full-width;
 }
 
-nav {
-    display: flex;
+.hero {
+    position: relative;
+    /*display: flex;*/
+    /*align-items: center;*/
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: center;
-    justify-content: space-between;
+    gap: 4rem;
 }
 
-.nav-pages,
-.nav-socials {
+.hero::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 36px;
+    height: 24px;
+    background-image: radial-gradient(circle, var(--color-accent-30) 3px, transparent 4px);
+    background-size: 12px 12px;
+    top: -2rem;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+}
+
+.projects figure {
+    /* fit-content to retain margin access */
+    inline-size: fit-content;
+    margin-inline: auto;
+}
+
+.projects figcaption {
+    /* no size contribution for figcaption */
+    contain: inline-size;
+    margin-top: 1.5rem;
     display: flex;
-    align-items: center;
-}
-
-.nav-pages {
-    gap: 2rem;
-    font-size: 1.15rem;
-}
-
-.nav-socials {
+    flex-direction: column;
     gap: 1rem;
 }
 
-.icon {
-    display: block;
-    width: 32px;
-    height: 32px;
-    fill: var(--clr-green);
-    padding: 3px;
-    border-radius: 5px;
+.projects img {
+    /* you can have max-width */
+    max-width: 100%;
 }
 
-.icon:hover {
-    fill: var(--clr-d-green);
+.companies {
+    --padding-block-position: 2rem;
+    --padding-inline-position: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.company-title {
+    font-weight: 700;
+
+    color: var(--color-accent-100);
+    padding-left: var(--padding-inline-position);
+}
+
+.positions {
+    border-bottom: 1px solid var(--color-text-20);
+    padding-bottom: 2rem;
+}
+
+.position {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: var(--padding-block-position) var(--padding-inline-position);
+    max-width: 80%;
+}
+
+.position:has(+ .position) {
+    box-shadow: inset 2px 0 0 0 var(--color-text-20);
+}
+
+.position:first-child::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 1px;
+    transform: translateX(-50%);
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid var(--color-text-20);
+    border-radius: 50%;
+}
+
+.position::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(var(--padding-inline-position) - 0.7rem);
+    height: calc(var(--padding-block-position) + (1.1 * 1.25rem / 2));
+    border-left: 2px solid var(--color-text-20);
+    border-bottom: 2px solid var(--color-text-20);
+    border-bottom-left-radius: 20px;
+}
+
+.skills {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skills li {
+    background: var(--color-accent-30);
+    border-radius: 20px;
+    padding: 4px 12px;
+    border: 1px solid var(--color-text-50);
+    color: var(--color-text-50);
+    font-size: var(--font-size-0);
 }
