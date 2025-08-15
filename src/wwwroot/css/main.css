@@ -8,6 +8,7 @@
     --heading-font: 'myriad-pro';
     --content-font: 'minion-pro';
 
+    --font-size-00: .85rem;
     --font-size-0: .95rem;
     --font-size-1: 1rem;
     --font-size-2: 1.125rem;
@@ -38,7 +39,7 @@ body {
     background: var(--color-site-background);
 }
 
-h1, h2, h3, h4, h5, h6, a, .skills li {
+h1, h2, h3, h4, h5, h6, a, .skills li, form, label, input {
     font-family: var(--heading-font), serif;
     font-weight: 400;
     font-style: normal;
@@ -48,7 +49,7 @@ h1 { font-size: 4rem; }
 
 h4 { font-size: 1.2rem; }
 
-a { font-size: var(--font-size-2); }
+a, label { font-size: var(--font-size-2); }
 
 a:not(nav a),
 nav a[aria-current="page"] {
@@ -104,15 +105,14 @@ a.with-arrow::after {
 
 .hero {
     position: relative;
-    /*display: flex;*/
-    /*align-items: center;*/
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    gap: 4rem;
+    column-gap: 4rem;
+    row-gap: 1rem;
 }
 
-.hero::before {
+.hero h1::before {
     content: "";
     position: absolute;
     display: block;
@@ -230,4 +230,107 @@ a.with-arrow::after {
 
 .info p {
     margin-top: 3px;
+}
+
+.contact-info {
+    grid-column: -1 / 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-info li {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.contact-info li::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 7px;
+    background-color: hsl(10, 60%, 50%);
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.contact-form {
+    margin-top: 10rem;
+}
+
+form {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+
+    @media (width > 720px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group:has(textarea) {
+    grid-column: 1 / -1;
+}
+
+input, textarea {
+    padding: 1.5rem 0.7rem 0.7rem 0.7rem;
+
+    outline: none;
+    border: 1px solid var(--color-text-50);
+    border-radius: 5px;
+    background: transparent;
+
+    transition: box-shadow 0.2s ease;
+
+    color: var(--color-text-100);
+    accent-color: var(--color-accent-30);
+}
+
+input:focus, textarea:focus {
+    box-shadow: 6px 6px 0 var(--color-accent-30);
+}
+
+input:not([type="checkbox"], [type="radio"]),
+textarea {
+    width: 100%;
+}
+
+label {
+    position: absolute;
+    pointer-events: none;
+
+    top: 1.85rem;
+    left: 10px;
+    transform: translateY(-50%);
+    transition: .2s;
+
+    color: var(--color-text-50);
+}
+
+.form-group:focus-within label,
+.form-group:has(input:not(:placeholder-shown), textarea:not(:placeholder-shown)) label {
+    top: 5px;
+    transform: none;
+
+    font-size: var(--font-size-00);
+    color: var(--color-accent-100);
+}
+
+form button {
+    cursor: pointer;
+    justify-self: start;
+    background-color: var(--color-accent-30);
+    padding: 1em 1.5em;
+    border: 0;
+    border-radius: 16px;
+
+    &:hover,
+    &:focus-visible {
+        background-color: hsl(from var(--color-accent-30) h s 40%);
+    }
 }
