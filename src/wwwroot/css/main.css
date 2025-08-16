@@ -1,12 +1,9 @@
 @import "reset.css";
 
-::selection {
-    background: hsl(10, 60%, 80%);
-}
-
 :root {
-    --heading-font: 'myriad-pro';
+    --heading-font: 'freight-sans-pro';
     --content-font: 'minion-pro';
+    --caption-font: 'minion-pro-caption';
 
     --font-size-00: .85rem;
     --font-size-0: .95rem;
@@ -24,10 +21,11 @@
     --color-text-50: hsl(0, 0%, 41%);
     --color-text-20: hsl(0, 0%, 85%);
 
-    --_color-accent: 122, 39%, 49%;
+    --_color-accent: 210, 80%, 40%;
+
     --color-accent-100: hsla(var(--_color-accent), 1);
     --color-accent-70: hsla(var(--_color-accent), 0.7);
-    --color-accent-30: hsla(var(--_color-accent), 0.3);
+    --color-accent-40: hsla(var(--_color-accent), 0.4);
 }
 
 body {
@@ -41,8 +39,7 @@ body {
 
 h1, h2, h3, h4, h5, h6, a, .skills li, form, label, input {
     font-family: var(--heading-font), serif;
-    font-weight: 400;
-    font-style: normal;
+    font-weight: 500;
 }
 
 h1 { font-size: 4rem; }
@@ -51,23 +48,27 @@ h4 { font-size: 1.2rem; }
 
 a, label { font-size: var(--font-size-2); }
 
-a:not(nav a),
-nav a[aria-current="page"] {
+a {
     text-decoration: underline;
-    text-decoration-color: var(--color-accent-30);
-    text-underline-offset: 3px;
+    text-underline-offset: 5px;
     text-decoration-thickness: 2px;
+    text-decoration-color: transparent
 }
 
-a:hover:not(nav a) {
-    text-decoration-color: var(--color-text-100);
+a:not(nav a),
+nav a[aria-current="page"] {
+    text-decoration-color: var(--color-accent-40);
+}
+
+a:hover {
+    text-decoration-color: var(--color-accent-70);
 }
 
 a.with-arrow::after {
     content: '';
     display: inline-block;
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     margin-left: 5px;
     vertical-align: middle;
     background-image: url("../../../public/arrow-outward.svg");
@@ -76,31 +77,41 @@ a.with-arrow::after {
 }
 
 .caption {
-    font-family: var(--heading-font), serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: var(--font-size-0);
-    margin-top: 0.5rem;
-    color: var(--color-text-50);
+    font-family: var(--caption-font), serif;
 }
 
-.content-grid, .full-width {
-    --padding-inline: 2rem;
+.content-grid {
+    --padding-inline: 1rem;
     --content-max-width: 1100px;
+    --breakout-max-width: 1200px;
+
+    --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
 
     display: grid;
-    grid-template-columns: [full-width-start] 1fr [content-start] min(100% - var(--padding-inline) * 2, var(--content-max-width)) [content-end] 1fr [full-width-end];
-    gap: 20rem;
+    grid-template-columns:
+        [full-width-start]minmax(var(--padding-inline), 1fr)
+        [breakout-start] minmax(0, var(--breakout-size))
+        [content-start] min(100% - (var(--padding-inline) * 2), var(--content-max-width)) [content-end]
+        minmax(0, var(--breakout-size)) [breakout-end]
+        minmax(var(--padding-inline), 1fr) [full-width-end];
+    row-gap: 20rem;
     margin-bottom: 20rem;
 }
 
-.content-grid > :not(.full-width),
-.full-width > * {
+.content-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
     grid-column: content;
+}
+
+.content-grid > .breakout {
+    grid-column: breakout;
 }
 
 .content-grid > .full-width {
     grid-column: full-width;
+
+    display: grid;
+    grid-template-columns: inherit;
 }
 
 .hero {
@@ -118,7 +129,7 @@ a.with-arrow::after {
     display: block;
     width: 36px;
     height: 24px;
-    background-image: radial-gradient(circle, var(--color-accent-30) 3px, transparent 4px);
+    background-image: radial-gradient(circle, var(--color-accent-40) 3px, transparent 4px);
     background-size: 12px 12px;
     top: -2rem;
 }
@@ -154,7 +165,7 @@ a.with-arrow::after {
     --position-padding-inline: 3rem;
     --position-margin-left: 1rem;
 
-    --color-graph: #cee2c6;
+    --color-graph: hsl(213 40% 76%);
 
     display: flex;
     flex-direction: column;
@@ -165,7 +176,7 @@ a.with-arrow::after {
     display: inline-block;
     background: var(--color-graph);
     font-weight: 700;
-    color: hsl(0, 0%, 30%);
+    color: var(--color-text-80);
     border-radius: 10px;
     padding: 8px calc(var(--position-padding-inline) + var(--position-margin-left));
 }
@@ -207,6 +218,13 @@ a.with-arrow::after {
     border-bottom-left-radius: 20px;
 }
 
+.date {
+    font-style: italic;
+    font-size: var(--font-size-0);
+    margin-top: 0.5rem;
+    color: var(--color-text-50);
+}
+
 .skills {
     display: flex;
     align-items: center;
@@ -214,11 +232,11 @@ a.with-arrow::after {
 }
 
 .skills li {
-    background: var(--color-accent-30);
+    background: var(--color-accent-40);
     border-radius: 20px;
     padding: 4px 12px;
-    border: 1px solid var(--color-text-50);
-    color: var(--color-text-50);
+    border: 1px solid var(--color-text-80);
+    color: var(--color-text-80);
     font-size: var(--font-size-0);
 }
 
@@ -236,23 +254,7 @@ a.with-arrow::after {
     grid-column: -1 / 2;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-}
-
-.contact-info li {
-    position: relative;
-    padding-left: 2rem;
-}
-
-.contact-info li::before {
-    content: "";
-    position: absolute;
-    height: 2px;
-    width: 7px;
-    background-color: hsl(10, 60%, 50%);
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    gap: 1rem;
 }
 
 .contact-form {
@@ -288,11 +290,11 @@ input, textarea {
     transition: box-shadow 0.2s ease;
 
     color: var(--color-text-100);
-    accent-color: var(--color-accent-30);
+    accent-color: var(--color-accent-40);
 }
 
 input:focus, textarea:focus {
-    box-shadow: 6px 6px 0 var(--color-accent-30);
+    box-shadow: 6px 6px 0 var(--color-accent-40);
 }
 
 input:not([type="checkbox"], [type="radio"]),
@@ -324,13 +326,13 @@ label {
 form button {
     cursor: pointer;
     justify-self: start;
-    background-color: var(--color-accent-30);
+    background-color: var(--color-accent-40);
     padding: 1em 1.5em;
     border: 0;
     border-radius: 16px;
 
     &:hover,
     &:focus-visible {
-        background-color: hsl(from var(--color-accent-30) h s 40%);
+        background-color: hsl(from var(--color-accent-40) h s 40%);
     }
 }
