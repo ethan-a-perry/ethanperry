@@ -13,6 +13,6 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "astro": "^5.12.9"
+    "astro": "^5.13.2"
   }
 }

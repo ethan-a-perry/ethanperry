@@ -1,0 +1,34 @@
+---
+import Base from './Base.astro'
+
+import { formatDate } from '../wwwroot/js/utils'
+
+const { frontmatter, previousPost, nextPost } = Astro.props;
+
+console.log(previousPost)
+
+const { title, description, date, category, author, image, tags } = frontmatter;
+---
+
+<Base pageTitle="Post">
+    <section class="post">
+        <div class="post-hero">
+            <h1>{title}</h1>
+            <div class="writing-info">
+                <span class="writing-date">{formatDate(date)}</span>
+                <div class="tags">Categories: {tags.join(', ')}</div>
+            </div>
+        </div>
+
+        <div class="post-content">
+            <div>
+                <slot />
+            </div>
+
+            <div class="post-navigation">
+                <a href={previousPost} class={previousPost ? 'with-arrow left' : 'no'}>Previous</a>
+                <a href={nextPost} class={nextPost ? 'with-arrow right' : 'no'}>Next</a>
+            </div>
+        </div>
+    </section>
+</Base>

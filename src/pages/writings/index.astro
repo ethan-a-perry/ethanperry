@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import { formatDate } from '../../wwwroot/js/utils'
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('writings');
+const pageTitle = "Writings";
+---
+
+<Base pageTitle={pageTitle}>
+    <section>
+        <div class="hero">
+            <h1>New Writings</h1>
+        </div>
+    </section>
+
+    <section>
+        <div class="writings">
+            {allPosts.map((post: any) =>
+                    <a href={`/writings/${post.id}/`} class="writing-info">
+                        <span class="writing-date">{formatDate(post.data.date)}</span>
+                        <span class="writing-title">{post.data.title}</span>
+                    </a>
+                    <div class="tags">— {post.data.tags.join(', ')}</div>
+            )}
+        </div>
+    </section>
+</Base>
