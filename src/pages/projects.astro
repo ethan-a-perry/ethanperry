@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+const pageTitle = "Projects";
+
+import image1 from "../wwwroot/assets/images/menu.webp";
+import image2 from "../wwwroot/assets/images/leica.webp";
+---
+
+<Base pageTitle={pageTitle}>
+    <section>
+        <div class="hero">
+            <h1>Projects</h1>
+            <p>Send me a message directly through any of my links or by using the form below. Thank you!</p>
+        </div>
+    </section>
+
+    <section>
+        <ul class="projects">
+            <li class="project">
+                <figure>
+                    <figcaption>
+                        <div class="project-title">
+                            <h3>Sudoku App</h3>
+                            <ul class="skills">
+                                <li>Web design</li>
+                                <li>SEO</li>
+                                <li>HTML / CSS</li>
+                            </ul>
+                        </div>
+                        <div class="project-info">
+                            <p>Managed client relationships and provided strategic advice on paid advertising, SEO campaigns, websites, and brand development. Boosted website conversions for a real estate company by 20%. Increased online revenue for a cake company by 50% within 12 months.</p>
+                            <a href="/" class="with-arrow underline">View Project</a>
+                        </div>
+                    </figcaption>
+                    <img src={image1.src} alt="ex1">
+                </figure>
+            </li>
+            <li class="project">
+                <figure>
+                    <figcaption>
+                        <div class="project-info project-title">
+                            <h3>Portfolio Website</h3>
+                            <ul class="skills">
+                                <li>Web design</li>
+                                <li>SEO</li>
+                                <li>HTML / CSS</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-info">
+                            <p>Managed client relationships and provided strategic advice on paid advertising, SEO campaigns, websites, and brand development. Boosted website conversions for a real estate company by 20%. Increased online revenue for a cake company by 50% within 12 months.</p>
+                            <a href="/" class="with-arrow underline">View Project</a>
+                        </div>
+                    </figcaption>
+                    <img src={image2.src} alt="ex1">
+                </figure>
+            </li>
+        </ul>
+        <a href="/" class="with-arrow">View all projects</a>
+    </section>
+</Base>

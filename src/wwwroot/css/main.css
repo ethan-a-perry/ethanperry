@@ -55,13 +55,13 @@ a {
     text-decoration-color: transparent
 }
 
-a:not(nav a),
-nav a[aria-current="page"] {
-    text-decoration-color: var(--color-accent-40);
-}
-
 a:hover {
     text-decoration-color: var(--color-accent-70);
+}
+
+a.underline,
+nav a[aria-current="page"] {
+    text-decoration-color: var(--color-accent-40);
 }
 
 a.with-arrow::after {
@@ -81,7 +81,7 @@ a.with-arrow::after {
 }
 
 .content-grid {
-    --padding-inline: 1rem;
+    --padding-inline: 2rem;
     --content-max-width: 1100px;
     --breakout-max-width: 1200px;
 
@@ -135,30 +135,82 @@ a.with-arrow::after {
 }
 
 .projects {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+
+    margin: 5rem 0 0.5rem;
 }
 
-.projects figure {
-    /* fit-content to retain margin access */
+.project {
+    padding-bottom: 7rem;
+    border-bottom: 1px solid var(--color-text-20);
+}
+
+.project figure {
     inline-size: fit-content;
-    margin-inline: auto;
+    margin: 0;
+
+    display: grid;
+    gap: 3rem;
+
+    @media (min-width: 850px) {
+        grid-template-columns: 50ch 1fr;
+    }
 }
 
-.projects figcaption {
-    /* no size contribution for figcaption */
+.project figcaption {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+
     contain: inline-size;
-    margin-top: 1.5rem;
+}
+
+.project-info,
+.project-title {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.projects img {
-    /* you can have max-width */
-    max-width: 100%;
+.project-title {
+    padding-inline: 1rem;
+    border-left: 3px solid var(--color-accent-40);
 }
+
+.project img {
+    height: 100%;
+    width: 100%;
+
+}
+
+.skills {
+    font-family: var(--heading-font), sans-serif;
+
+    color: var(--color-accent-70);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+}
+
+.skills li {
+    position: relative;
+}
+
+.skills li:not(:last-child)::after {
+    content: "";        /* the dot */
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background-color: var(--color-accent-70);
+    border-radius: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    right: calc(-1rem - 3px);
+}
+
 
 .companies {
     --position-padding-block: 2rem;
@@ -225,21 +277,6 @@ a.with-arrow::after {
     color: var(--color-text-50);
 }
 
-.skills {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.skills li {
-    background: var(--color-accent-40);
-    border-radius: 20px;
-    padding: 4px 12px;
-    border: 1px solid var(--color-text-80);
-    color: var(--color-text-80);
-    font-size: var(--font-size-0);
-}
-
 .info {
     display: inline-flex;
     flex-direction: column;
@@ -300,6 +337,11 @@ input:focus, textarea:focus {
 input:not([type="checkbox"], [type="radio"]),
 textarea {
     width: 100%;
+}
+
+textarea {
+    resize: vertical;
+    max-height: 600px;
 }
 
 label {
