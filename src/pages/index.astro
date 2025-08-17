@@ -9,33 +9,53 @@ import image2 from "../wwwroot/assets/images/leica.webp";
 <Base pageTitle={pageTitle}>
     <section class="hero">
         <h1>Ethan Perry</h1>
-        <p>I write things and code things—and attempt do to it very well.</p>
+        <p>Send me a message directly through any of my links or by using the form below. Thank you!</p>
     </section>
 
     <section>
         <h2>Featured Projects</h2>
-        <ul role="list" class="projects">
-            <li>
+        <ul class="projects">
+            <li class="project">
                 <figure>
-                    <img src={image1.src} alt="ex1">
                     <figcaption>
-                        <h4>Sudoku App</h4>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ipsum optio totam alias, porro enim repellendus? Eligendi neque aut labore eius ex.</p>
-                        <a href="/" class="with-arrow">View Project</a>
+                        <div class="project-title">
+                            <h3>Sudoku App</h3>
+                            <ul class="skills">
+                                <li>Web design</li>
+                                <li>SEO</li>
+                                <li>HTML / CSS</li>
+                            </ul>
+                        </div>
+                        <div class="project-info">
+                            <p>Managed client relationships and provided strategic advice on paid advertising, SEO campaigns, websites, and brand development. Boosted website conversions for a real estate company by 20%. Increased online revenue for a cake company by 50% within 12 months.</p>
+                            <a href="/" class="with-arrow underline">View Project</a>
+                        </div>
                     </figcaption>
+                    <img src={image1.src} alt="ex1">
                 </figure>
             </li>
-            <li>
+            <li class="project">
                 <figure>
-                    <img src={image2.src} alt="ex2">
                     <figcaption>
-                        <h4>Portfolio Website</h4>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ipsum optio totam alias, porro enim repellendus? Eligendi neque aut labore eius ex.</p>
-                        <a href="/" class="with-arrow">View Project</a>
+                        <div class="project-info project-title">
+                            <h3>Portfolio Website</h3>
+                            <ul class="skills">
+                                <li>Web design</li>
+                                <li>SEO</li>
+                                <li>HTML / CSS</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-info">
+                            <p>Managed client relationships and provided strategic advice on paid advertising, SEO campaigns, websites, and brand development. Boosted website conversions for a real estate company by 20%. Increased online revenue for a cake company by 50% within 12 months.</p>
+                            <a href="/" class="with-arrow underline">View Project</a>
+                        </div>
                     </figcaption>
+                    <img src={image2.src} alt="ex1">
                 </figure>
             </li>
         </ul>
+        <a href="/" class="with-arrow">View all projects</a>
     </section>
 </Base>
 
