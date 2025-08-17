@@ -83,7 +83,7 @@ a.with-arrow::after {
 .content-grid {
     --padding-inline: 2rem;
     --content-max-width: 1100px;
-    --breakout-max-width: 1200px;
+    --breakout-max-width: 1300px;
 
     --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
 
@@ -121,6 +121,7 @@ a.with-arrow::after {
     align-items: center;
     column-gap: 4rem;
     row-gap: 1rem;
+    max-width: 70%;
 }
 
 .hero h1::before {
@@ -377,4 +378,22 @@ form button {
     &:focus-visible {
         background-color: hsl(from var(--color-accent-40) h s 40%);
     }
+}
+
+.writing {
+    display: grid;
+    gap: 2rem;
+    justify-items: start;
+}
+
+.entry {
+    font-family: var(--content-font), serif;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.entry span {
+    font-weight: 600;
+    color: var(--color-accent-70);
 }

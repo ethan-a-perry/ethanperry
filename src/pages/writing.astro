@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro'
+const pageTitle = "Writing";
+---
+
+<Base pageTitle={pageTitle}>
+    <section>
+        <div class="hero">
+            <h1>Writing</h1>
+            <p>Send me a message directly through any of my links or by using the form below. Thank you!</p>
+        </div>
+    </section>
+
+    <section class="writing">
+        <a href="/">
+            <div class="entry">
+                <span>2025 08 18</span>
+                <p>Book review: The Netanyahus by Joshua Cohen</p>
+            </div>
+        </a>
+
+        <a href="/">
+            <div class="entry">
+                <span>2025 08 25</span>
+                <p>Book review: Harry Potter and the Philosopher's Stone by J. K. Rowling</p>
+            </div>
+        </a>
+    </section>
+</Base>

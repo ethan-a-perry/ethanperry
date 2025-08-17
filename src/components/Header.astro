@@ -1,44 +1,13 @@
-<header class="content-grid full-width">
-    <nav>
+<header class="content-grid">
+    <nav class="breakout">
         <ul>
             <li><a href="/" aria-current="page">Home</a></li>
-            <li><a href="/">Projects</a></li>
-            <li><a href="/">Writings</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/writing">Writing</a></li>
             <li><a href="/">Reading</a></li>
             <li><a href="/work/">Work</a></li>
             <li><a href="/">About</a></li>
             <li><a href="/contact/">Contact</a></li>
-        </ul>
-
-        <ul>
-            <li>
-                <a href="/">
-                    <svg class="icon">
-                        <use href="../../public/icons.svg#linkedin"></use>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="/">
-                    <svg class="icon">
-                        <use href="../../public/icons.svg#github"></use>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="/">
-                    <svg class="icon">
-                        <use href="../../public/icons.svg#instagram"></use>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="/">
-                    <svg class="icon">
-                        <use href="../../public/icons.svg#goodreads"></use>
-                    </svg>
-                </a>
-            </li>
         </ul>
     </nav>
 </header>
@@ -55,12 +24,6 @@
         z-index: 1;
     }
 
-    nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
     nav ul {
         display: flex;
         align-items: center;
@@ -69,16 +32,5 @@
 
     nav a[aria-current="page"] {
         cursor: default;
-    }
-
-    .icon {
-        display: block;
-        width: 25px;
-        height: 25px;
-        border-radius: 5px;
-    }
-
-    .icon:hover {
-        fill: var(--color-text-50);
     }
 </style>
