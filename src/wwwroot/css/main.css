@@ -454,3 +454,12 @@ form button {
         cursor: not-allowed;
     }
 }
+
+.error {
+    display: grid;
+    gap: 2rem;
+
+    & h1 {
+        color: #E53E3E;
+    }
+}
