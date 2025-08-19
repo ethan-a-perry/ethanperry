@@ -441,6 +441,7 @@ form button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: var(--color-accent-secondary-100);
 }
 
 .post-nav li .disabled {

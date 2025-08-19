@@ -6,23 +6,23 @@ export async function getStaticPaths() {
     const posts = (await getCollection('writings')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
     return posts.map((post, index) => {
-        const previous = index + 1 === posts.length ? undefined : posts[index + 1];
-        const next = index === 0 ? undefined : posts[index - 1];
+        const previousPost = index > 0 ? posts[index - 1] : undefined;
+        const nextPost = index < posts.length - 1 ? posts[index + 1] : undefined;
 
         return {
             params: { slug: post.id },
             props: {
                 post,
-                previousPost: previous
+                previousPost: previousPost
                     ? {
-                        id: `/writings/${previous.id}`,
-                        title: previous.data.title,
+                        id: `/writings/${previousPost.id}`,
+                        title: previousPost.data.title,
                     }
                     : undefined,
-                nextPost: next
+                nextPost: nextPost
                     ? {
-                        id: `/writings/${next.id}/`,
-                        title: next.data.title,
+                        id: `/writings/${nextPost.id}`,
+                        title: nextPost.data.title,
                     }
                     : undefined
             },

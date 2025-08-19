@@ -5,6 +5,14 @@ import { formatDate } from '../wwwroot/js/utils';
 
 const { frontmatter, previousPost, nextPost } = Astro.props;
 const { title, description, date, category, author, image, tags } = frontmatter;
+
+console.log('previous')
+console.log(previousPost)
+console.log('end_previous')
+
+console.log('next')
+console.log(nextPost)
+console.log('end-next')
 ---
 
 <Base pageTitle="Post">
@@ -26,7 +34,7 @@ const { title, description, date, category, author, image, tags } = frontmatter;
                 <ul class="post-nav" aria-label="Post Navigation">
                     <li>
                         {previousPost ? (
-                                <a href={nextPost.id} class='with-arrow left'>
+                                <a href={previousPost.id} class='with-arrow left'>
                                     Previous
                                     <span class="tooltip prev">{previousPost.title}</span>
                                 </a>
