@@ -17,11 +17,11 @@ const pageTitle = "Writings";
     <section>
         <div class="writings">
             {allPosts.map((post: any) =>
-                    <a href={`/writings/${post.id}/`} class="writing-info">
-                        <span class="writing-date">{formatDate(post.data.date)}</span>
-                        <span class="writing-title">{post.data.title}</span>
+                    <a href={`/writings/${post.id}/`} class="post-metadata">
+                        <span class="post-metadata-date">{formatDate(post.data.date)}</span>
+                        <span class="post-metadata-title">{post.data.title}</span>
                     </a>
-                    <div class="tags">— {post.data.tags.join(', ')}</div>
+                    <div class="post-metadata-tags">— {post.data.tags.join(', ')}</div>
             )}
         </div>
     </section>

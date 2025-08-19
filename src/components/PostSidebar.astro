@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import { formatDate, getPostsByYear } from "../wwwroot/js/utils.js";
+
+const posts = await getCollection("writings");
+const postsByYear = getPostsByYear(posts); // all posts
+---
+
+<section class="post-sidebar">
+    <h2>More posts</h2>
+    <ul class="sidebar-posts">
+        {Object.entries(postsByYear)
+            .sort(([a],[b]) => Number(b) - Number(a))
+            .map(([year, posts], index) => (
+                    <li>
+                        <details class="content-tree" {...(index === 0 ? { open: true } : {})}>
+                            <summary>{year}</summary>
+                            <ul class="nodes">
+                                {posts.map(post => (
+                                        <li class="node">
+                                            <a href={post.id} class="anchor">
+                                                <span>{post.data.title}</span>
+                                                <span class="sidebar-post-date small italic caption">[{formatDate(post.data.date)}]</span>
+                                            </a>
+                                        </li>
+                                ))}
+                            </ul>
+                        </details>
+                    </li>
+            ))}
+    </ul>
+</section>
