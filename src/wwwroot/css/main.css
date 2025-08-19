@@ -35,6 +35,7 @@
     --color-accent-secondary-100: hsla(var(--_color-accent-secondary), 1);
 }
 
+/* Fonts */
 body {
     font-family: var(--content-font), serif;
     font-weight: 400;
@@ -51,6 +52,15 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, a, form, label, input {
     font-style: normal;
 }
 
+.caption {
+    font-family: var(--caption-font), serif;
+}
+
+.italic {
+    font-style: italic;
+}
+
+/* Font Sizes */
 h1, .h1 {
     --font-size: var(--font-size-1);
     font-size: var(--font-size);
@@ -100,19 +110,11 @@ h4, .h4 {
     container-type: inline-size;
 }
 
-a {
+a:hover,
+nav a[aria-current="page"] {
     text-decoration: underline;
     text-underline-offset: 5px;
     text-decoration-thickness: 2px;
-    text-decoration-color: transparent
-}
-
-a:hover {
-    text-decoration-color: var(--color-accent-70);
-}
-
-a.underline,
-nav a[aria-current="page"] {
     text-decoration-color: var(--color-accent-40);
 }
 
@@ -139,14 +141,6 @@ a.with-arrow.left::before {
 
 a.with-arrow.right::after {
     background-image: url("/public/wwwroot/assets/icons/arrow-right.svg");
-}
-
-.caption {
-    font-family: var(--caption-font), serif;
-}
-
-.italic {
-    font-style: italic;
 }
 
 .content-grid {
@@ -275,16 +269,16 @@ a.with-arrow.right::after {
     gap: 0.8rem;
 }
 
-.position .skills {
+.skills {
     font-family: var(--heading-font), sans-serif;
     color: var(--color-accent-70);
 }
 
-.position .skills li {
+.skills li {
     display: inline;
 }
 
-.position .skills li:has(+ li)::after {
+.skills li:has(+ li)::after {
     content: " \00b7";
     margin-inline: 0.8rem;
 }
@@ -443,56 +437,71 @@ form button {
     gap: 4rem;
 }
 
-.post-navigation {
+.post-nav {
     display: flex;
     justify-content: space-between;
-    color: var(--color-accent-secondary-100);
+    align-items: center;
+}
 
-    & .disabled {
-        text-decoration: line-through;
-        cursor: not-allowed;
-    }
+.post-nav li .disabled {
+    text-decoration: line-through;
+    cursor: not-allowed;
+}
 
-    & a {
-        position: relative;
+.post-nav li a {
+    position: relative;
+    padding-bottom: 1rem;
 
-        & .tooltip {
+    & .tooltip {
+        position: absolute;
+
+        background: var(--color-accent-15);
+        color: var(--color-text-65);
+
+        border-radius: 5px;
+        padding: 7px 12px;
+
+        width: max-content;
+
+        top: 100%;
+
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.15s ease-in-out;
+
+        &.prev {
+            left: 0;
+        }
+
+        &.next {
+            right: 0;
+        }
+
+        &::before {
+            content: "";
             position: absolute;
 
-            bottom: calc(100% + 1rem);
-            right: 50%;
-            transform: translateX(50%);
+            width: 30px;
+            height: 30px;
 
-            width: max-content;
-
-            padding: 7px 12px;
-            border-radius: 5px;
+            clip-path: polygon(75% 100%, 25% 100%, 50% 75%);
             background: var(--color-accent-15);
-            color: var(--color-text-65);
 
-            opacity: 0;
-
-            transition: opacity 0.15s ease;
-
-            &::before {
-                content: "";
-                position: absolute;
-
-                width: 30px;
-                height: 30px;
-
-                clip-path: polygon(50% 29%, 22% 0, 78% 0);
-                background: var(--color-accent-15);
-
-                top: 100%;
-                right: 50%;
-                transform: translateX(50%);
-            }
+            bottom: 100%;
         }
 
-        &:hover .tooltip {
-            opacity: 100;
+        &.prev::before {
+            left: 2.5rem;
         }
+
+        &.next::before {
+            right: 2.1rem;
+        }
+    }
+
+    &:hover .tooltip {
+        visibility: visible;
+        opacity: 100;
     }
 }
 
