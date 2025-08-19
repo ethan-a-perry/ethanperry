@@ -6,12 +6,12 @@ const currentPath = Astro.url.pathname;
     <nav class="breakout">
         <ul>
             <li><a href="/" aria-current={currentPath === "/" ? "page" : undefined}>Home</a></li>
-            <li><a href="/projects" aria-current={currentPath === "/projects" ? "page" : undefined}>Projects</a></li>
-            <li><a href="/writings" aria-current={currentPath === "/writings" ? "page" : undefined}>Writings</a></li>
+            <li><a href="/projects" aria-current={currentPath.startsWith("/projects") ? "page" : undefined}>Projects</a></li>
+            <li><a href="/writings" aria-current={currentPath.startsWith("/writings") ? "page" : undefined}>Writings</a></li>
             <li><a href="/">Reading</a></li>
-            <li><a href="/work" aria-current={currentPath === "/work" ? "page" : undefined}>Work</a></li>
-            <li><a href="/about" aria-current={currentPath === "/about" ? "page" : undefined}>About</a></li>
-            <li><a href="/contact" aria-current={currentPath === "/contact" ? "page" : undefined}>Contact</a></li>
+            <li><a href="/work" aria-current={currentPath.startsWith("/work") ? "page" : undefined}>Work</a></li>
+            <li><a href="/about" aria-current={currentPath.startsWith("/about") ? "page" : undefined}>About</a></li>
+            <li><a href="/contact" aria-current={currentPath.startsWith("/contact") ? "page" : undefined}>Contact</a></li>
         </ul>
     </nav>
 </header>
