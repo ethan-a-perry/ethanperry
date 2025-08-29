@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { formatDate, getPostsByYear } from "../wwwroot/js/utils.js";
+import Link from "./Link.astro";
 
 const posts = await getCollection("writings");
 const postsByYear = getPostsByYear(posts); // all posts
@@ -16,10 +17,10 @@ const postsByYear = getPostsByYear(posts); // all posts
                         <ul class="nodes">
                             {posts.map(post => (
                                     <li class="node">
-                                        <a href={post.id} class="anchor">
+                                        <Link href={post.id} classes="anchor">
                                             <span>{post.data.title}</span>
                                             <span class="sidebar-post-date fs-s italic caption">[{formatDate(post.data.date)}]</span>
-                                        </a>
+                                        </Link>
                                     </li>
                             ))}
                         </ul>

@@ -1,12 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
+import Link from "../components/Link.astro";
 const pageTitle = 'Work';
 ---
 
 <Base pageTitle={pageTitle}>
     <section class="hero">
-        <h1>Work experience</h1>
-        <p>Please take a look at my current work experience. Send me an email at <a href="mailto:ethan@ethanperry.net">ethan@ethanperry.net</a> or download my full <a href="/">resume</a> to learn more.</p>
+        <h1 class="hero-title">Work experience</h1>
+        <div class="hero-description">
+            <p>Please take a look at my current work experience. Send me an email at <a href="mailto:ethan@ethanperry.net">ethan@ethanperry.net</a> or download my full <a href="/">resume</a> to learn more.</p>
+        </div>
     </section>
 
     <section>
@@ -90,6 +93,6 @@ const pageTitle = 'Work';
             <p>Server hardware installation and maintenance, server and network infrastructure management</p>
         </div>
 
-        <a href="/" class="with-arrow right underline">View full resume</a>
+        <Link href="/" icon={{name: "arrow-right", side: "right"}}>View full resume</Link>
     </section>
 </Base>

@@ -1,23 +1,44 @@
 ---
 import Base from '../layouts/Base.astro';
+import Link from "../components/Link.astro";
 const pageTitle = "Contact"
 ---
 
 <Base pageTitle={pageTitle}>
     <section>
         <div class="hero">
-            <h1>Contact Information</h1>
-            <p>Send me a message directly through any of my links or by using the form below. Thank you!</p>
-            <div class="hero-info">
+            <h1 class="hero-title">Contact Information</h1>
+            <div class="hero-description">
+                <p>Send me a message directly through any of my links or by using the form below. Thank you!</p>
+
                 <ul class="contact-info">
-                    <li><a class="with-arrow right underline" href="/">ethan@ethanperry.net</a></li>
-                    <li><a class="with-arrow right underline" href="/">Instagram</a></li>
-                    <li><a class="with-arrow right underline" href="/">LinkedIn</a></li>
-                    <li><a class="with-arrow right underline" href="/">Github</a></li>
-                    <li><a class="with-arrow right underline" href="/">Goodreads</a></li>
+                    <li>
+                        <Link href="/" icon={{name: "arrow-right", side: "right"}}>
+                            ethan@ethanperry.net
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/" icon={{name: "arrow-right", side: "right"}}>
+                            Instagram
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/" icon={{name: "arrow-right", side: "right"}}>
+                            LinkedIn
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/" icon={{name: "arrow-right", side: "right"}}>
+                            Github
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/" icon={{name: "arrow-right", side: "right"}}>
+                            Goodreads
+                        </Link>
+                    </li>
                 </ul>
             </div>
-
         </div>
 
         <section class="contact-form">

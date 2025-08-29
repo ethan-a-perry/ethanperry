@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro'
+import Link from "../components/Link.astro";
 const pageTitle = "500 Error"
 interface Props {
     error: unknown;
@@ -10,7 +11,7 @@ const { error } = Astro.props;
 <Base pageTitle={pageTitle}>
     <section class="error">
         <h1>500 Error</h1>
-        <a href="/" class="with-arrow right underline">Go home</a>
+        <Link href="/" icon={{name: "arrow-right", side: "right"}}>Go home</Link>
         <div>{error instanceof Error ? error.message : "Unknown error"}</div>
     </section>
 </Base>

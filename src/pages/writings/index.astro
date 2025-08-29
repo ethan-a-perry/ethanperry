@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Link from "../../components/Link.astro";
 import { formatDate } from '../../wwwroot/js/utils'
 import { getCollection } from 'astro:content';
 
@@ -15,14 +16,18 @@ const pageTitle = "Writings";
     </section>
 
     <section>
-        <div class="writings">
+        <ul class="writings">
             {allPosts.map((post: any) =>
-                    <a href={`/writings/${post.id}/`} class="post-metadata">
-                        <span class="post-metadata-date">{formatDate(post.data.date)}</span>
-                        <span class="post-metadata-title">{post.data.title}</span>
-                    </a>
-                    <div class="post-metadata-tags">— {post.data.tags.join(', ')}</div>
+                    <li class="writing">
+                        <Link href={`/writings/${post.id}/`} classes="post-metadata">
+                            <span class="post-metadata-date">{formatDate(post.data.date)}</span>
+                            <div>
+                                <span class="post-metadata-title">{post.data.title}</span>
+                                <span class="post-metadata-tags sidebar-post-date fs-s italic caption">[{post.data.tags.join(', ')}]</span>
+                            </div>
+                        </Link>
+                    </li>
             )}
-        </div>
+        </ul>
     </section>
 </Base>
