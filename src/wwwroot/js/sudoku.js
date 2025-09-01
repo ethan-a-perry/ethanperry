@@ -3,6 +3,11 @@ export async function startSudoku() {
     if (!sudokuElement) return;
 
     try {
+        window.addEventListener("sudokuAppReady", () => {
+            const loader = document.getElementById("sudoku--loader");
+            loader?.remove();
+        });
+
         await new Promise((resolve, reject) => {
             const s = document.createElement("script");
             s.src = "/sudoku/_framework/blazor.webassembly.js";

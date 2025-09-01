@@ -10,7 +10,7 @@
     --grid-theme: "Dark";
 }
 
-#sudoku-app {
+.sudoku-app--wrapper {
     padding-block: 4rem;
 
     background-color: var(--color-grid-primary, var(--color-site-background));
