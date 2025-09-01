@@ -1,6 +1,6 @@
 ---
+import '../wwwroot/css/sudoku.css'
 import Base from '../layouts/Base.astro'
-import SudokuApp from '../components/SudokuApp.astro'
 
 const pageTitle = "Sudoku"
 ---
@@ -14,6 +14,28 @@ const pageTitle = "Sudoku"
     </section>
 
     <section>
-        <SudokuApp client:load/>
+        <div id="sudoku">
+            <div class="sudoku">
+                <div class="loader">
+                    {Array.from({ length: 15 }).map(() => (
+                            <span></span>
+                    ))}
+                </div>
+
+                <div class="loader">
+                    {Array.from({ length: 17 }).map(() => (
+                            <span></span>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        <script>
+            import { startSudoku } from '../wwwroot/js/sudoku.js';
+
+            setTimeout(() => {
+                startSudoku();
+            }, 800);
+        </script>
     </section>
 </Base>
