@@ -1,5 +1,5 @@
 export async function startSudoku() {
-    const sudokuElement = document.getElementById("sudoku");
+    const sudokuElement = document.getElementById("sudoku-app");
     if (!sudokuElement) return;
 
     try {
