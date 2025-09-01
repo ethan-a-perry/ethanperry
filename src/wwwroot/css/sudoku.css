@@ -28,6 +28,8 @@
 .sudoku--grid {
     aspect-ratio: 1;
 
+    position: relative;
+
     display: grid;
     grid-template-columns: repeat(9, 1fr);
 
@@ -41,6 +43,24 @@
     &.solved {
         color: #5E9C57;
         outline: 4px solid #A7DCA0;
+    }
+
+    &::before {
+        z-index: 1;
+        content: "";
+        position: absolute;
+
+        inset: 0;
+        pointer-events: none;
+
+        background:
+            /* vertical lines */
+            linear-gradient(to right, #444 2px, transparent 0) left 33.33% top / 2px 100% no-repeat,
+            linear-gradient(to right, #444 2px, transparent 0) left 66.66% top / 2px 100% no-repeat,
+
+            /* horizontal lines */
+            linear-gradient(to bottom, #444 2px, transparent 0) left top 33.33% / 100% 2px no-repeat,
+            linear-gradient(to bottom, #444 2px, transparent 0) left top 66.66% / 100% 2px no-repeat;
     }
 }
 
@@ -163,56 +183,14 @@
         justify-content: space-between;
         gap: 1rem;
 
-        & .restart {
-            position: relative;
+        & .restart svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
 
-            &:hover {
-                & svg {
-                    color: var(--color-accent-secondary-100);
-
-                }
-
-                & .tooltip {
-                    visibility: visible;
-                    opacity: 100;
-                }
-            }
-
-            & svg {
-                width: 20px;
-                height: 20px;
-                fill: currentColor;
-            }
-
-            & .tooltip {
-                content: "";
-                position: absolute;
-
-                bottom: calc(100% + 10px);
-
-                background: var(--color-accent-15);
-                border-radius: 5px;
-                right: 0;
-                padding: 5px 12px;
-
-                visibility: hidden;
-                opacity: 0;
-                transition: opacity 0.15s ease-in-out;
-
-                &::after {
-                    content: "";
-                    position: absolute;
-
-                    width: 30px;
-                    height: 30px;
-
-                    clip-path: polygon(75% 0%, 25% 0%, 50% 25%);
-                    background: var(--color-accent-15);
-
-                    top: 100%;
-                    right: 3px;
-                }
-            }
+        & .restart:hover svg {
+            color: var(--color-accent-secondary-100);
         }
     }
 
@@ -356,9 +334,7 @@
     }
 }
 
-
-
-
+/* Pop-up modal */
 .modal--overlay {
     position: absolute;
     height: 100%;
