@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro'
+import SudokuApp from '../components/SudokuApp.astro'
+
+const pageTitle = "Sudoku"
+---
+
+<Base pageTitle={pageTitle}>
+    <section>
+        <div class="hero">
+            <h1 class="hero-title">Sudoku App</h1>
+            <p class="hero-description">Welcome to my Sudoku app. Please select from the following puzzles below. Enjoy!</p>
+        </div>
+    </section>
+
+    <section>
+        <SudokuApp client:load/>
+    </section>
+</Base>

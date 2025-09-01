@@ -6,14 +6,6 @@ import Link from "../components/Link.astro";
 
 const { frontmatter, previousPost, nextPost } = Astro.props;
 const { title, description, date, category, author, image, tags } = frontmatter;
-
-console.log('previous')
-console.log(previousPost)
-console.log('end_previous')
-
-console.log('next')
-console.log(nextPost)
-console.log('end-next')
 ---
 
 <Base pageTitle="Post">

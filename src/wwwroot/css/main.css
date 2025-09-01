@@ -23,6 +23,7 @@
     --color-text-50: hsl(0, 0%, 41%);
     --color-text-35: hsl(0, 0%, 60%);
     --color-text-20: hsl(0, 0%, 85%);
+    --color-text-10: hsl(0, 0%, 95%);
 
     --_color-accent: 210, 80%, 40%;
     --color-accent-100: hsla(var(--_color-accent), 1);
@@ -32,6 +33,7 @@
     --color-accent-15-rgb: rgb(221, 228, 235);
 
     --_color-accent-secondary: 10, 55%, 45%;
+    --color-accent-secondary-15: hsla(var(--_color-accent-secondary), 0.15);
     --color-accent-secondary-100: hsla(var(--_color-accent-secondary), 1);
 }
 
@@ -192,7 +194,7 @@ h4, .h4 {
 }
 
 .project {
-    /*padding-bottom: 7rem;*/
+    /*padding-bottom: 1rem;*/
     /*border-bottom: 1px solid var(--color-text-20);*/
 
     & figure {
@@ -543,7 +545,7 @@ summary::after {
     height: 16px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url("../../../public/assets/icons/chevron-right.svg");
+    background-image: url("/public/assets/icons/chevron-right.svg");
 }
 
 details[open] summary::after {

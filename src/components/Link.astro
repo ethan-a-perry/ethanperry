@@ -6,7 +6,7 @@ const iconNames = [
     "open-in-new",
     "undo",
     "redo",
-    "x",
+    "close",
     "check",
     "github",
     "goodreads",
@@ -63,7 +63,7 @@ const ariaCurrent = isNavLink && Astro.url.pathname.startsWith(href) ? "page" : 
         color: var(--color-accent-70);
     }
 
-    a[aria-current="page"] {
+    a[aria-current="page"], a.underline {
         box-shadow: 0 2px 0 0 var(--color-accent-40);
     }
 
