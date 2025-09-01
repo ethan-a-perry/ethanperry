@@ -13,29 +13,27 @@ const pageTitle = "Sudoku"
         </div>
     </section>
 
-    <section>
-        <div id="sudoku">
-            <div class="sudoku">
-                <div class="loader">
-                    {Array.from({ length: 15 }).map(() => (
-                            <span></span>
-                    ))}
-                </div>
+    <div id="sudoku" class="full-width">
+        <div class="sudoku">
+            <div class="loader">
+                {Array.from({ length: 15 }).map(() => (
+                        <span></span>
+                ))}
+            </div>
 
-                <div class="loader">
-                    {Array.from({ length: 17 }).map(() => (
-                            <span></span>
-                    ))}
-                </div>
+            <div class="loader">
+                {Array.from({ length: 17 }).map(() => (
+                        <span></span>
+                ))}
             </div>
         </div>
-
-        <script>
-            import { startSudoku } from '../wwwroot/js/sudoku.js';
-
-            setTimeout(() => {
-                startSudoku();
-            }, 800);
-        </script>
-    </section>
+    </div>
 </Base>
+
+<script>
+    import { startSudoku } from '../wwwroot/js/sudoku.js';
+
+    setTimeout(() => {
+        startSudoku();
+    }, 800);
+</script>

@@ -34,6 +34,7 @@
 
     --_color-accent-secondary: 10, 55%, 45%;
     --color-accent-secondary-15: hsla(var(--_color-accent-secondary), 0.15);
+    --color-accent-secondary-30: hsla(var(--_color-accent-secondary), 0.3);
     --color-accent-secondary-100: hsla(var(--_color-accent-secondary), 1);
 }
 
