@@ -6,7 +6,7 @@
     --caption-font: 'minion-pro-caption';
 
     --font-size-base: 1rem;
-    --font-size-body: 1.125rem;
+    --font-size-body: 1.25rem;
     --font-size-s: .95rem;
     --font-size-xs: .85rem;
 
@@ -615,4 +615,16 @@ details[open] summary::after {
 
 .post-sidebar .content-tree .node {
     --node-padding-block: 1.5rem;
+}
+
+.project-post {
+    border-top: 2px solid var(--color-text-35);
+    margin-top: 4rem;
+    padding-top: 8rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    max-width: 65ch;
 }
