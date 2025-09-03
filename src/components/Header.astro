@@ -11,7 +11,6 @@ import Link from "./Link.astro";
             <li><Link href="/work" isNavLink={true}>Work</Link></li>
             <li><Link href="/about" isNavLink={true}>About</Link></li>
             <li><Link href="/contact" isNavLink={true}>Contact</Link></li>
-            <li><Link href="/sudoku" isNavLink={true}>Sudoku</Link></li>
         </ul>
 
         <div class="mobile-nav-info">
@@ -44,7 +43,7 @@ import Link from "./Link.astro";
         padding-block: 2rem;
 
         background: var(--color-site-background);
-        z-index: 1;
+        z-index: 997;
     }
 
     .nav {
@@ -69,7 +68,7 @@ import Link from "./Link.astro";
         }
 
         .nav {
-            z-index: 100;
+            z-index: 998;
             background: steelblue;
 
             position: fixed;
