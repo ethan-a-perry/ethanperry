@@ -1,0 +1,28 @@
+---
+import '../wwwroot/css/sudoku.css'
+---
+
+<section class="sudoku-app--wrapper full-width">
+    <div id="sudoku-app"></div>
+
+    <div id="sudoku--loader">
+        <div class="sudoku">
+            <div class="loader">
+                {Array.from({ length: 15 }).map(() => (
+                        <span></span>
+                ))}
+            </div>
+
+            <div class="loader">
+                {Array.from({ length: 17 }).map(() => (
+                        <span></span>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import { startSudoku } from '../wwwroot/js/sudoku.js';
+    startSudoku();
+</script>

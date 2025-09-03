@@ -60,6 +60,8 @@
 }
 
 .sudoku {
+    position: relative;
+
     display: grid;
     grid-template-columns: minmax(0, 75svh) minmax(0, 300px);
     gap: 2rem;
@@ -94,7 +96,7 @@
     }
 
     &::before {
-        z-index: 1;
+        z-index: 994;
         content: "";
         position: absolute;
 
@@ -398,11 +400,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 995;
 }
 
 .modal--box {
     position: relative;
+
+    max-width: 65ch;
+
     background: var(--color-grid-primary);
     padding: 1rem 1.5rem;
     border-radius: 12px;
