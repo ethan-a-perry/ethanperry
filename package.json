@@ -13,6 +13,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@astrojs/mdx": "^4.3.4",
     "astro": "^5.13.2"
   }
 }
