@@ -35,7 +35,12 @@ const {
 } = Astro.props as Props;
 
 const iconUseHref = icon ? `/assets/icons/icons.svg#${icon.name}` : undefined;
-const ariaCurrent = isNavLink && Astro.url.pathname.startsWith(href) ? "page" : undefined;
+
+const ariaCurrent =
+    isNavLink && (
+        (href === "/" && Astro.url.pathname === "/") ||
+        (href !== "/" && Astro.url.pathname.startsWith(href))
+    ) ? "page" : undefined;
 ---
 
 <a href={href} class:list={[classes, {"with-icon" : !!icon}]} aria-current={ariaCurrent} {...rest}>
@@ -59,18 +64,24 @@ const ariaCurrent = isNavLink && Astro.url.pathname.startsWith(href) ? "page" : 
 </a>
 
 <style>
-    a:hover {
-        color: var(--color-accent-70);
-    }
+    a {
+        &.with-icon {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
 
-    a[aria-current="page"], a.underline {
-        box-shadow: 0 2px 0 0 var(--color-accent-40);
-    }
+        &.underline {
+            box-shadow: 0 2px 0 0 var(--color-accent-40);
+        }
 
-    a.with-icon {
-        display: flex;
-        align-items: center;
-        gap: 7px;
+        &:hover {
+            color: var(--color-accent-secondary-100);
+        }
+
+        &[aria-current="page"] {
+            text-decoration: line-through var(--color-accent-secondary-100);
+        }
     }
 
     svg {
