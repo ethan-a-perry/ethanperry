@@ -17,8 +17,8 @@ const writings = defineCollection({
     })
 });
 
-const projects = defineCollection({
-    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects",  }),
+const work = defineCollection({
+    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/work",  }),
     schema: z.object({
         title: z.string(),
         description: z.string(),
@@ -28,4 +28,4 @@ const projects = defineCollection({
 });
 
 // Export a single `collections` object to register your collection(s)
-export const collections = { writings, projects };
+export const collections = { writings, work };

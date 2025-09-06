@@ -1,0 +1,47 @@
+---
+title: Sudoku App
+description: An interactive Sudoku app with playable puzzles and full pencil mark support.
+draft: true
+tags: ["C#", "app"]
+---
+import Sudoku from '../../components/Sudoku.astro';
+
+<Sudoku />
+
+
+## Overview
+
+
+Built entirely in C# with Blazor and deployed on my personal website via Astro and Netlify.
+This project was an exercise in building a full-featured, interactive sudoku app in C# without using any JavaScript.
+
+<div>
+    **Current features:**
+    * Playable puzzles with validation
+    * Full pencil mark notation support (center and corner pencil marks)
+    * Undo/Redo functionality
+    * Clean, responsive design
+    * Light/dark theme
+</div>
+
+<div>
+    **Technologies:**
+    * C#
+    * .NET 9
+    * Blazor Web App (Server & WebAssembly)
+    * MongoDB
+    * HTML
+    * CSS
+    * Session storage and local storage
+    * Deployed through my personal website via Astro and Netlify.
+</div>
+
+## Architecture & Deployment Notes
+
+This app is built in .NET 9 and is structured as a Blazor web app with both server-side and WebAssembly (WASM) rendering support.
+
+The client side (WASM) handles all interactive gameplay and logic, while the server side renders the component on the frontend. When rendered through the server, puzzle data is loaded from MongoDB, but in WebAssembly mode, puzzle data is loaded from a local JSON file embedded within the project for fast, offline-friendly access.
+
+Rather than building a standalone Blazor WebAssembly app, keeping the server-client structure allows integration with MongoDB and demonstrates different data access methods depending on the rendering mode.
+
+Lastly, rather than deploying the app as a standalone app, it is published and embedded into my Astro-based personal website which manages global layout and styling and offers a more unified user experience.
