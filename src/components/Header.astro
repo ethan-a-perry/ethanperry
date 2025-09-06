@@ -3,118 +3,121 @@ import Link from "./Link.astro";
 ---
 
 <header class="content-grid">
-    <nav class="breakout">
-        <ul id="nav" class="nav" data-visible="false">
+    <button class="nav-toggle" aria-controls="nav" aria-expanded="false">Menu</button>
+
+    <nav id="nav" class="nav" data-visible="false">
+        <ul class="nav--pages">
             <li><Link href="/" isNavLink={true}>Home</Link></li>
-            <li><Link href="/projects" isNavLink={true}>Projects</Link></li>
-            <li><Link href="/writings" isNavLink={true}>Writings</Link></li>
             <li><Link href="/work" isNavLink={true}>Work</Link></li>
+            <li><Link href="/writings" isNavLink={true}>Writings</Link></li>
             <li><Link href="/about" isNavLink={true}>About</Link></li>
             <li><Link href="/contact" isNavLink={true}>Contact</Link></li>
         </ul>
 
-        <div class="mobile-nav-info">
-            <div>
-
-            </div>
-
-            <div class="socials">
-                <Link href="/" icon={{name: "github", side: "left"}}></Link>
-                <Link href="/" icon={{name: "github"}}></Link>
-                <Link href="/" icon={{name: "github"}}></Link>
-                <Link href="/" icon={{name: "github"}}></Link>
-            </div>
-        </div>
+        <ul class="nav--socials">
+            <li><Link href="/" classes="hover-text" icon={{name: "github", side: "left"}}></Link></li>
+            <li><Link href="/" classes="hover-text" icon={{name: "linkedin", side: "left"}}></Link></li>
+            <li><Link href="/" classes="hover-text" icon={{name: "instagram", side: "left"}}></Link></li>
+            <li><Link href="/" classes="hover-text" icon={{name: "goodreads", side: "left"}}></Link></li>
+        </ul>
     </nav>
-
-    <button class="mobile-nav-toggle" aria-controls="nav" aria-expanded="false">
-        <span ></span>
-    </button>
-
-
 </header>
 
 <style>
-    header {
+    .nav-toggle {
+        display: none;
+    }
+
+    nav {
+        z-index: 998;
+
         position: sticky;
         top: 0;
 
-        margin-bottom: 14rem;
-        padding-block: 2rem;
+        padding-block: 4rem 2rem;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
 
         background: var(--color-site-background);
-        z-index: 997;
     }
 
-    .nav {
+    .nav--pages {
         display: flex;
+        flex-direction: row;
         align-items: center;
         gap: 2rem;
     }
 
-    .nav li a[aria-current="page"] {
-        cursor: default;
-    }
-
-    .mobile-nav-toggle, .mobile-nav-info {
+    .nav--socials {
         display: none;
     }
 
-    @media (max-width: 768px) {
-        nav {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+    @media (width < 768px) {
+        .nav-toggle {
+            z-index: 999;
+
+            position: absolute;
+
+            display: block;
+
+            top: 2rem;
+            right: 2rem;
         }
 
-        .nav {
-            z-index: 998;
-            background: steelblue;
-
+        nav {
             position: fixed;
-            inset: 0 0 0 20%;
+            inset: 0;
 
-            padding: 8rem 3rem;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+            gap: 2rem;
+
+            padding: 2rem 2rem 6rem;
 
             font-size: var(--font-size-2);
 
+            display: none;
+            transform: translateY(5%);
+            opacity: 0;
+
+            transition: display 0.8s, transform 0.4s ease, opacity 0.2s ease-in-out;
+            transition-behavior: allow-discrete;
+        }
+
+        nav[data-visible="true"] {
+            display: flex;
+            transform: translateY(0%);
+            opacity: 1;
+
+            @starting-style {
+                display: flex;
+                transform: translateY(5%);
+                opacity: 0;
+            }
+        }
+
+        .nav--pages {
             flex-direction: column;
-            align-items: flex-start;
+            align-items: flex-end;
             gap: 1rem;
-
-            transform: translateX(100%);
-            transition: transform 350ms ease-out;
         }
 
-        .nav[data-visible="true"] {
-            transform: translateX(0%);
-        }
+        .nav--socials {
+            display: flex;
+            gap: 1.5rem;
 
-        .mobile-nav-toggle {
-            display: block;
-            border: 0;
-            position: absolute;
-            background: transparent url("/assets/icons/menu.svg") no-repeat;
-            width: 2rem;
-            aspect-ratio: 1;
-            top: 3rem;
-            right: 1rem;
-            z-index: 999;
-        }
-
-        .mobile-nav-toggle[aria-expanded="true"] {
-            background-image: url("/assets/icons/close.svg");
-        }
-
-        .mobile-nav-info {
-            display: block;
+            border-top: 1px solid var(--color-text-65);
+            padding-top: 2rem;
         }
     }
 </style>
 
 <script>
     const nav = document.querySelector('.nav');
-    const navToggle = document.querySelector('.mobile-nav-toggle');
+    const navToggle = document.querySelector('.nav-toggle');
 
     navToggle.addEventListener('click', () => {
         const visibility = nav.getAttribute('data-visible')
