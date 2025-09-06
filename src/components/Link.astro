@@ -65,18 +65,22 @@ const ariaCurrent =
 
 <style>
     a {
+        &.underline {
+            box-shadow: 0 2px 0 0 var(--color-accent-40);
+        }
+
         &.with-icon {
             display: flex;
             align-items: center;
             gap: 7px;
         }
 
-        &.underline {
-            box-shadow: 0 2px 0 0 var(--color-accent-40);
+        &.icon-only:hover {
+            color: var(--color-text-50);
         }
 
-        &:hover {
-            color: var(--color-accent-secondary-100);
+        &:not(.icon-only, [aria-current="page"]):hover {
+            background-color: rgb(255, 254, 85);
         }
 
         &[aria-current="page"] {
