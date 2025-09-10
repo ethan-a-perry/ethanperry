@@ -23,7 +23,11 @@ const work = defineCollection({
         title: z.string(),
         description: z.string(),
         draft: z.boolean().default(false),
-        tags: z.array(z.string())
+        tags: z.array(z.string()),
+        image: z.object({
+            src: z.string(),
+            alt: z.string(),
+        })
     })
 });
 

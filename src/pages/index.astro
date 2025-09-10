@@ -2,9 +2,6 @@
 import Base from '../layouts/Base.astro';
 import Link from "../components/Link.astro";
 const pageTitle = "Ethan Perry"
-
-import image1 from "../wwwroot/assets/images/menu.webp";
-import image2 from "../wwwroot/assets/images/leica.webp";
 ---
 
 <Base pageTitle={pageTitle}>
@@ -13,51 +10,5 @@ import image2 from "../wwwroot/assets/images/leica.webp";
         <div class="hero-description">
             <p>Send me a message directly through any of my links or by using the form below. Thank you!</p>
         </div>
-    </section>
-
-    <section>
-        <h2>Featured Projects</h2>
-        <ul class="projects">
-            <li class="project">
-                <figure>
-                    <img src={image1.src} alt="ex1">
-                    <figcaption>
-                        <Link href="/" icon={{name: "open-in-new", side: "right", width: "14px", height: "14px"}}>
-                            <h3>Sudoku App</h3>
-                        </Link>
-                        <ul class="skills">
-                            <li>C#</li>
-                            <li>MongoDB</li>
-                            <li>Blazor Server / WebAssembly</li>
-                            <li>Astro</li>
-                            <li>Vercel</li>
-                            <li>HTML / CSS</li>
-                        </ul>
-                        <p>Managed client relationships and provided strategic advice on paid advertising, SEO campaigns, websites, and brand development. Boosted website conversions for a real estate company by 20%. Increased online revenue for a cake company by 50% within 12 months.</p>
-                    </figcaption>
-                </figure>
-            </li>
-            <li class="project">
-                <figure>
-                    <img src={image2.src} alt="ex1">
-                    <figcaption>
-                        <Link href="/" icon={{name: "open-in-new", side: "right", width: "14px", height: "14px"}}>
-                            <h3>Portfolio Website</h3>
-                        </Link>
-                        <ul class="skills">
-                            <li>Javascript</li>
-                            <li>HTML / CSS</li>
-                            <li>Astro</li>
-                            <li>Vercel</li>
-                            <li>Web design</li>
-                        </ul>
-                        <p>Managed client relationships and provided strategic advice on paid advertising, SEO campaigns, websites, and brand development. Boosted website conversions for a real estate company by 20%. Increased online revenue for a cake company by 50% within 12 months.</p>
-                    </figcaption>
-                </figure>
-            </li>
-        </ul>
-        <Link href="/projects" icon={{name: "arrow-right", side: "right"}}>
-            View all projects
-        </Link>
     </section>
 </Base>

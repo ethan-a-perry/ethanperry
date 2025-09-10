@@ -9,15 +9,15 @@ const postsByYear = getPostsByYear(posts); // all posts
 
 <section class="post-sidebar">
     <h2>More posts</h2>
-    <ul class="sidebar-posts">
+    <ul class="sidebar-posts content-tree">
         {postsByYear.map(([year, posts], index) => (
-                <li>
-                    <details class="content-tree" {...(index === 0 ? { open: true } : {})}>
-                        <summary>{year}</summary>
-                        <ul class="nodes">
+                <li class="content-tree--node">
+                    <details {...(index === 0 ? { open: true } : {})}>
+                        <summary class="anchor">{year}</summary>
+                        <ul class="posts">
                             {posts.map(post => (
-                                    <li class="node">
-                                        <Link href={post.id} classes="anchor">
+                                    <li>
+                                        <Link href={post.id} classes="target">
                                             <span>{post.data.title}</span>
                                             <span class="sidebar-post-date fs-s italic caption">[{formatDate(post.data.date)}]</span>
                                         </Link>

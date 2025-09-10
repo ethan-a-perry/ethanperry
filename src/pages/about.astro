@@ -1,17 +1,117 @@
 ---
 import Base from '../layouts/Base.astro'
+import Link from "../components/Link.astro";
 const pageTitle = "About";
+
+import image1 from "../wwwroot/assets/images/menu.webp";
+import image2 from "../wwwroot/assets/images/leica.webp";
 ---
 
 <Base pageTitle={pageTitle}>
-    <section>
-        <div class="hero">
-            <h1>About</h1>
-            <p>Send me a message directly through any of my links or by using the form below. Thank you!</p>
-            <div class="hero-info">
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.</p>
-            </div>
+    <section class="hero">
+        <h1>About</h1>
+        <div class="hero--right flow-col-2">
+            <h2>My name is Ethan Perry. I currently work as a software developer and I enjoy creating things. Some of my hobbes include hiking, learning languages, pottery, and running. I currently live in the US.</h2>
+            <h2>At heart, I have always been a writer and often write screenplays, essays, book reviews, and poems. Please read some of my writings if you are interested.</h2>
         </div>
+    </section>
+
+    <section>
+        <div class="about--images">
+            <img src={image1.src} alt="ex1">
+            <img src={image2.src} alt="ex2">
+            <img src={image2.src} alt="ex2">
+            <img src={image1.src} alt="ex1">
+        </div>
+    </section>
+
+    <section class="control">
+        <h2>Work</h2>
+        <ul class="ul-flow">
+            <li>
+                <h3>Sudoku App</h3>
+                <p>I built a full-featured Sudoku web app in C#</p>
+            </li>
+            <li>
+                <h3>Portfolio Website</h3>
+                <p>This website.</p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="control">
+        <div>
+            <Link href="/" classes="h2" icon={{name: "open-in-new", side: "right"}}>CV</Link>
+        </div>
+        <ul class="companies content-tree">
+            <li class="content-tree--node">
+                <h3 class="anchor company-title">HPE</h3>
+                <ul class="positions">
+                    <li class="flow-col--5">
+                        <h4 class="target">Software Engineer</h4>
+                        <p class="position-dates fs-s italic caption">OCT 2023 — OCT 2024</p>
+
+                        <p>Led the development and deployment of a cloud-based storage assessment tool on AWS, replacing a legacy VM system, resulting in improved security and user experience. Contributed to a proposal generation tool for the Go-To-Market team, utilizing Python and Docker to streamline proposal creation and improve the sales pipeline.</p>
+
+                        <ul role="list" class="skills">
+                            <li>Python</li>
+                            <li>SQL</li>
+                            <li>Docker</li>
+                            <li>AWS</li>
+                            <li>ElasticSearch</li>
+                        </ul>
+                    </li>
+                    <li class="flow-col--5">
+                        <h4 class="target">Lab Technician</h4>
+                        <p class="position-dates fs-s italic caption">JUN 2023 — OCT 2023</p>
+
+                        <p>Configured and maintained network infrastructure, ensuring optimal performance and minimizing downtime. Provided support for both local and international teams. Monitored and managed server health and performance, implementing troubleshooting protocols to resolve hardware and software issues efficiently.</p>
+
+                        <ul class="skills">
+                            <li>VMWare</li>
+                            <li>Linux</li>
+                            <li>Docker</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="content-tree--node">
+                <h3 class="anchor company-title">SharpNET Solutions</h3>
+                <ul class="positions">
+                    <li class="flow-col--5">
+                        <h4 class="target">Marketing Consultant</h4>
+                        <p class="position-dates fs-s italic caption">AUG 2020 — NOV 2021</p>
+
+                        <p>Managed client relationships and provided strategic advice on paid advertising, SEO campaigns, websites, and brand development. Boosted website conversions for a real estate company by 20%. Increased online revenue for a cake company by 50% within 12 months.</p>
+
+                        <ul class="skills">
+                            <li>Web design</li>
+                            <li>SEO</li>
+                            <li>HTML / CSS</li>
+                            <li>WordPress</li>
+                            <li>Account management</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section class="control">
+        <h2>Skills</h2>
+        <ul class="ul-flow">
+            <li>
+                <h3>Programming Languages</h3>
+                <p>Python, C#, SQL, Java, HTML, CSS</p>
+            </li>
+            <li>
+                <h3>Tools, Platforms & Frameworks</h3>
+                <p>.NET, MongoDB, Elasticsearch, Astro, Vercel, Github, Docker, AWS, VMWare</p>
+            </li>
+            <li>
+                <h3>Other Skills</h3>
+                <p>Server hardware installation and maintenance, server and network infrastructure management</p>
+            </li>
+        </ul>
     </section>
 </Base>

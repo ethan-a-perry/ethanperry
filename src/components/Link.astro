@@ -75,16 +75,18 @@ const ariaCurrent =
             gap: 7px;
         }
 
-        &.hover-text:hover {
-            color: var(--color-text-50);
-        }
+        &:not(.base) {
+            &.hover-text:hover {
+                color: var(--color-text-50);
+            }
 
-        &:not(.hover-text, [aria-current="page"]):hover {
-            background-color: rgb(255, 254, 85);
-        }
+            &:not(.hover-text, [aria-current="page"]):hover {
+                background-color: rgb(255, 254, 85);
+            }
 
-        &[aria-current="page"] {
-            text-decoration: line-through var(--color-accent-secondary-100);
+            &[aria-current="page"] {
+                text-decoration: line-through var(--color-accent-secondary-100);
+            }
         }
     }
 

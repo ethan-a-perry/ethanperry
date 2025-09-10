@@ -12,22 +12,19 @@ const pageTitle = "Writings";
     <section>
         <div class="hero">
             <h1>New Writings</h1>
+            <ul class="writings hero--right">
+                {allPosts.map((post: any) =>
+                        <li class="writing">
+                            <Link href={`/writings/${post.id}/`} classes="post-metadata">
+                                <span class="post-metadata-date">{formatDate(post.data.date)}</span>
+                                <div>
+                                    <span class="post-metadata-title">{post.data.title}</span>
+                                    <span class="post-metadata-tags sidebar-post-date fs-s italic caption">[{post.data.tags.join(', ')}]</span>
+                                </div>
+                            </Link>
+                        </li>
+                )}
+            </ul>
         </div>
-    </section>
-
-    <section>
-        <ul class="writings">
-            {allPosts.map((post: any) =>
-                    <li class="writing">
-                        <Link href={`/writings/${post.id}/`} classes="post-metadata">
-                            <span class="post-metadata-date">{formatDate(post.data.date)}</span>
-                            <div>
-                                <span class="post-metadata-title">{post.data.title}</span>
-                                <span class="post-metadata-tags sidebar-post-date fs-s italic caption">[{post.data.tags.join(', ')}]</span>
-                            </div>
-                        </Link>
-                    </li>
-            )}
-        </ul>
     </section>
 </Base>

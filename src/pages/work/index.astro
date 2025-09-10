@@ -4,60 +4,35 @@ const pageTitle = "Work";
 
 import Link from "../../components/Link.astro";
 
-import image1 from "../../wwwroot/assets/images/menu.webp";
-import image2 from "../../wwwroot/assets/images/leica.webp";
+import { getCollection } from 'astro:content';
+
+const works = await getCollection('work');
 ---
 
 <Base pageTitle={pageTitle}>
     <section>
-        <h1 class="works-title">Recent Work</h1>
+        <h1>Recent Work</h1>
+
         <ul class="works">
-            <li class="work">
-                <figure>
-                    <img src={image1.src} alt="ex1">
-                    <figcaption>
-                        <div class="flex-col-2">
-                            <Link href="/" icon={{name: "open-in-new", side: "right", width: "14px", height: "14px"}}>
-                                <h3>Sudoku App</h3>
-                            </Link>
-                            <p>An interactive Sudoku app with playable puzzles and full pencil mark support.</p>
-                        </div>
+            {works.map((work: any) =>
+                    <li>
+                        <Link href={`/work/${work.id}/`} classes="work">
+                            <img src={work.data.image.src} alt={work.data.image.alt}>
+                            <div class="work--content">
+                                <ul class="scroller">
+                                    {work.data.tags.map((tag: any) =>
+                                            <li>{tag}</li>
+                                    )}
+                                </ul>
 
-                        <ul class="work--skills">
-                            <li>C#</li>
-                            <li>MongoDB</li>
-                            <li>Blazor Server / WebAssembly</li>
-                            <li>Astro</li>
-                            <li>Vercel</li>
-                            <li>HTML / CSS</li>
-                        </ul>
-
-                    </figcaption>
-                </figure>
-            </li>
-            <li class="work">
-                <figure>
-                    <img src={image2.src} alt="ex1">
-                    <figcaption>
-                        <div class="flex-col-2">
-                            <Link href="/" icon={{name: "open-in-new", side: "right", width: "14px", height: "14px"}}>
-                                <h3>Portfolio Website</h3>
-                            </Link>
-                            <p>An interactive Sudoku app with playable puzzles and full pencil mark support.</p>
-                        </div>
-
-                        <ul class="work--skills">
-                            <li>C#</li>
-                            <li>MongoDB</li>
-                            <li>Blazor Server / WebAssembly</li>
-                            <li>Astro</li>
-                            <li>Vercel</li>
-                            <li>HTML / CSS</li>
-                        </ul>
-
-                    </figcaption>
-                </figure>
-            </li>
+                                <div class="flow-col--5 temp">
+                                    <h3>{work.data.title}</h3>
+                                    <p class="ellipsis">{work.data.description}</p>
+                                </div>
+                            </div>
+                        </Link>
+                    </li>
+            )}
         </ul>
     </section>
 </Base>

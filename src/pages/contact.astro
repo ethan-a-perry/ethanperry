@@ -5,67 +5,40 @@ const pageTitle = "Contact"
 ---
 
 <Base pageTitle={pageTitle}>
-    <section>
-        <div class="hero">
-            <h1 class="hero-title">Contact Information</h1>
-            <div class="hero-description">
-                <p>Send me a message directly through any of my links or by using the form below. Thank you!</p>
+    <section class="hero contact">
+        <h1>Contact</h1>
+        <ul class="hero--right">
+            <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>ethan@ethanperry.net</Link></li>
+            <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>Instagram</Link></li>
+            <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>LinkedIn</Link></li>
+            <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>Github</Link></li>
+            <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>Goodreads</Link></li>
+        </ul>
+    </section>
 
-                <ul class="contact-info">
-                    <li>
-                        <Link href="/" icon={{name: "arrow-right", side: "right"}}>
-                            ethan@ethanperry.net
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/" icon={{name: "arrow-right", side: "right"}}>
-                            Instagram
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/" icon={{name: "arrow-right", side: "right"}}>
-                            LinkedIn
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/" icon={{name: "arrow-right", side: "right"}}>
-                            Github
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/" icon={{name: "arrow-right", side: "right"}}>
-                            Goodreads
-                        </Link>
-                    </li>
-                </ul>
+    <section class=" contact--form">
+        <h2>Send me a message</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone">
+            </div>
+            <div class="form-group grid-span">
+                <label for="message">Message</label>
+                <textarea id="message" required />
+            </div>
 
-        <section class="contact-form">
-            <h2>Send me a message</h2>
-            <form>
-                <div class="form-group">
-                    <label for="name">Name*</label>
-                    <input type="text" id="name" placeholder=" " required >
-                </div>
-                <div class="form-group">
-                    <label for="company">Company Name</label>
-                    <input type="text" id="company" placeholder=" " >
-                </div>
-                <div class="form-group">
-                    <label for="email">Email*</label>
-                    <input type="email" id="email" placeholder=" " required >
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" placeholder=" " >
-                </div>
-                <div class="form-group grid-span">
-                    <label for="message">Message*</label>
-                    <textarea id="message" placeholder=" " required />
-                </div>
-                <button class="grid-span">Send Message</button>
-            </form>
-        </section>
+            <div class="form-group">
+                <button class="grid-span">Submit</button>
+            </div>
+        </form>
     </section>
 </Base>

@@ -27,7 +27,7 @@ const { title, description, date, category, author, image, tags } = frontmatter;
                 <ul class="post-nav" aria-label="Post Navigation">
                     <li>
                         {previousPost ? (
-                                <Link href={previousPost.id} icon={{name: "arrow-left", side: "left"}}>
+                                <Link href={previousPost.id} classes="base" icon={{name: "arrow-left", side: "left"}}>
                                     Previous
                                     <span class="tooltip prev">{previousPost.title}</span>
                                 </Link>
@@ -37,7 +37,7 @@ const { title, description, date, category, author, image, tags } = frontmatter;
                     </li>
                     <li>
                         {nextPost ? (
-                                <Link href={nextPost.id} icon={{name: "arrow-right", side: "right"}}>
+                                <Link href={nextPost.id} classes="base" icon={{name: "arrow-right", side: "right"}}>
                                     Next
                                     <span class="tooltip next">{nextPost.title}</span>
                                 </Link>
@@ -46,7 +46,6 @@ const { title, description, date, category, author, image, tags } = frontmatter;
                         )}
                     </li>
                 </ul>
-
             </div>
         </div>
         <PostSidebar></PostSidebar>
