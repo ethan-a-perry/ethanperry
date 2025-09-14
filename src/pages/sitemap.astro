@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import Link from "../components/Link.astro";
+const pageTitle = "Sitemap";
+
+import { getCollection } from "astro:content";
+
+const works = await getCollection("work");
+const writings = await getCollection("writings");
+---
+
+<Base pageTitle={pageTitle}>
+    <section class="dual-column with-border-top">
+        <h1>Sitemap</h1>
+        <ul class="sitemap">
+            <li class="scr">
+                <p>Main</p>
+
+                <ul>
+                    <li>Home</li>
+                    <li>Writings</li>
+                    <li>Work</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </li>
+            <li class="scr">
+                <p>Work</p>
+                <ul class="may-scroll">
+                    {works.map((work: any) =>
+                            <li><Link href={work.id}>{work.data.title}</Link></li>
+                    )}
+                </ul>
+            </li>
+            <li class="scr">
+                <p>Writings</p>
+                <ul class="may-scroll">
+                    {writings.map((writing: any) =>
+                            <li><Link href={writing.id}>{writing.data.title}</Link></li>
+                    )}
+                </ul>
+            </li>
+        </ul>
+    </section>
+</Base>
+
+<script is:inline>
+    const elements = document.querySelectorAll('.may-scroll');
+
+    function checkHeight() {
+        elements.forEach(el => {
+            console.log("helo")
+            if (el.offsetHeight >= 400) {
+                el.classList.add('scroller', 'vert');
+            }
+        });
+    }
+
+    checkHeight();
+</script>

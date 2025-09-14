@@ -2,13 +2,37 @@
 import Base from '../layouts/Base.astro';
 import Link from "../components/Link.astro";
 const pageTitle = "Ethan Perry"
+
+import image1 from "../wwwroot/assets/images/menu.webp";
+
 ---
 
 <Base pageTitle={pageTitle}>
-    <section class="hero">
-        <h1 class="hero-title">Ethan Perry</h1>
+    <section class="">
+        <h1>Ethan Perry</h1>
         <div class="hero-description">
             <p>Send me a message directly through any of my links or by using the form below. Thank you!</p>
         </div>
+
+        <a href={`/work/sudoku/`} class="work margin-top-8">
+            <div class="work--details fs-s">
+                <ul class="">
+                    <li>C#</li>
+                    <li>Astro</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                </ul>
+                <span>Nov 28, 2000</span>
+            </div>
+
+            <img class="work--image" src={image1.src} alt="ex1">
+
+            <div class="work--content flow--5">
+                <h2 class="h3">Sudoku App</h2>
+                <p class="">An interactive Sudoku app with playable puzzles and full pencil mark support</p>
+            </div>
+
+            <span class="fs-s view">View project</span>
+        </a>
     </section>
 </Base>

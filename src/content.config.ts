@@ -27,7 +27,8 @@ const work = defineCollection({
         image: z.object({
             src: z.string(),
             alt: z.string(),
-        })
+        }),
+        date: z.string()
     })
 });
 

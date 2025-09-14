@@ -36,11 +36,13 @@ const {
 
 const iconUseHref = icon ? `/assets/icons/icons.svg#${icon.name}` : undefined;
 
-const ariaCurrent =
-    isNavLink && (
-        (href === "/" && Astro.url.pathname === "/") ||
-        (href !== "/" && Astro.url.pathname.startsWith(href))
-    ) ? "page" : undefined;
+    // const ariaCurrent =
+    //     isNavLink && (
+    //         (href === "/" && Astro.url.pathname === "/") ||
+    //         (href !== "/" && Astro.url.pathname.startsWith(href))
+    //     ) ? "page" : undefined;
+
+const ariaCurrent = undefined;
 ---
 
 <a href={href} class:list={[classes, {"with-icon" : !!icon}]} aria-current={ariaCurrent} {...rest}>

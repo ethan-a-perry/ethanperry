@@ -10,29 +10,36 @@ const works = await getCollection('work');
 ---
 
 <Base pageTitle={pageTitle}>
-    <section>
-        <h1>Recent Work</h1>
+    <section class="dual-column with-border-top">
+        <h2 class="rot">Recent Work</h2>
 
         <ul class="works">
             {works.map((work: any) =>
                     <li>
-                        <Link href={`/work/${work.id}/`} classes="work">
-                            <img src={work.data.image.src} alt={work.data.image.alt}>
-                            <div class="work--content">
-                                <ul class="scroller">
-                                    {work.data.tags.map((tag: any) =>
-                                            <li>{tag}</li>
-                                    )}
-                                </ul>
-
-                                <div class="flow-col--5 temp">
-                                    <h3>{work.data.title}</h3>
-                                    <p class="ellipsis">{work.data.description}</p>
+                        <a href={`/work/${work.id}/`} class="work">
+                            <div class="work--info">
+                                <div class="work--details fs-s">
+                                    <ul class="scroller horiz">
+                                        {work.data.tags.map((tag: any) =>
+                                                <li>{tag}</li>
+                                        )}
+                                    </ul>
+                                    <span>{work.data.date}</span>
                                 </div>
+
+                                <div class="flow--5">
+                                    <h2 class="h3">{work.data.title}</h2>
+                                    <p class="">{work.data.description}</p>
+                                </div>
+
+                                <span class="work--details fs-s view">View project</span>
                             </div>
-                        </Link>
+
+                            <img src={work.data.image.src} alt={work.data.image.alt}>
+                        </a>
                     </li>
             )}
         </ul>
     </section>
+
 </Base>

@@ -5,40 +5,43 @@ const pageTitle = "Contact"
 ---
 
 <Base pageTitle={pageTitle}>
-    <section class="hero contact">
+    <section class="dual-column with-border-top">
         <h1>Contact</h1>
-        <ul class="hero--right">
-            <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>ethan@ethanperry.net</Link></li>
-            <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>Instagram</Link></li>
-            <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>LinkedIn</Link></li>
-            <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>Github</Link></li>
-            <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>Goodreads</Link></li>
-        </ul>
-    </section>
 
-    <section class=" contact--form">
-        <h2>Send me a message</h2>
-        <form>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone">
-            </div>
-            <div class="form-group grid-span">
-                <label for="message">Message</label>
-                <textarea id="message" required />
-            </div>
+        <div class="contact">
+            <ul>
+                <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>ethan@ethanperry.net</Link></li>
+                <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>Instagram</Link></li>
+                <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>LinkedIn</Link></li>
+                <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>Github</Link></li>
+                <li><Link href="/" icon={{name: "arrow-right", side: "right"}}>Goodreads</Link></li>
+            </ul>
 
-            <div class="form-group">
-                <button class="grid-span">Submit</button>
+            <div class="flex-col-2 form--wrapper">
+                <h2>Send me a message</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone">
+                    </div>
+                    <div class="form-group grid-span">
+                        <label for="message">Message</label>
+                        <textarea id="message" required />
+                    </div>
+
+                    <div class="form-group">
+                        <button class="grid-span">Submit</button>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </section>
 </Base>

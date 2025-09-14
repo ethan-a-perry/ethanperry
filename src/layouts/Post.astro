@@ -1,54 +1,85 @@
 ---
 import Base from './Base.astro';
-import PostSidebar from '../components/PostSidebar.astro'
-import { formatDate } from '../wwwroot/js/utils';
+import { getCollection } from "astro:content";
+import { formatDate, getPostsByYear } from '../wwwroot/js/utils';
 import Link from "../components/Link.astro";
 
 const { frontmatter, previousPost, nextPost } = Astro.props;
 const { title, description, date, category, author, image, tags } = frontmatter;
+
+const posts = await getCollection("writings");
+const postsByYear = getPostsByYear(posts); // all posts
 ---
 
 <Base pageTitle="Post">
     <section class="post-wrapper">
         <div class="post">
-            <div class="post-hero">
+            <div class="flex-col-1">
                 <h1>{title}</h1>
-                <div class="post-metadata">
-                    <span class="post-metadata-date">{formatDate(date)}</span>
-                    <div class="post-metadata-tags">Categories: {tags.join(', ')}</div>
+                <div class="flex-row-1">
+                    <span class="color-accent-70">{formatDate(date)}</span>
+                    <span class="color-accent-secondary-100">Categories: {tags.join(', ')}</span>
                 </div>
             </div>
 
             <div class="post-content">
-                <div>
-                    <slot />
-                </div>
-
-                <ul class="post-nav" aria-label="Post Navigation">
-                    <li>
-                        {previousPost ? (
-                                <Link href={previousPost.id} classes="base" icon={{name: "arrow-left", side: "left"}}>
-                                    Previous
-                                    <span class="tooltip prev">{previousPost.title}</span>
-                                </Link>
-                        ) : (
-                                <span class="disabled">Previous</span>
-                        )}
-                    </li>
-                    <li>
-                        {nextPost ? (
-                                <Link href={nextPost.id} classes="base" icon={{name: "arrow-right", side: "right"}}>
-                                    Next
-                                    <span class="tooltip next">{nextPost.title}</span>
-                                </Link>
-                        ) : (
-                                <span class="disabled">Next</span>
-                        )}
-                    </li>
-                </ul>
+                <slot />
             </div>
+
+            <ul class="post-nav" aria-label="Post Navigation">
+                <li>
+                    {previousPost ? (
+                            <Link
+                                    href={previousPost.id}
+                                    classes="base"
+                                    icon={{name: "arrow-left", side: "left"}}
+                                    data-tooltip={previousPost.title}
+                            >
+                                Previous
+                            </Link>
+                    ) : (
+                            <span class="disabled">Previous</span>
+                    )}
+                </li>
+                <li>
+                    {nextPost ? (
+                            <Link
+                                    href={nextPost.id}
+                                    classes="base"
+                                    icon={{name: "arrow-right", side: "right"}}
+                                    data-tooltip={nextPost.title}
+                            >
+                                Next
+                            </Link>
+                    ) : (
+                            <span class="disabled">Next</span>
+                    )}
+                </li>
+            </ul>
         </div>
-        <PostSidebar></PostSidebar>
+
+        <section class="post-sidebar">
+            <h2>More posts</h2>
+            <ul class="sidebar-posts content-tree">
+                {postsByYear.map(([year, posts], index) => (
+                        <li class="content-tree--node">
+                            <details {...(index === 0 ? { open: true } : {})}>
+                                <summary class="anchor">{year}</summary>
+                                <ul class="posts">
+                                    {posts.map(post => (
+                                            <li>
+                                                <Link href={post.id} classes="target">
+                                                    <span>{post.data.title}</span>
+                                                    <span class="sidebar-post-date fs-s italic caption">[{formatDate(post.data.date)}]</span>
+                                                </Link>
+                                            </li>
+                                    ))}
+                                </ul>
+                            </details>
+                        </li>
+                ))}
+            </ul>
+        </section>
     </section>
 </Base>
 
