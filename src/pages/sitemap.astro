@@ -17,18 +17,18 @@ const writings = await getCollection("writings");
                 <p>Main</p>
 
                 <ul>
-                    <li>Home</li>
-                    <li>Writings</li>
-                    <li>Work</li>
-                    <li>About</li>
-                    <li>Contact</li>
+                    <li><Link href="/">Home</Link></li>
+                    <li><Link href="/writings">Writings</Link></li>
+                    <li><Link href="/work">Work</Link></li>
+                    <li><Link href="/about">About</Link></li>
+                    <li><Link href="/contact">Contact</Link></li>
                 </ul>
             </li>
             <li class="scr">
                 <p>Work</p>
                 <ul class="may-scroll">
                     {works.map((work: any) =>
-                            <li><Link href={work.id}>{work.data.title}</Link></li>
+                            <li><Link href={`/work/${work.id}/`}>{work.data.title}</Link></li>
                     )}
                 </ul>
             </li>
@@ -36,7 +36,7 @@ const writings = await getCollection("writings");
                 <p>Writings</p>
                 <ul class="may-scroll">
                     {writings.map((writing: any) =>
-                            <li><Link href={writing.id}>{writing.data.title}</Link></li>
+                            <li><Link href={`/writings/${writing.id}/`}>{writing.data.title}</Link></li>
                     )}
                 </ul>
             </li>
