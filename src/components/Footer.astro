@@ -1,14 +1,63 @@
+---
+import Link from "./Link.astro";
+---
+
 <footer class="content-grid">
-    <div>
-        <p>Built entirely in HTML and CSS.</p>
-        <a href="/sitemap">Sitemap</a>
+    <div class="footer">
+        <p>Ethan Perry © 2025</p>
+        <nav>
+            <ul>
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="/contact">Contact</Link></li>
+                <li><Link href="/sitemap">Sitemap</Link></li>
+            </ul>
+
+            <ul class="socials">
+                <li><Link href="/sitemap" classes="hover-text" icon={{name: "linkedin", side: "left"}}></Link></li>
+                <li><Link href="/sitemap" classes="hover-text" icon={{name: "github", side: "left"}}></Link></li>
+                <li><Link href="/sitemap" classes="hover-text" icon={{name: "goodreads", side: "left"}}></Link></li>
+            </ul>
+        </nav>
     </div>
 </footer>
 
 <style>
     footer {
+        padding-block: 2rem;
         margin-top: 20rem;
-        font-style: italic;
-        margin-bottom: 2rem;
+        background-color: var(--color-accent-15);
+    }
+
+    .footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem 2rem;
+    }
+
+    nav, ul {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem 2rem;
+    }
+
+    .socials {
+        gap: 1rem;
+
+        padding-left: 2rem;
+        border-left: 1px solid currentColor;
+    }
+
+    @media (width < 768px) {
+        .footer, nav {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .socials {
+            padding: unset;
+            border-left: 0;
+        }
     }
 </style>
