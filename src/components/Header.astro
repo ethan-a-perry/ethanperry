@@ -5,7 +5,7 @@ import Link from "./Link.astro";
 <header class="content-grid">
     <button class="nav-toggle" aria-controls="nav" aria-expanded="false">Menu</button>
 
-    <div class="">
+    <div>
         <!--<h4 class="logo">EP</h4>-->
         <nav id="nav" class="nav" data-visible="false">
             <ul class="nav--pages">
@@ -17,9 +17,8 @@ import Link from "./Link.astro";
             </ul>
 
             <ul class="nav--socials">
-                <li><Link href="/" classes="hover-text" icon={{name: "github", side: "left"}}></Link></li>
                 <li><Link href="/" classes="hover-text" icon={{name: "linkedin", side: "left"}}></Link></li>
-                <li><Link href="/" classes="hover-text" icon={{name: "instagram", side: "left"}}></Link></li>
+                <li><Link href="/" classes="hover-text" icon={{name: "github", side: "left"}}></Link></li>
                 <li><Link href="/" classes="hover-text" icon={{name: "goodreads", side: "left"}}></Link></li>
             </ul>
         </nav>
@@ -134,7 +133,7 @@ import Link from "./Link.astro";
     }
 </style>
 
-<script>
+<script is:inline>
     const nav = document.querySelector('.nav');
     const navToggle = document.querySelector('.nav-toggle');
 
