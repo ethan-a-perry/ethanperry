@@ -29,28 +29,18 @@ const postsByYear = getPostsByYear(posts); // all posts
             <ul class="post-nav" aria-label="Post Navigation">
                 <li>
                     {previousPost ? (
-                            <Link
-                                    href={previousPost.id}
-                                    classes="base"
-                                    icon={{name: "arrow-left", side: "left"}}
-                                    data-tooltip={previousPost.title}
-                            >
-                                Previous
-                            </Link>
+                            <Link href={previousPost.id} classes="base" icon={{name: "arrow-left", side: "left"}}>Previous</Link>
+                            <span role="tooltip">{previousPost.title}</span>
                     ) : (
                             <span class="disabled">Previous</span>
                     )}
                 </li>
                 <li>
                     {nextPost ? (
-                            <Link
-                                    href={nextPost.id}
-                                    classes="base"
-                                    icon={{name: "arrow-right", side: "right"}}
-                                    data-tooltip={nextPost.title}
-                            >
+                            <Link href={nextPost.id} classes="base" icon={{name: "arrow-right", side: "right"}}>
                                 Next
                             </Link>
+                            <span role="tooltip">{nextPost.title}</span>
                     ) : (
                             <span class="disabled">Next</span>
                     )}

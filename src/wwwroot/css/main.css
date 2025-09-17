@@ -37,6 +37,8 @@
         --color-accent-15-rgb: rgb(221, 228, 235);
         --color-accent-5: hsla(var(--_color-accent), 0.05);
 
+        --color-accent-yellow: rgb(255, 254, 85);
+
         --_color-accent-secondary: 10, 55%, 45%;
         --color-accent-secondary-15: hsla(var(--_color-accent-secondary), 0.15);
         --color-accent-secondary-30: hsla(var(--_color-accent-secondary), 0.3);
@@ -235,6 +237,18 @@
 }
 
 @layer utilities {
+    .underline {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 1px;
+    }
+
+    .with-border-top {
+        margin-top: 1rem;
+        border-top: 1px solid var(--color-text-10);
+        padding-top: 1rem;
+    }
+
     .italic {
         font-style: italic;
     }
@@ -335,12 +349,6 @@
         text-overflow: ellipsis;
     }
 
-    .with-border-top {
-        margin-top: 1rem;
-        border-top: 1px solid var(--color-text-10);
-        padding-top: 1rem;
-    }
-
     .theme-grey {
         background-color: rgb(245, 245, 245);
 
@@ -404,6 +412,10 @@
             display: inline-grid;
             grid-template-columns: 1fr min(300px, 100%);
             gap: 2rem;
+
+            &:hover {
+                background-color: var(--color-accent-15);
+            }
 
             img {
                 height: 100%;
@@ -508,6 +520,7 @@
         }
 
         .post-nav {
+            z-index: 1;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -520,26 +533,36 @@
             cursor: not-allowed;
         }
 
-        .post-nav a {
-            anchor-scope: --post-nav-a;
+        .post-nav li {
+            anchor-scope: --post-nav-a, --hop;
             anchor-name: --post-nav-a;
 
             padding-bottom: 1rem;
 
-            &:hover {
-                &::before, &::after {
-                    display: block;
-                    opacity: 1;
+            a:hover + [role="tooltip"] {
+                display: block;
+                opacity: 1;
 
-                    @starting-style {
-                        opacity: 0;
-                    }
+                @starting-style {
+                    opacity: 0;
                 }
             }
 
-            &::before, &::after {
-                z-index: 999;
+            [role="tooltip"] {
+                position: absolute;
 
+                position-anchor: --post-nav-a;
+                top: anchor(--post-nav-a bottom);
+                justify-self: anchor-center;
+
+                max-width: 70%;
+
+                padding: 7px 12px;
+                margin-inline: 1rem;
+
+                border-radius: 5px;
+
+                color: var(--color-text-65);
                 background-color: var(--color-accent-15);
 
                 display: none;
@@ -547,39 +570,6 @@
 
                 transition: display 0.3s, opacity 0.3s;
                 transition-behavior: allow-discrete;
-            }
-
-            &::before {
-                content: attr(data-tooltip, "");
-                position: absolute;
-
-                position-anchor: --post-nav-a;
-                top: anchor(--post-nav-a bottom);
-                justify-self: anchor-center;
-
-                width: max-content;
-
-                margin-inline: 1rem;
-                padding: 7px 12px;
-
-                border-radius: 5px;
-
-                color: var(--color-text-65);
-
-            }
-
-            &::after {
-                content: "";
-                position: absolute;
-
-                position-anchor: --post-nav-a;
-                bottom: anchor(--post-nav-a bottom);
-                justify-self: anchor-center;
-
-                width: 30px;
-                height: 30px;
-
-                clip-path: polygon(75% 100%, 25% 100%, 50% 75%);
             }
         }
 
@@ -651,16 +641,6 @@
     }
 
     @layer about {
-        .with-about-border {
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid var(--color-text-10);
-
-            /*@media (width > 768px) {*/
-            /*    padding-top: 6rem;*/
-            /*}*/
-        }
-
         .about--images {
             display: grid;
             gap: 1rem;
@@ -674,52 +654,32 @@
 
         .cv {
             display: grid;
-            gap: 4rem;
-        }
-
-        .company {
-            container-type: inline-size;
-
-            --size: attr(data-col-size type(<length>), 1fr);
-            display: grid;
             gap: 2rem;
 
-            @container (width > 850px) {
-                grid-template-columns: 10% 1fr;
-                gap: 6rem;
+            span, ul {
+                color: var(--color-text-35);
             }
 
-            h3, h4 {
-                color: var(--color-accent-100);
-            }
-
-            .roles {
-                display: grid;
-                gap: 2rem;
-            }
-
-            p {
-                font-family: var(--heading-font), sans-serif;
+            > li:not(:last-child) {
+                padding-bottom: 2rem;
+                border-bottom: 1px solid var(--color-text-10);
             }
         }
 
         .role {
-            color: var(--color-text-65);
             display: grid;
             gap: 1rem;
         }
 
         .role--tags {
-            font-family: var(--heading-font), sans-serif;
-
             li {
                 display: inline;
             }
-        }
 
-        .role--tags li:not(:last-child)::after, .date::before {
-            content: " \00b7";
-            margin-inline: 1ch;
+            li:not(:last-child)::after, .date::before {
+                content: " \00b7";
+                margin-inline: 1ch;
+            }
         }
     }
 
@@ -728,7 +688,7 @@
             display: flex;
             flex-direction: column;
 
-            gap: 4rem;
+            gap: 12rem;
 
             ul {
                 display: flex;

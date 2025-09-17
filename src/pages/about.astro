@@ -5,6 +5,10 @@ const pageTitle = "About";
 
 import image1 from "../wwwroot/assets/images/menu.webp";
 import image2 from "../wwwroot/assets/images/leica.webp";
+
+import { getCollection } from 'astro:content';
+
+const works = await getCollection('work');
 ---
 
 <Base pageTitle={pageTitle}>
@@ -25,91 +29,86 @@ import image2 from "../wwwroot/assets/images/leica.webp";
         </div>
     </section>
 
-    <section class="dual-column with-about-border">
+    <section class="dual-column with-border-top margin-top-12">
         <h2>Work</h2>
-        <ul class="ul-flow">
-            <li class="theme-grey">
-                <h3>Sudoku App</h3>
-                <p>I built a full-featured Sudoku web app in C#</p>
-            </li>
-            <li class="theme-grey">
-                <h3>Portfolio Website</h3>
-                <p>This website.</p>
-            </li>
+        <ul class="flex-col-2 color-text-65">
+            {works.map((work: any) =>
+                    <li>
+                        <h3 class="underline">{work.data.title}</h3>
+                        <p>{work.data.description}</p>
+                    </li>
+            )}
         </ul>
     </section>
 
-    <section class="dual-column with-about-border">
+    <section class="dual-column with-border-top margin-top-12">
         <h2>CV</h2>
-        <ul class="cv">
-            <li class="company " data-col-size="50px">
-                <h3>HPE</h3>
-                <ul class="roles">
-                    <li class="role theme-grey">
-                        <div class="flex">
-                            <h4>Software Engineer</h4>
-                            <span class="fs-s date">OCT 2023 — OCT 2024</span>
-                        </div>
+        <div>
+            <Link href="/" icon={{name: "open-in-new", side: "right"}} classes="color-accent-70">View full resume</Link>
+            <ul class="cv color-text-65 margin-top-2">
+                <li class="role">
+                    <h3>Software Engineer — HPE</h3>
 
-                        <p>Led the development and deployment of a cloud-based storage assessment tool on AWS, replacing a legacy VM system, resulting in improved security and user experience. Contributed to a proposal generation tool for the Go-To-Market team, utilizing Python and Docker to streamline proposal creation and improve the sales pipeline.</p>
+                    <span class="fs-s">OCT 2023 — OCT 2024</span>
 
-                        <ul role="list" class="role--tags color-text-35 fs-s">
-                            <li>Python</li>
-                            <li>SQL</li>
-                            <li>Docker</li>
-                            <li>AWS</li>
-                            <li>ElasticSearch</li>
-                        </ul>
-                    </li>
-                    <li class="role theme-grey">
-                        <div class="flex">
-                            <h4>Lab Technician</h4>
-                            <span class="fs-s date">JUN 2023 — OCT 2023</span>
-                        </div>
+                    <p>Led the development and deployment of a cloud-based storage assessment tool on AWS, replacing a legacy VM system, resulting in improved security and user experience. Contributed to a proposal generation tool for the Go-To-Market team, utilizing Python and Docker to streamline proposal creation and improve the sales pipeline.</p>
 
-                        <p>Configured and maintained network infrastructure, ensuring optimal performance and minimizing downtime. Provided support for both local and international teams. Monitored and managed server health and performance, implementing troubleshooting protocols to resolve hardware and software issues efficiently.</p>
+                    <ul role="list" class="role--tags fs-s">
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>Docker</li>
+                        <li>AWS</li>
+                        <li>ElasticSearch</li>
+                    </ul>
+                </li>
+                <li class="role">
+                    <h3>Lab Technician — HPE</h3>
 
-                        <ul class="role--tags color-text-35 fs-s">
-                            <li>VMWare</li>
-                            <li>Linux</li>
-                            <li>Docker</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="company ">
-                <h3>SharpNET Solutions</h3>
-                <ul>
-                    <li class="role theme-grey">
-                        <div class="flex">
-                            <h4>Marketing Consultant</h4>
-                            <span class="fs-s date">AUG 2020 — NOV 2021</span>
-                        </div>
+                    <span class="fs-s">OCT 2023 — OCT 2024</span>
 
-                        <p>Managed client relationships and provided strategic advice on paid advertising, SEO campaigns, websites, and brand development. Boosted website conversions for a real estate company by 20%. Increased online revenue for a cake company by 50% within 12 months.</p>
+                    <p>Led the development and deployment of a cloud-based storage assessment tool on AWS, replacing a legacy VM system, resulting in improved security and user experience. Contributed to a proposal generation tool for the Go-To-Market team, utilizing Python and Docker to streamline proposal creation and improve the sales pipeline.</p>
 
-                        <ul class="role--tags color-text-35 fs-s">
-                            <li>Web design</li>
-                            <li>SEO</li>
-                            <li>HTML / CSS</li>
-                            <li>WordPress</li>
-                            <li>Account management</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+                    <ul role="list" class="role--tags fs-s">
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>Docker</li>
+                        <li>AWS</li>
+                        <li>ElasticSearch</li>
+                    </ul>
+                </li>
+                <li class="role the">
+                    <h3>Marketing Consultant — SharpNet Solutions</h3>
+                    <span class="fs-s">AUG 2020 — NOV 2021</span>
+
+                    <p>Managed client relationships and provided strategic advice on paid advertising, SEO campaigns, websites, and brand development. Boosted website conversions for a real estate company by 20%. Increased online revenue for a cake company by 50% within 12 months.</p>
+
+                    <ul role="list" class="role--tags fs-s">
+                        <li>Web design</li>
+                        <li>SEO</li>
+                        <li>HTML / CSS</li>
+                        <li>WordPress</li>
+                        <li>Account management</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </section>
 
-    <section class="dual-column with-about-border">
+    <section class="dual-column with-border-top margin-top-12">
         <h2>Skills</h2>
-        <div class="theme-grey s">
-            <h3>Programming Languages</h3>
-            <p>Python, C#, SQL, Java, HTML, CSS</p>
-            <h3>Tools, Platforms, Frameworks</h3>
-            <p>.NET, MongoDb, ElasticSearch, Astro, Vercel, Github, Docker, AWS, VMWare</p>
-            <h3>Other Skills</h3>
-            <p>Server hardware installation and maintenance, network infrastructure management</p>
-        </div>
+        <ul class="flex-col-2 color-text-65">
+            <li>
+                <h3 class="underline">Programming Languages</h3>
+                <p>Python, C#, SQL, Java, HTML, CSS</p>
+            </li>
+            <li>
+                <h3 class="underline">Tools, Platforms, Frameworks</h3>
+                <p>.NET, MongoDb, ElasticSearch, Astro, Vercel, Github, Docker, AWS, VMWare</p>
+            </li>
+            <li>
+                <h3 class="underline">Other Skills</h3>
+                <p>Server hardware installation and maintenance, network infrastructure management</p>
+            </li>
+        </ul>
     </section>
 </Base>

@@ -70,7 +70,7 @@ picture {
     /* If image doesn't load, alt text will render instead. */
     font-style: italic;
 
-    max-width: 100%;
+    max-inline-size: 100%;
     vertical-align: middle;
     height: auto;
 
