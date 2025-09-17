@@ -53,13 +53,13 @@ const writingsByYear = getWritingsByYear(writings);
                 <h2>More posts</h2>
                 <ul class="flex-col-2 fs-base content-tree">
                     {writingsByYear.map(([year, writings], index) => (
-                            <li class="content-tree--node">
+                            <li>
                                 <details {...(index === 0 ? { open: true } : {})}>
-                                    <summary class="anchor">{year}</summary>
+                                    <summary>{year}</summary>
                                     <ul class="writings">
                                         {writings.map(writing => (
                                                 <li>
-                                                    <Link href={writing.id} classes="target">
+                                                    <Link href={writing.id}>
                                                         <span>{writing.data.title}</span>
                                                         <span class="fs-s italic caption">[{formatDate(writing.data.date)}]</span>
                                                     </Link>
