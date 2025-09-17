@@ -6,20 +6,20 @@ export function formatDate(date) {
     return `${year}.${month}.${day}`;
 }
 
-export function getPostsByYear(posts) {
+export function getWritingsByYear(writings) {
     // Sort posts newest first
-    const sorted = posts.slice().sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
+    const sorted = writings.slice().sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
 
-    const postsByYear = {};
+    const writingsByYear = {};
 
     // Group posts by year
-    for (const post of sorted) {
-        const year = new Date(post.data.date).getFullYear();
-        if (!postsByYear[year]) postsByYear[year] = [];
-        postsByYear[year].push(post);
+    for (const writing of sorted) {
+        const year = new Date(writing.data.date).getFullYear();
+        if (!writingsByYear[year]) writingsByYear[year] = [];
+        writingsByYear[year].push(writing);
     }
 
     // Sorted by year descending
-    return Object.entries(postsByYear)
+    return Object.entries(writingsByYear)
         .sort(([a], [b]) => Number(b) - Number(a));
 }

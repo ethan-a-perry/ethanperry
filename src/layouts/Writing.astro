@@ -1,0 +1,78 @@
+---
+import Base from './Base.astro';
+import { getCollection } from "astro:content";
+import { formatDate, getWritingsByYear } from '../wwwroot/js/utils';
+import Link from "../components/Link.astro";
+
+const { frontmatter, previousPost, nextPost } = Astro.props;
+const { title, description, date, category, author, image, tags } = frontmatter;
+
+const writings = await getCollection("writings");
+const writingsByYear = getWritingsByYear(writings);
+---
+
+<Base pageTitle={title}>
+    <section class="writing-view--container">
+        <div class="writing-view">
+            <article class="writing-post">
+                <div class="flex-col-1">
+                    <h1>{title}</h1>
+                    <div class="flex-row-1">
+                        <span class="color-accent-70">{formatDate(date)}</span>
+                        <span class="color-accent-secondary-100">Categories: {tags.join(', ')}</span>
+                    </div>
+                </div>
+
+                <div class="writing-content">
+                    <slot />
+                </div>
+
+                <nav>
+                    <ul>
+                        {previousPost && (
+                                <li>
+                                    <span>Previous post:</span>
+                                    <Link href={previousPost.id} classes="two-lines">
+                                        <span class="">{previousPost.title}</span>
+                                    </Link>
+                                </li>
+                        )}
+                        {nextPost && (
+                                <li>
+                                    <span>Next post:</span>
+                                    <Link href={nextPost.id} classes="two-lines">
+                                        <span class="color-accent-secondary-100">{nextPost.title}</span>
+                                    </Link>
+                                </li>
+                        )}
+                    </ul>
+                </nav>
+            </article>
+
+            <aside class="writing-sidebar">
+                <h2>More posts</h2>
+                <ul class="flex-col-2 fs-base content-tree">
+                    {writingsByYear.map(([year, writings], index) => (
+                            <li class="content-tree--node">
+                                <details {...(index === 0 ? { open: true } : {})}>
+                                    <summary class="anchor">{year}</summary>
+                                    <ul class="writings">
+                                        {writings.map(writing => (
+                                                <li>
+                                                    <Link href={writing.id} classes="target">
+                                                        <span>{writing.data.title}</span>
+                                                        <span class="fs-s italic caption">[{formatDate(writing.data.date)}]</span>
+                                                    </Link>
+                                                </li>
+                                        ))}
+                                    </ul>
+                                </details>
+                            </li>
+                    ))}
+                </ul>
+            </aside>
+        </div>
+    </section>
+</Base>
+
+

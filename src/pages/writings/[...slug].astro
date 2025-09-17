@@ -1,5 +1,5 @@
 ---
-import Post from '../../layouts/Post.astro'
+import Writing from '../../layouts/Writing.astro'
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -34,6 +34,6 @@ const { post, previousPost, nextPost } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Post frontmatter={post.data} previousPost={previousPost} nextPost={nextPost}>
+<Writing frontmatter={post.data} previousPost={previousPost} nextPost={nextPost}>
     <Content />
-</Post>
+</Writing>
