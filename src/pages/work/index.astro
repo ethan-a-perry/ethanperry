@@ -16,7 +16,7 @@ const works = await getCollection('work');
         <ul class="works">
             {works.map((work: any) =>
                     <li>
-                        <a href={`/work/${work.id}/`} class="work">
+                        <Link href={`/work/${work.id}/`} classes="work">
                             <div class="work--info">
                                 <div class="work--details fs-s">
                                     <ul class="scroller horiz">
@@ -36,7 +36,7 @@ const works = await getCollection('work');
                             </div>
 
                             <img src={work.data.image.src} alt={work.data.image.alt}>
-                        </a>
+                        </Link>
                     </li>
             )}
         </ul>

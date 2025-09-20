@@ -17,9 +17,9 @@ import Link from "./Link.astro";
             </ul>
 
             <ul class="nav--socials">
-                <li><Link href="/" classes="hover-text" icon={{name: "linkedin", side: "left"}}></Link></li>
-                <li><Link href="/" classes="hover-text" icon={{name: "github", side: "left"}}></Link></li>
-                <li><Link href="/" classes="hover-text" icon={{name: "goodreads", side: "left"}}></Link></li>
+                <li><Link href="https://linkedin.com/in/perry-ethan" target="_blank" rel="noopener noreferrer" classes="hover-text" icon={{name: "linkedin", side: "left"}}></Link></li>
+                <li><Link href="https://github.com/perry-ethan" target="_blank" rel="noopener noreferrer" classes="hover-text" icon={{name: "github", side: "left"}}></Link></li>
+                <li><Link href="https://goodreads.com/ethanperry" target="_blank" rel="noopener noreferrer" classes="hover-text" icon={{name: "goodreads", side: "left"}}></Link></li>
             </ul>
         </nav>
     </div>
@@ -27,7 +27,14 @@ import Link from "./Link.astro";
 
 <style>
     header {
+        z-index: 999;
+        position: sticky;
+        top: 0;
+
+        padding-block: 4rem 2rem;
         margin-bottom: 10rem;
+
+        background: var(--color-site-background);
     }
 
     .logo {
@@ -35,16 +42,12 @@ import Link from "./Link.astro";
     }
 
     .nav-toggle {
+        z-index: 1000;
         display: none;
     }
 
     nav {
-        z-index: 998;
-
-        position: sticky;
-        top: 0;
-
-        padding-block: 4rem 2rem;
+        z-index: 999;
 
         display: flex;
         flex-direction: row;
@@ -67,6 +70,11 @@ import Link from "./Link.astro";
     @media (width < 768px) {
         header {
             margin-bottom: 14rem;
+
+            padding: 2rem;
+
+            display: flex;
+            justify-content: flex-end;
         }
 
         .logo {
@@ -74,14 +82,7 @@ import Link from "./Link.astro";
         }
 
         .nav-toggle {
-            z-index: 999;
-
-            position: absolute;
-
             display: block;
-
-            top: 2rem;
-            right: 2rem;
         }
 
         nav {
@@ -103,6 +104,10 @@ import Link from "./Link.astro";
 
             transition: display 0.8s, transform 0.4s ease, opacity 0.2s ease-in-out;
             transition-behavior: allow-discrete;
+        }
+
+        body:has(nav[data-visible="true"]) {
+            overflow: hidden;
         }
 
         nav[data-visible="true"] {

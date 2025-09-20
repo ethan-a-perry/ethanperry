@@ -1,4 +1,6 @@
 ---
+import type {HTMLAttributes} from "astro/types";
+
 const iconNames = [
     "arrow-left",
     "arrow-right",
@@ -14,7 +16,7 @@ const iconNames = [
     "linkedin"
 ] as const;
 
-interface Props {
+interface Props extends HTMLAttributes<'a'> {
     href: string;
     icon?: {
         name: (typeof iconNames)[number];
@@ -46,18 +48,10 @@ const ariaCurrent = undefined;
 ---
 
 <a href={href} class:list={[classes, {"with-icon" : !!icon}]} aria-current={ariaCurrent} {...rest}>
-    {
-        icon && icon.side === "left" && (
-            <svg style={`width: ${icon.width ?? "24px"}; height: ${icon.height ?? "24px"};`}>
-                <use href={iconUseHref}></use>
-            </svg>
-        )
-    }
-
     <slot />
 
     {
-        icon && icon.side === "right" && (
+        icon && (icon.side === "right" || icon.side === "left") && (
             <svg style={`width: ${icon.width ?? "24px"}; height: ${icon.height ?? "24px"};`}>
                 <use href={iconUseHref}></use>
             </svg>
@@ -75,6 +69,10 @@ const ariaCurrent = undefined;
             display: flex;
             align-items: center;
             gap: 7px;
+
+            &.left {
+                flex-direction: row-reverse;
+            }
         }
 
         &:not(.base) {
@@ -83,7 +81,7 @@ const ariaCurrent = undefined;
             }
 
             &:not(.hover-text, [aria-current="page"]):hover {
-                background-color: rgb(255, 254, 85);
+                background-color: var(--color-accent-15);
             }
 
             &[aria-current="page"] {
