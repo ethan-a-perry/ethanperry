@@ -5,7 +5,8 @@
 @layer base {
     :root {
         --heading-font: 'freight-sans-pro';
-        --content-font: 'minion-pro';
+        --content-font: 'freight-sans-pro';
+        /*--content-font: 'minion-pro';*/
 
         --font-size-base: 1rem;
         --font-size-body: 1.25rem;
@@ -59,13 +60,8 @@
     }
 
     h1, .h1, h2, .h2, h3, .h3, h4, .h4, a, form, label, input, select {
-        font-family: var(--heading-font), sans-serif;
         font-weight: 500;
         font-style: normal;
-    }
-
-    .caption {
-        font-family: var(--caption-font), serif;
     }
 
     /* Font Sizes */
@@ -195,13 +191,49 @@
         }
     }
 
-    @layer control {
-        .control {
-            display: grid;
-            gap: 3rem;
+    @layer prose {
+        .prose, .prose .prose-include {
+            font-family: var(--content-font), serif;
 
-            @media (width > 850px) {
-                grid-template-columns: 12rem minmax(0, min(80ch, 100%));
+            > :not(.prose-exclude) {
+                max-width: 65ch;
+            }
+
+            > a {
+                color: var(--color-accent-100);
+
+                &:hover {
+                    color: var(--color-text-100);
+                }
+
+            }
+
+            > h1,
+            > h2,
+            > h3,
+            > h4 {
+                margin-top: 2.5rem;
+            }
+
+            > p {
+                margin-top: 1rem;
+            }
+
+            > ul {
+                display: grid;
+                gap: 0.25rem;
+
+                > li {
+                    margin-left: 0.5rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 1ch;
+
+                    &::before {
+                        content: "•";
+                        font-size: var(--font-size-xs);
+                    }
+                }
             }
         }
     }
@@ -534,29 +566,26 @@
         }
 
         .writings {
-            margin-top: 1rem;
+            margin-left: 1rem;
+            padding-top: 1rem;
+            border-left: 2px solid var(--color-accent-15);
 
-            li:not(:last-child) {
-                padding-bottom: 1.5rem;
-            }
+            display: grid;
+            gap: 1rem;
 
             li {
                 padding-left: 1rem;
-                margin-left: 1rem;
-                border-left: 2px solid var(--color-accent-15);
-
                 position: relative;
 
                 &::before {
                     content: "";
                     position: absolute;
 
-                    height: 5px;
-                    width: 5px;
+                    height: 2px;
+                    width: 12px;
                     background: var(--color-accent-15-rgb);
-                    left: -3.5px;
-                    top: 0;
-                    border-radius: 50%;
+                    left: -7px;
+                    top: 0.6rem;
                 }
             }
         }
@@ -767,6 +796,65 @@
             & h1 {
                 color: var(--color-accent-secondary-100);
             }
+        }
+    }
+}
+
+@layer components {
+    @layer code-block {
+        .code-block {
+            position: relative;
+
+            font-family: "Fira Code", monospace;
+            font-size: var(--font-size-base);
+
+            background-color: rgb(245, 245, 245);
+
+            overflow: scroll;
+
+            max-height: min(600px, 60svh);
+        }
+
+        .code-block--header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            /* Counteracts .prose div margin-top */
+            margin: 0;
+
+            background: var(--color-accent-40);
+            padding: 0.5rem 2rem 0 2rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .filename {
+            padding: 2px 14px;
+            border-radius: 5px 5px 0 0;
+            background: rgb(245, 245, 245);
+        }
+
+        pre {
+            padding: 1rem;
+
+            background-color: unset !important;
+            color: unset !important;
+            overflow-x: unset !important;
+        }
+
+        .astro-code {}
+    }
+
+    @layer code-inline {
+        code:not(pre code) {
+            font-size: var(--font-size-base);
+            background-color: var(--color-accent-25);
+
+            padding: 2px 6px;
         }
     }
 }

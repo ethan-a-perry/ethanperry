@@ -23,7 +23,7 @@ const writingsByYear = getWritingsByYear(writings);
                     </div>
                 </div>
 
-                <div class="writing-content">
+                <div class="writing-content prose">
                     <slot />
                 </div>
 
@@ -51,7 +51,7 @@ const writingsByYear = getWritingsByYear(writings);
 
             <aside class="writing-sidebar">
                 <h2>More posts</h2>
-                <ul class="flex-col-2 fs-base content-tree">
+                <ul class="flex-col-2 fs-base">
                     {writingsByYear.map(([year, writings], index) => (
                             <li>
                                 <details {...(index === 0 ? { open: true } : {})}>
@@ -59,7 +59,7 @@ const writingsByYear = getWritingsByYear(writings);
                                     <ul class="writings">
                                         {writings.map(writing => (
                                                 <li>
-                                                    <Link href={writing.id}>
+                                                    <Link href={`/writings/${writing.id}/`}>
                                                         <span>{writing.data.title}</span>
                                                         <span class="fs-s italic caption">[{formatDate(writing.data.date)}]</span>
                                                     </Link>

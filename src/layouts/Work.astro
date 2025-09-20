@@ -5,16 +5,13 @@ const { frontmatter } = Astro.props;
 const { title, description, date, category, author, image, tags } = frontmatter;
 ---
 
-<Base pageTitle="Project">
+<Base pageTitle={title}>
     <section>
-        <div class="hero">
-            <h1 hero-title>{title}</h1>
-            <div class="hero-description">
-                <p>{description}</p>
-            </div>
-        </div>
-        <div class="project-post">
-            <slot />
-        </div>
+        <h1>{title}</h1>
+        <p>{description}</p>
+    </section>
+
+    <section class="content-grid full-width prose">
+        <slot />
     </section>
 </Base>
