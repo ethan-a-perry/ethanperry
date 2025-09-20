@@ -16,32 +16,32 @@ const writingsByYear = getWritingsByYear(writings);
         <div class="writing-view">
             <article class="writing-post">
                 <div class="flex-col-1">
-                    <h1>{title}</h1>
                     <div class="flex-row-1">
-                        <span class="color-accent-70">{formatDate(date)}</span>
-                        <span class="color-accent-secondary-100">Categories: {tags.join(', ')}</span>
+                        <span class="color-accent-70 metadata">{formatDate(date)}</span>
+                        <span class="color-accent-secondary-100 metadata">Categories: {tags.join(', ')}</span>
                     </div>
+                    <h1>{title}</h1>
                 </div>
 
                 <div class="writing-content prose">
                     <slot />
                 </div>
 
-                <nav>
+                <nav class="with-border-to">
                     <ul>
                         {previousPost && (
                                 <li>
-                                    <span>Previous post:</span>
-                                    <Link href={previousPost.id} classes="two-lines">
-                                        <span class="">{previousPost.title}</span>
+                                    <Link href={previousPost.id} classes="theme-grey">
+                                        <span>Previous post:</span>
+                                        <div class="two-lines">{previousPost.title}</div>
                                     </Link>
                                 </li>
                         )}
                         {nextPost && (
                                 <li>
-                                    <span>Next post:</span>
-                                    <Link href={nextPost.id} classes="two-lines">
-                                        <span class="color-accent-secondary-100">{nextPost.title}</span>
+                                    <Link href={nextPost.id} classes="theme-grey">
+                                        <span>Next post:</span>
+                                        <div class="two-lines">{nextPost.title}</div>
                                     </Link>
                                 </li>
                         )}
