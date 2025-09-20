@@ -3,8 +3,8 @@ import Base from '../layouts/Base.astro'
 import Link from "../components/Link.astro";
 const pageTitle = "About";
 
-import image1 from "../wwwroot/assets/images/menu.webp";
-import image2 from "../wwwroot/assets/images/leica.webp";
+import imgPortraitLagos from "/public/assets/images/about/portrait-lagos.webp";
+import imgPortraitTavira from "/public/assets/images/about/portrait-tavira.webp";
 
 import { getCollection } from 'astro:content';
 
@@ -22,10 +22,8 @@ const works = await getCollection('work');
 
     <section class="dual-column with-dot grey margin-top-12">
         <div class="about--images">
-            <img src={image1.src} alt="ex1">
-            <img src={image2.src} alt="ex2">
-            <img src={image2.src} alt="ex2">
-            <img src={image1.src} alt="ex1">
+            <img src={imgPortraitLagos.src} alt="ex1">
+            <img src={imgPortraitTavira.src} alt="ex2">
         </div>
     </section>
 

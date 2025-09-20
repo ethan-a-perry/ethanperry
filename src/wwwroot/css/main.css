@@ -509,6 +509,7 @@
     @layer writings {
         .writing--date {
             align-self: flex-start;
+            flex: 0 0 auto;
         }
 
         .writing--tags {
@@ -657,12 +658,18 @@
     @layer about {
         .about--images {
             display: grid;
-            gap: 1rem;
+            gap: 2rem;
 
-            width: min(900px, 100%);
+            img {
+                width: min(500px, 100%);
+            }
 
             @media (width > 768px) {
                 grid-template-columns: 1fr 1fr;
+
+                :nth-child(2) {
+                    margin-top: 30%;
+                }
             }
         }
 
