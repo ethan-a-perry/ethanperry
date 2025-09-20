@@ -33,6 +33,7 @@
         --color-accent-100: hsla(var(--_color-accent), 1);
         --color-accent-70: hsla(var(--_color-accent), 0.7);
         --color-accent-40: hsla(var(--_color-accent), 0.4);
+        --color-accent-40-rgb: rgb(165, 188, 218);
         --color-accent-25: hsla(var(--_color-accent), 0.25);
         --color-accent-15: hsla(var(--_color-accent), 0.15);
         --color-accent-15-rgb: rgb(221, 228, 235);
@@ -230,10 +231,14 @@
                     gap: 1ch;
 
                     &::before {
-                        content: "•";
+                        content: "–";
                         font-size: var(--font-size-xs);
                     }
                 }
+            }
+
+            > div:not(.prose-exclude) {
+                margin-top: 1rem;
             }
         }
     }
@@ -806,7 +811,6 @@
             position: relative;
 
             font-family: "Fira Code", monospace;
-            font-size: var(--font-size-base);
 
             background-color: rgb(245, 245, 245);
 
@@ -821,10 +825,7 @@
             left: 0;
             right: 0;
 
-            /* Counteracts .prose div margin-top */
-            margin: 0;
-
-            background: var(--color-accent-40);
+            background: var(--color-accent-40-rgb);
             padding: 0.5rem 2rem 0 2rem;
 
             display: flex;
@@ -839,6 +840,8 @@
         }
 
         pre {
+            font-size: var(--font-size-base);
+
             padding: 1rem;
 
             background-color: unset !important;
