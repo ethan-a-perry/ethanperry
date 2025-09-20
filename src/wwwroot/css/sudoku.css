@@ -11,6 +11,7 @@
 }
 
 .sudoku-app--wrapper {
+    margin-block: 2rem;
     padding-block: 4rem;
 
     background-color: var(--color-grid-primary, var(--color-site-background));
@@ -33,7 +34,7 @@
 
         /* Accents */
         --color-accent-primary: rgb(221, 228, 235);
-        --color-accent-secondary: var(--color-accent-secondary-100);
+        --color-accent-secondary: hsl(10, 55%, 45%);
         --color-accent-tertiary: #ddeada;
     }
 
@@ -96,7 +97,6 @@
     }
 
     &::before {
-        z-index: 994;
         content: "";
         position: absolute;
 
@@ -314,7 +314,6 @@
 
     & button {
         color: var(--color-text-primary);
-        cursor: pointer;
 
         border: 1px solid var(--color-text-secondary);
         background: var(--color-accent-primary);
@@ -400,7 +399,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 995;
+    /*z-index: 1;*/
 }
 
 .modal--box {

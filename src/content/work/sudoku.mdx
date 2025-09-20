@@ -4,49 +4,226 @@ description: An interactive Sudoku app with playable puzzles and full pencil mar
 draft: true
 tags: ["C#", "App", "Astro", "Vercel", "HTML", "CSS", "C#", "App", "Astro", "Vercel", "HTML", "CSS"]
 image: {
-    src: "/assets/images/menu.webp",
-    alt: "A picture of a coder",
+src: "/assets/images/sudoku-app.jpg",
+alt: "A picture of a coder",
 }
-date: "2003"
+date: "2025"
 ---
 import Sudoku from '../../components/Sudoku.astro';
 
-<Sudoku />
+<Sudoku classes="prose-exclude"/>
+
+## Overview & Goals
+
+The requirements behind this project were very straightforward:
+* Create a Sudoku web app.
+* It must be fast, fluid, responsive, and include all the features Sudoku solvers expect including pencil mark notation
+and undo/redo functionality.
+* No Javascript allowed!
+
+From the developer’s perspective, the code should be clean and minimal with no complex Javascript workarounds
+or hacky methodologies. While I am interested in the technical requirements, my top priority is creating a
+full-featured, rich user experience—though it is not my only focus.
 
 
-## Overview
+## Initial Checks & Guiding Principles
+
+I decided to build this app in C# using the Blazor ecosystem. Before discussing the advantages of Blazor,
+I think it’s prudent to quickly address requirement #3: no JavaScript allowed. Building web apps or components without
+JavaScript is for many a badge of honor, especially amongst web developers. However, both Blazor Server and
+Blazor WeAssembly always run a bit of JavaScript under the hood, so while it cannot be avoided entirely, minimizing it
+better aligns with the spirit of the Blazor ecosystem.
+
+Another motivation of mine was to modernize an earlier version of this app I had built three years ago, which worked
+quite well, but from a code perspective, was very messier and much less maintainable.
+
+Important features:
+* Playable puzzles with validation
+* Full pencil mark notation support (center and corner pencil marks)
+* Undo/Redo functionality
+* Clean, responsive design
+* Light/dark theme
+
+For the developers:
+* C#
+* .NET 9
+* Blazor Web App (Server & WebAssembly)
+* MongoDB, session storage, and local storage
+* HTML
+* CSS
+* Astro
+
+*Note: if you are interested in playing any of the puzzles above and want a truly difficult challenge, I urge you to
+try Tatooine Sunset by Philip Newman. It is a brilliantly constructed puzzle, but extremely difficult to solve.*
 
 
-Built entirely in C# with Blazor and deployed on my personal website via Astro and Netlify.
-This project was an exercise in building a full-featured, interactive sudoku app in C# without using any JavaScript.
+## Summary
 
-<div>
-    **Current features:**
-    * Playable puzzles with validation
-    * Full pencil mark notation support (center and corner pencil marks)
-    * Undo/Redo functionality
-    * Clean, responsive design
-    * Light/dark theme
-</div>
+Overall, this project was a success and met all the requirements: fast, responsive, and fully featured.
 
-<div>
-    **Technologies:**
-    * C#
-    * .NET 9
-    * Blazor Web App (Server & WebAssembly)
-    * MongoDB
-    * HTML
-    * CSS
-    * Session storage and local storage
-    * Deployed through my personal website via Astro and Netlify.
-</div>
+As described above, the framework uses JavaScript under the hood in a few places. I invoked this JSInterop service
+once during production to trigger a flag that informs Astro the app is ready. Strictly speaking, however,
+I did not write a single line of JavaScript myself.
 
-## Architecture & Deployment Notes
+Please [view the repo on GitHub](https://github.com/perry-ethan/Sudoku) to take a deeper look.
 
-This app is built in .NET 9 and is structured as a Blazor web app with both server-side and WebAssembly (WASM) rendering support.
 
-The client side (WASM) handles all interactive gameplay and logic, while the server side renders the component on the frontend. When rendered through the server, puzzle data is loaded from MongoDB, but in WebAssembly mode, puzzle data is loaded from a local JSON file embedded within the project for fast, offline-friendly access.
+## Additional Information
 
-Rather than building a standalone Blazor WebAssembly app, keeping the server-client structure allows integration with MongoDB and demonstrates different data access methods depending on the rendering mode.
+Continue reading to learn more about my process and the challenges I faced.
 
-Lastly, rather than deploying the app as a standalone app, it is published and embedded into my Astro-based personal website which manages global layout and styling and offers a more unified user experience.
+### Architecture & Deployment Notes
+
+The final version is a WASM app/package I published and deployed here on my personal website as an Astro Interactive Island.
+However, my codebase is still structured as a Blazor web app with both server-side and WebAssembly (WASM) rendering support.
+
+The client side (WASM) handles all interactive gameplay and logic, while the server side, if I choose to use it,
+renders the component on the frontend and maintains a SignalR connection. When rendered through the server, puzzle data
+is loaded from MongoDB, but in WebAssembly mode, puzzle data is loaded from a local JSON file embedded within the project
+for fast, offline-friendly access.
+
+Rather than building a standalone Blazor WebAssembly app, I kept the server-client structure to demonstrate integration with
+MongoDB and the ability to use different data access methods depending on the rendering mode.
+
+Lastly, publishing and embedding the app into my Astro website makes managing global layout and styling simpler and
+also offers users a more unified experience.
+
+## Challenges
+
+Continue reading to learn more about the challenges I faced.
+
+### Canvas Element?
+
+Working against the limitations of HTML and CSS proved to be a constant challenge. Using the HTML `<canvas>` element,
+could have helped at moments, but ultimately would have been overkill considering the requirements of the app.
+
+### Border Styling Challenge
+
+The toughest challenge I experienced was implementing the border styling logic, which would visually outline a region
+of selected cells. Due to the limitations of CSS, this proved trickier than I had first anticipated.
+
+On certain regions, drawing a border is quite simple. A one-cell-large region simply receives a top, right, bottom,
+and left border (I actually used box-shadows due to the way I formated my grid). When cells are orthogonally adjacent,
+drop the border along their shared edge, thus creating a unified region.
+
+SCREENSHOTS
+
+However, an issue arises when drawing borders on L-shaped trominos. As you can see, where the edge turns, the
+outline breaks visually.
+
+One potential solution is to add a small pseudo-element where the break occurs to “cover the gap.” This logic quickly
+became somewhat involved because every time a cell is selected or unselected, every affected 2x2 region of cells must
+be processed and styled accordingly. To efficiently determine which cells need to be updated, each region is evaluated
+according to a designated *anchor cell*, which is always the bottom-right cell of the region.
+
+This function below shows that process:
+
+```c# filename="BorderStylingService.cs"
+public static (Cell, Border)? GetDiagonalNeighbors(Cell anchor) {
+    Cell topLeft = anchor.Neighbors.topLeft;
+    Cell topRight = anchor.Neighbors.topRight;
+    Cell bottomLeft = anchor.Neighbors.topLeft;
+
+    return (topLeft.IsSelected, topRight.IsSelected, bottomLeft.IsSelected, anchor.IsSelected) switch {
+        (false, true, true, true) => (anchor, Borders.TopLeftCorner),
+        (true, false, true ,true) => (bottomLeft, Borders.TopRightCorner),
+        (true, true, false, true) => (topRight, Borders.BottomLeftCorner),
+        (true, true, true ,false) => (topLeft, Borders.BottomRightCorner),
+        _ => (null, null)
+    };
+}
+```
+
+Here is the corresponding CSS:
+
+```c# filename="site.css"
+.cell[aria-selected="true"] {
+    --clr-cell-bg: rgba(255, 255, 255, 0.5);
+    --clr-border: rgba(76, 175, 80, 0.5);
+
+    /* Border shadows */
+    box-shadow:
+            inset 0 var(--shadow-top, 0) 0 0 var(--clr-border),
+            inset var(--shadow-right, 0) 0 0 0 var(--clr-border),
+            inset 0 var(--shadow-bottom, 0) 0 0 var(--clr-border),
+            inset var(--shadow-left, 0) 0 0 0 var(--clr-border);
+
+    &.top {
+        --shadow-top: 8px;
+    }
+
+    &.right {
+        --shadow-right: -8px;
+    }
+
+    &.bottom {
+        --shadow-bottom: -8px;
+    }
+
+    &.left {
+        --shadow-left: 8px;
+    }
+
+    /* Corner shadows */
+    background-repeat: no-repeat;
+    background-size: 8px 8px;
+    background-image:
+            linear-gradient(var(--shadow-tl, transparent), var(--shadow-tl, transparent)),
+            linear-gradient(var(--shadow-tr, transparent), var(--shadow-tr, transparent)),
+            linear-gradient(var(--shadow-bl, transparent), var(--shadow-bl, transparent)),
+            linear-gradient(var(--shadow-br, transparent), var(--shadow-br, transparent));
+
+    background-position:
+            top left,
+            top right,
+            bottom left,
+            bottom right;
+
+    &.topleftcorner {
+        --shadow-tl: var(--clr-border);
+    }
+
+    &.toprightcorner {
+        --shadow-tr: var(--clr-border);
+    }
+
+    &.bottomleftcorner {
+        --shadow-bl: var(--clr-border);
+    }
+
+    &.bottomrightcorner {
+        --shadow-br: var(--clr-border);
+    }
+}
+```
+
+Drawing the borders included a lot of other code related to checking cell neighbors, and considering the CSS, I
+ultimately decided to remove the border styling and opt for a minimal cell selection design. If I refactor
+the app to use the HTML `<canvas>` element, it will be the perfect opportunity to re-implement the border styling.
+
+
+## What I Would Do Differently + Opportunities for Growth
+
+Here are a few additional improvements I would love to make in the future:
+* Add support for Sudoku variant puzzles.
+* Add an API layer between the WebAssembly project and a MongoDB Atlas cluster to improve data access.
+* Utilize the HTML `<canvas>` element to reduce CSS overhead and simplify the border styling and cell highlighting features.
+
+If I were to rebuild this app, I would reconsider the tech stack: C# proved to be a fantastic backend, but I would
+likely consider using a different frontend.
+
+
+## Acknowledgements and Closing Thoughts
+
+I was first exposed to Sudoku when I watched the [Cracking the Cryptic YouTube channel](https://www.youtube.com/@CrackingTheCryptic)
+and subsequently solved my first Sudoku. I quickly grew bored with the classic sudoku puzzles and started tackling
+the variants, some of which took me 4+ hours to beat, and many of which I never completed, even after many hours of trying.
+
+This project is not only a technical effort, but also a love letter to a game I have enjoyed for many years.
+
+I also want to emphasize that this project is fully my own implementation, but it was inspired by my experience
+playing Sudoku on [Sven's Sudoku Pad](https://sudokupad.app/)
+(featured on [Cracking the Cryptic YouTube channel](https://www.youtube.com/@CrackingTheCryptic)) and, more loosely, on
+the [New York Times Sudoku](https://www.nytimes.com/puzzles/sudoku) website.
+
+Thank you for reading and please [email me](mailto:ethan@ethanperry.net) if you have any questions.

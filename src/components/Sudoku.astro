@@ -1,8 +1,10 @@
 ---
 import '../wwwroot/css/sudoku.css'
+
+const { classes } = Astro.props;
 ---
 
-<section class="sudoku-app--wrapper full-width">
+<section class={`sudoku-app--wrapper full-width ${classes || ""}`}>
     <div id="sudoku-app"></div>
 
     <div id="sudoku--loader">
