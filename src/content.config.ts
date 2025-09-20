@@ -28,7 +28,7 @@ const work = defineCollection({
             src: z.string(),
             alt: z.string(),
         }),
-        date: z.string()
+        date: z.date()
     })
 });
 

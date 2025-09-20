@@ -24,7 +24,7 @@ const works = await getCollection('work');
                                                 <li>{tag}</li>
                                         )}
                                     </ul>
-                                    <span>{work.data.date}</span>
+                                    <span>{work.data.date.getFullYear()}</span>
                                 </div>
 
                                 <div class="flow--5">
