@@ -20,6 +20,7 @@
 
         /*--color-site-background: hsl(51, 41%, 97%);*/
         --color-site-background: white;
+        --color-grey-background: rgb(245, 245, 245);
 
         --color-text-100: hsl(0, 0%, 10%);
         --color-text-80: hsl(0, 0%, 20%);
@@ -194,6 +195,7 @@
 
     @layer prose {
         .prose, .prose .prose-include {
+            overflow: hidden;
             font-family: var(--content-font), serif;
 
             > :not(.prose-exclude) {
@@ -216,7 +218,7 @@
                 margin-top: 2.5rem;
             }
 
-            > p {
+            > p, img {
                 margin-top: 1rem;
             }
 
@@ -287,6 +289,11 @@
     .flex {
         display: flex;
         align-items: center;
+    }
+
+    .flex-col {
+        display: flex;
+        flex-direction: column;
     }
 
     .flex-col-1 {
@@ -369,7 +376,7 @@
     }
 
     .theme-grey {
-        background-color: rgb(245, 245, 245);
+        background-color: var(--color-grey-background);
 
         padding: 1rem 1.5rem;
 
@@ -424,7 +431,7 @@
 
         .work {
             font-family: var(--heading-font), sans-serif;
-            background: rgb(245, 245, 245);
+            background: var(--color-grey-background);
 
             padding: 1rem 1.5rem;
 
@@ -542,7 +549,7 @@
         }
 
         .metadata {
-            background: rgb(245, 245, 245);
+            background-color: var(--color-grey-background);
             padding: 4px 10px;
         }
 
@@ -826,7 +833,7 @@
 
             font-family: "Fira Code", monospace;
 
-            background-color: rgb(245, 245, 245);
+            background-color: var(--color-grey-background);
 
             overflow: scroll;
 
@@ -850,7 +857,7 @@
         .filename {
             padding: 2px 14px;
             border-radius: 5px 5px 0 0;
-            background: rgb(245, 245, 245);
+            background-color: var(--color-grey-background);
         }
 
         pre {

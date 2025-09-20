@@ -2,10 +2,10 @@
 title: Sudoku App
 description: An interactive Sudoku app with playable puzzles and full pencil mark support
 draft: true
-tags: ["C#", "App", "Astro", "Vercel", "HTML", "CSS", "C#", "App", "Astro", "Vercel", "HTML", "CSS"]
+tags: ["C#", "App", "Astro", "Vercel", "HTML", "CSS"]
 image: {
-src: "/assets/images/sudoku-app.jpg",
-alt: "A picture of a coder",
+    src: "/assets/images/work/sudoku/sudoku-work-preview.webp",
+    alt: "Sudoku grid with digits and pencil marks",
 }
 date: "2025"
 ---
@@ -104,13 +104,15 @@ The toughest challenge I experienced was implementing the border styling logic, 
 of selected cells. Due to the limitations of CSS, this proved trickier than I had first anticipated.
 
 On certain regions, drawing a border is quite simple. A one-cell-large region simply receives a top, right, bottom,
-and left border (I actually used box-shadows due to the way I formated my grid). When cells are orthogonally adjacent,
+and left border (I actually used box-shadows). When cells are orthogonally adjacent,
 drop the border along their shared edge, thus creating a unified region.
 
-SCREENSHOTS
+![small sudoku grid with examples of selected cells and their styles](/assets/images/work/sudoku/sudoku-figure-1.webp)
 
 However, an issue arises when drawing borders on L-shaped trominos. As you can see, where the edge turns, the
-outline breaks visually.
+outline breaks visually (see example below).
+
+<img src="/assets/images/work/sudoku/sudoku-figure-2.webp" alt="small sudoku grid with an L-shaped tromino selected" width="200" />
 
 One potential solution is to add a small pseudo-element where the break occurs to “cover the gap.” This logic quickly
 became somewhat involved because every time a cell is selected or unselected, every affected 2x2 region of cells must
