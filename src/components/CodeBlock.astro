@@ -1,0 +1,23 @@
+---
+import { Code } from 'astro:components'
+
+interface Props {
+    language: string;
+    filename?: string;
+    code: string;
+}
+
+const {
+    language,
+    filename,
+    code
+} = Astro.props as Props;
+---
+
+<div class="code-block">
+    <div class="code-block--header flex-row-1">
+        <span class="filename ellipsis">{filename}</span>
+        <span class="language">{language}</span>
+    </div>
+    <slot />
+</div>
