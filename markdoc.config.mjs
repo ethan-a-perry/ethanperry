@@ -10,8 +10,7 @@ export default defineMarkdocConfig({
     },
     extends: [
         shiki({
-            theme: 'github-light',
-            wrap: true,
+            theme: 'github-light'
         }),
     ],
     tags: {
