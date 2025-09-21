@@ -9,17 +9,15 @@ image: {
 tags: ["C#", "App", "Astro", "Vercel", "HTML", "CSS"]
 draft: true
 ---
-import CodeBlock from '../../components/CodeBlock.astro'
-import Sudoku from '../../components/Sudoku.astro';
 
-<Sudoku classes="prose-exclude"/>
+{% Sudoku classes="prose-exclude" /%}
 
 ## Overview & Goals
 
 The requirements behind this project were very straightforward:
 * Create a Sudoku web app.
 * It must be fast, fluid, responsive, and include all the features Sudoku solvers expect including pencil mark notation
-and undo/redo functionality.
+  and undo/redo functionality.
 * No Javascript allowed!
 
 From the developer’s perspective, the code should be clean and minimal with no complex Javascript workarounds
@@ -121,7 +119,8 @@ according to a designated *anchor cell*, which is always the bottom-right cell o
 
 This function below shows that process:
 
-```c# filename="BorderStylingService.cs"
+{% CodeBlock language="c#" filename="BorderStylingService.cs" %}
+```c#
 public static (Cell, Border)? GetDiagonalNeighbors(Cell anchor) {
     Cell topLeft = anchor.Neighbors.topLeft;
     Cell topRight = anchor.Neighbors.topRight;
@@ -136,10 +135,12 @@ public static (Cell, Border)? GetDiagonalNeighbors(Cell anchor) {
     };
 }
 ```
+{% /CodeBlock %}
 
 Here is the corresponding CSS:
 
-```c# filename="site.css"
+{% CodeBlock language="css" filename="site.css" %}
+```css
 .cell[aria-selected="true"] {
     --clr-cell-bg: rgba(255, 255, 255, 0.5);
     --clr-border: rgba(76, 175, 80, 0.5);
@@ -199,6 +200,7 @@ Here is the corresponding CSS:
     }
 }
 ```
+{% /CodeBlock %}
 
 Drawing the borders included a lot of other code related to checking cell neighbors, and considering the CSS, I
 ultimately decided to remove the border styling and opt for a minimal cell selection design. If I refactor

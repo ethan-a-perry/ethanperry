@@ -13,7 +13,7 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@astrojs/mdx": "^4.3.4",
+    "@astrojs/markdoc": "^0.15.6",
     "@astrojs/sitemap": "^3.6.0",
     "astro": "^5.13.2"
   }
