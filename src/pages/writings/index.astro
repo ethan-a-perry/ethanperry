@@ -15,7 +15,7 @@ const pageTitle = "Writings";
             {allPosts.map((post: any) =>
                     <li>
                         <Link href={`/writings/${post.id}/`} classes="flex-row-2">
-                            <span class="writing--date color-accent-70">{formatDate(post.data.date)}</span>
+                            <span class="writing--date color-accent-70">{formatDate(post.data.datePublished)}</span>
                             <span>
                                 {post.data.title}
                                 <span class="writing--tags color-text-35 fs-s italic">[{post.data.tags.join(', ')}]</span>

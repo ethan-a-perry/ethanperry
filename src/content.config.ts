@@ -6,14 +6,18 @@ import { z, defineCollection } from "astro:content";
 
 // Define a `loader` and `schema` for each collection
 const writings = defineCollection({
-    loader: glob({ pattern: '**/*.{md,mdx}', base: "./src/content/writings" }),
+    loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/writings" }),
     schema: z.object({
         title: z.string(),
-        date: z.date(),
-        author: z.string(),
         description: z.string(),
-        draft: z.boolean().default(false),
-        tags: z.array(z.string())
+        datePublished: z.date(),
+        dateUpdated: z.date().optional(),
+        image: z.object({
+            src: z.string(),
+            alt: z.string(),
+        }).optional(),
+        tags: z.array(z.string()),
+        draft: z.boolean().default(false)
     })
 });
 
@@ -22,13 +26,14 @@ const work = defineCollection({
     schema: z.object({
         title: z.string(),
         description: z.string(),
-        draft: z.boolean().default(false),
-        tags: z.array(z.string()),
+        datePublished: z.date(),
+        dateUpdated: z.date().optional(),
         image: z.object({
             src: z.string(),
             alt: z.string(),
         }),
-        date: z.date()
+        tags: z.array(z.string()),
+        draft: z.boolean().default(false)
     })
 });
 

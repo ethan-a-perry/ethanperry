@@ -4,7 +4,7 @@ import { formatDate } from '../wwwroot/js/utils';
 import Link from "../components/Link.astro";
 
 const { frontmatter, previousPost, nextPost } = Astro.props;
-const { title, description, date, category, author, image, tags } = frontmatter;
+const { title, description, datePublished, dateUpdated, image, tags } = frontmatter;
 ---
 
 <Base pageTitle={title}>
@@ -13,11 +13,13 @@ const { title, description, date, category, author, image, tags } = frontmatter;
     <section>
         <div class="dual-column metadata with-border-top">
             <div class="dates">
-                <p>Published Dec 23, 2025</p>
-                <p>Updated Jan 08, 2026</p>
+                <p>Published {formatDate(datePublished)}</p>
+                {dateUpdated && (
+                        <p>Updated {formatDate(dateUpdated)}</p>
+                )}
             </div>
 
-            <h2 class="description">This is a technical report on three bugs that intermittently degraded responses from Claude. Below we explain what happened, why it took time to fix, and what we're changing.</h2>
+            <h2 class="description">{description}</h2>
         </div>
     </section>
 
