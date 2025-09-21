@@ -18,8 +18,8 @@
         --font-size-2: 1.7rem;
         --font-size-1: 2rem;
 
-        /*--color-site-background: hsl(51, 41%, 97%);*/
-        --color-site-background: white;
+        --color-site-background: hsl(51, 41%, 97%);
+        /*--color-site-background: white;*/
         --color-grey-background: rgb(245, 245, 245);
 
         --color-text-100: hsl(0, 0%, 10%);
@@ -59,6 +59,8 @@
         overflow-x: hidden;
 
         background: var(--color-site-background);
+
+        display: grid;
     }
 
     h1, .h1, h2, .h2, h3, .h3, h4, .h4, a, form, label, input, select {
@@ -126,6 +128,8 @@
 
             --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
 
+            container: content-grid / inline-size;
+
             display: grid;
             grid-template-columns:
                 [full-width-start] minmax(var(--padding-inline), 1fr)
@@ -155,39 +159,29 @@
 
     @layer dual-column {
         .dual-column {
-            container: dual-column inline-size;
-
             display: grid;
-            gap: 4rem;
+            row-gap: 4rem;
 
-            @container (width > 768px) {
-                grid-template-columns: 30% 70%;
-                gap: 1rem;
+            @media (width > 768px) {
+                grid-template-columns: 35% 1fr;
 
                 > :only-child {
                     grid-column: 2;
                 }
+            }
+        }
+    }
 
-                &.with-dot::before {
-                    content: "";
-                    display: block;
+    @layer single-column {
+        .single-column {
+            display: grid;
+            row-gap: 4rem;
 
-                    width: 10px;
-                    height: 10px;
+            @container content-grid (inline-size > calc(2rem + 65ch + 2rem)) {
+                grid-template-columns: minmax(0, 35%) 65ch;
 
-                    margin-left: 0.5rem;
-
-                    border-radius: 50%;
-
-                    margin-bottom: 6rem;
-                }
-
-                &.with-dot.blue::before {
-                    background-color: var(--color-accent-25);
-                }
-
-                &   .with-dot.grey::before {
-                    background-color: var(--color-text-10);
+                > * {
+                    grid-column: 2;
                 }
             }
         }
@@ -518,19 +512,29 @@
     }
 
     @layer writings-post {
-        .writing-view--container {
-            container: writing / inline-size;
+        .metadata {
+            @media (width < 768px) {
+                row-gap: 2rem;
+
+                margin-top: 2rem;
+                padding-top: unset;
+                border-top: unset;
+
+                .description {
+                    grid-row: 1;
+                }
+
+                .dates {
+                    grid-row: 2;
+
+                    border-top: 1px solid var(--color-text-10);
+                    padding-top: 1rem;
+                }
+            }
         }
 
-        .writing-view {
-            display: grid;
-            grid-template-columns: minmax(50ch, 70ch) minmax(30ch, 1fr);
-            gap: 4rem;
-        }
-
-        .writing-post {
-            display: grid;
-            gap: 4rem;
+        .writing--content {
+            margin-top: 4rem;
 
             nav ul {
                 display: grid;
@@ -547,111 +551,6 @@
                     color: var(--color-accent-secondary-100);
                 }
             }
-        }
-
-        .metadata {
-            background-color: var(--color-grey-background);
-            padding: 4px 10px;
-        }
-
-        .writing-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-
-            color: var(--color-text-65);
-
-            padding-left: 2rem;
-            border-left: 1px solid var(--color-text-20);
-
-            ul {
-                width: min(45ch, 100%);
-
-                > li {
-
-                }
-            }
-        }
-
-        @container writing (inline-size < calc(50ch + 30ch + 4rem)) {
-            .writing-view {
-                grid-template-columns: min(65ch, 100%);
-                gap: 2rem;
-            }
-
-            .writing-sidebar {
-                padding-left: unset;
-                border-left: 0;
-
-                padding-top: 2rem;
-                border-top: 1px solid var(--color-text-20);
-            }
-
-            .writing-post nav ul {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .writings {
-            margin-left: 1rem;
-            padding-top: 1rem;
-            border-left: 2px solid var(--color-accent-15);
-
-            display: grid;
-            gap: 1rem;
-
-            li {
-                padding-left: 1rem;
-                position: relative;
-
-                &::before {
-                    content: "";
-                    position: absolute;
-
-                    height: 2px;
-                    width: 12px;
-                    background: var(--color-accent-15-rgb);
-                    left: -7px;
-                    top: 0.6rem;
-                }
-            }
-        }
-
-        summary {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-
-            margin: 0;
-            padding: 6px 12px;
-
-            border: 0;
-            border-radius: 5px;
-
-            background: var(--color-accent-15-rgb);
-
-            cursor: pointer;
-
-            &::marker {
-                content: none;
-            }
-
-            &::after {
-                content: '';
-                display: inline-block;
-                width: 14px;
-                height: 14px;
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-image: url("/public/assets/icons/chevron-right.svg");
-
-                transition: transform 0.2s ease-in-out;
-            }
-        }
-
-        details[open] summary::after {
-            transform: rotate(90deg);
         }
     }
 
@@ -889,3 +788,4 @@
         }
     }
 }
+

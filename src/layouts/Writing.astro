@@ -1,78 +1,50 @@
 ---
 import Base from './Base.astro';
-import { getCollection } from "astro:content";
-import { formatDate, getWritingsByYear } from '../wwwroot/js/utils';
+import { formatDate } from '../wwwroot/js/utils';
 import Link from "../components/Link.astro";
 
 const { frontmatter, previousPost, nextPost } = Astro.props;
 const { title, description, date, category, author, image, tags } = frontmatter;
-
-const writings = await getCollection("writings");
-const writingsByYear = getWritingsByYear(writings);
 ---
 
 <Base pageTitle={title}>
-    <section class="writing-view--container">
-        <div class="writing-view">
-            <article class="writing-post">
-                <div class="flex-col-1">
-                    <div class="flex-row-1">
-                        <span class="color-accent-70 metadata">{formatDate(date)}</span>
-                        <span class="color-accent-secondary-100 metadata">Categories: {tags.join(', ')}</span>
-                    </div>
-                    <h1>{title}</h1>
-                </div>
+    <h1>{title}</h1>
 
-                <div class="writing-content prose">
-                    <slot />
-                </div>
+    <section>
+        <div class="dual-column metadata with-border-top">
+            <div class="dates">
+                <p>Published Dec 23, 2025</p>
+                <p>Updated Jan 08, 2026</p>
+            </div>
 
-                <nav class="with-border-to">
-                    <ul>
-                        {previousPost && (
-                                <li>
-                                    <Link href={previousPost.id} classes="theme-grey">
-                                        <span>Previous post:</span>
-                                        <div class="two-lines">{previousPost.title}</div>
-                                    </Link>
-                                </li>
-                        )}
-                        {nextPost && (
-                                <li>
-                                    <Link href={nextPost.id} classes="theme-grey">
-                                        <span>Next post:</span>
-                                        <div class="two-lines">{nextPost.title}</div>
-                                    </Link>
-                                </li>
-                        )}
-                    </ul>
-                </nav>
-            </article>
-
-            <aside class="writing-sidebar">
-                <h2>More posts</h2>
-                <ul class="flex-col-2 fs-base">
-                    {writingsByYear.map(([year, writings], index) => (
-                            <li>
-                                <details {...(index === 0 ? { open: true } : {})}>
-                                    <summary>{year}</summary>
-                                    <ul class="writings">
-                                        {writings.map(writing => (
-                                                <li>
-                                                    <Link href={`/writings/${writing.id}/`}>
-                                                        <span>{writing.data.title}</span>
-                                                        <span class="fs-s italic caption">[{formatDate(writing.data.date)}]</span>
-                                                    </Link>
-                                                </li>
-                                        ))}
-                                    </ul>
-                                </details>
-                            </li>
-                    ))}
-                </ul>
-            </aside>
+            <h2 class="description">This is a technical report on three bugs that intermittently degraded responses from Claude. Below we explain what happened, why it took time to fix, and what we're changing.</h2>
         </div>
     </section>
+
+    <section class="single-column writing--content">
+        <div class="prose">
+            <slot />
+        </div>
+
+        <nav class="with-border-top margin-top-4">
+            <ul>
+                {previousPost && (
+                        <li>
+                            <Link href={previousPost.id} classes="theme-grey">
+                                <span>Previous post:</span>
+                                <div class="two-lines">{previousPost.title}</div>
+                            </Link>
+                        </li>
+                )}
+                {nextPost && (
+                        <li>
+                            <Link href={nextPost.id} classes="theme-grey">
+                                <span>Next post:</span>
+                                <div class="two-lines">{nextPost.title}</div>
+                            </Link>
+                        </li>
+                )}
+            </ul>
+        </nav>
+    </section>
 </Base>
-
-
