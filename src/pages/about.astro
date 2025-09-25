@@ -13,37 +13,44 @@ const works = await getCollection('work');
 
 <Base pageTitle={pageTitle}>
     <section class="dual-column with-border-top">
-        <h1>About</h1>
-        <div class="flow-2 color-text-65">
-            <h2>My name is Ethan Perry. I currently work as a software developer and I enjoy creating things. Some of my hobbes include hiking, learning languages, pottery, and running. I currently live in the US.</h2>
-            <h2>At heart, I have always been a writer and often write screenplays, essays, book reviews, and poems. Please read some of my writings if you are interested.</h2>
+        <div class="flow-1">
+            <h1>Hi, I'm Ethan Perry</h1>
+        </div>
+        <div class="flow-1 color-text-65">
+            <p class="indent-line-4">
+                I'm originally from Denver, Colorado.
+            </p>
+            <p>
+                My work centers on software development, web design, and formerly, data center operations
+                (installing and maintaining servers and network systems).
+            </p>
+
+            <p>
+                While I enjoy the technical side of my work, what motivates me the most is creating tangible outcomes
+                that solve real-world problems. I’m most inspired by people who challenge the norm and question assumptions, and
+                I try to bring this mindset to my work and writings.</p>
+
+            <p>
+                In my personal time I'm usually playing piano, writing, hiking, or exploring new programming ideas.
+            </p>
+            <Link href="/contact" icon={{name: "arrow-right", side: "right"}}>Say hello</Link>
         </div>
     </section>
 
-    <section class="dual-column with-dot grey margin-top-12">
+    <section class="dual-column margin-top-12">
         <div class="about--images">
             <img src={imgPortraitLagos.src} alt="ex1">
             <img src={imgPortraitTavira.src} alt="ex2">
         </div>
     </section>
 
-    <section class="dual-column with-border-top margin-top-12">
-        <h2>Work</h2>
-        <ul class="flex-col-2 color-text-65">
-            {works.map((work: any) =>
-                    <li>
-                        <h3 class="underline">{work.data.title}</h3>
-                        <p>{work.data.description}</p>
-                    </li>
-            )}
-        </ul>
-    </section>
-
-    <section class="dual-column with-border-top margin-top-12">
-        <h2>CV</h2>
-        <div>
-            <Link href="/" icon={{name: "open-in-new", side: "right"}} classes="color-accent-70">View full resume</Link>
-            <ul class="cv color-text-65 margin-top-2">
+    <section class="theme-grey margin-top-12">
+        <section class="dual-column ">
+            <div class="flow-1">
+                <h2>CV</h2>
+                <Link href="/" icon={{name: "open-in-new", side: "right", width: "16px", height: "16px"}} classes="color-accent-70 fs-base">View full resume</Link>
+            </div>
+            <ul class="cv">
                 <li class="role">
                     <h3>Software Engineer — HPE</h3>
 
@@ -89,24 +96,27 @@ const works = await getCollection('work');
                     </ul>
                 </li>
             </ul>
-        </div>
+        </section>
     </section>
 
-    <section class="dual-column with-border-top margin-top-12">
-        <h2>Skills</h2>
-        <ul class="flex-col-2 color-text-65">
-            <li>
-                <h3 class="underline">Programming Languages</h3>
-                <p>Python, C#, SQL, Java, HTML, CSS</p>
-            </li>
-            <li>
-                <h3 class="underline">Tools, Platforms, Frameworks</h3>
-                <p>.NET, MongoDb, ElasticSearch, Astro, Vercel, Github, Docker, AWS, VMWare</p>
-            </li>
-            <li>
-                <h3 class="underline">Other Skills</h3>
-                <p>Server hardware installation and maintenance, network infrastructure management</p>
-            </li>
-        </ul>
+    <section class="theme-dark margin-top-4">
+        <section class="dual-column ">
+            <h2>Relevant Skills</h2>
+            <ul class="flex-col-2 ">
+                <li>
+                    <h3 class="underline">Programming Languages</h3>
+                    <p>Python, C#, SQL, Java, HTML, CSS</p>
+                </li>
+                <li>
+                    <h3 class="underline">Tools, Platforms, Frameworks</h3>
+                    <p>.NET, MongoDb, ElasticSearch, Astro, Vercel, Github, Docker, AWS, VMWare</p>
+                </li>
+                <li>
+                    <h3 class="underline">Other Skills</h3>
+                    <p>Server hardware installation and maintenance, network infrastructure management</p>
+                </li>
+            </ul>
+        </section>
     </section>
+
 </Base>
