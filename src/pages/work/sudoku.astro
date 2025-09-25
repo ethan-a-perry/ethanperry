@@ -1,0 +1,36 @@
+---
+import { getEntry, render } from "astro:content";
+import Base from '../../layouts/Base.astro';
+import SudokuComponent from '../../components/Sudoku.astro';
+import { formatDate } from '../../wwwroot/js/utils';
+
+const sudoku = await getEntry('work', 'sudoku')!;
+const { title, description, datePublished, dateUpdated, image, tags } = sudoku.data;
+
+const { Content } = await render(sudoku);
+---
+
+<Base pageTitle={title}>
+    <h1>{title}</h1>
+
+    <section>
+        <div class="dual-column metadata with-border-top">
+            <div class="dates">
+                <p>Published {formatDate(datePublished)}</p>
+                {dateUpdated && (
+                        <p>Updated {formatDate(dateUpdated)}</p>
+                )}
+            </div>
+
+            <h2 class="description">{description}</h2>
+        </div>
+    </section>
+
+    <SudokuComponent classes="full-width" />
+
+    <section class="single-column">
+        <div class="prose">
+            <Content />
+        </div>
+    </section>
+</Base>

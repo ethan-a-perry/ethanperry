@@ -14,10 +14,13 @@ export default defineMarkdocConfig({
         }),
     ],
     tags: {
-        Sudoku: {
-            render: component('./src/components/Sudoku.astro'),
+        image: {
+            render: 'img',
             attributes: {
-                classes: { type: String },
+                src: { type: String, required: true },
+                alt: { type: String, required: true },
+                width: { type: Number },
+                height: { type: Number },
             },
         },
         CodeBlock: {

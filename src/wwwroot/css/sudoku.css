@@ -11,6 +11,7 @@
 }
 
 .sudoku-app--wrapper {
+    padding: 5px;
     margin-block: 2rem;
     padding-block: 4rem;
 
@@ -463,6 +464,19 @@
 }
 
 /* Sudoku App Loading State */
+#sudoku--loader {
+    display: grid;
+    grid-template-columns: minmax(0, 75svh) minmax(0, 300px);
+    gap: 2rem;
+
+    overflow: hidden;
+
+    @media(width < 850px) {
+        height: 892px;
+        grid-template-columns: 1fr;
+    }
+}
+
 .loader {
     display: flex;
     flex-direction: column;
