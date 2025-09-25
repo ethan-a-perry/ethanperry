@@ -15,6 +15,7 @@
   "dependencies": {
     "@astrojs/markdoc": "^0.15.6",
     "@astrojs/sitemap": "^3.6.0",
-    "astro": "^5.13.2"
+    "astro": "^5.13.2",
+    "sharp-ico": "^0.1.5"
   }
 }

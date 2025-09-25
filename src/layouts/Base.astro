@@ -1,23 +1,45 @@
 ---
 import '../wwwroot/css/main.css';
+
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-const { pageTitle, classes } = Astro.props;
+
+import { getImage } from 'astro:assets'
+import faviconPngSrc from '../wwwroot/assets/images/favicon.png'
+import faviconSvgSrc from '../wwwroot/assets/images/favicon.svg'
+
+// for iOS versions < 15.4
+const appleTouchIcon = await getImage({
+    src: faviconPngSrc,
+    width: 180,
+    height: 180,
+    format: 'png'
+})
+
+const faviconSvg = await getImage({ src: faviconSvgSrc, format: 'svg' })
+
+const { title, description, classes } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{pageTitle}</title>
 
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description}/>
+
+    <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <link rel="stylesheet" href="https://use.typekit.net/kse1sfa.css">
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={appleTouchIcon.src} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/kse1sfa.css">
 </head>
 <body>
 
