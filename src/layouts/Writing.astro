@@ -11,7 +11,7 @@ const { title, description, datePublished, dateUpdated, image, tags } = frontmat
     <h1>{title}</h1>
 
     <section>
-        <div class="dual-column metadata with-border-top">
+        <div class="dual-column metadata with-border-top margin-top-4">
             <div class="dates">
                 <p>Published {formatDate(datePublished)}</p>
                 {dateUpdated && (
@@ -27,7 +27,6 @@ const { title, description, datePublished, dateUpdated, image, tags } = frontmat
         <div class="prose">
             <slot />
         </div>
-
         <nav class="with-border-top margin-top-4">
             <ul>
                 {previousPost && (
