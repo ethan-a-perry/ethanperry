@@ -38,13 +38,11 @@ const {
 
 const iconUseHref = icon ? `/assets/icons/icons.svg#${icon.name}` : undefined;
 
-    // const ariaCurrent =
-    //     isNavLink && (
-    //         (href === "/" && Astro.url.pathname === "/") ||
-    //         (href !== "/" && Astro.url.pathname.startsWith(href))
-    //     ) ? "page" : undefined;
-
-const ariaCurrent = undefined;
+const ariaCurrent =
+    isNavLink && (
+        (href === "/" && Astro.url.pathname === "/") ||
+        (href !== "/" && Astro.url.pathname.startsWith(href))
+    ) ? "page" : undefined;
 ---
 
 <a href={href} class:list={[classes, {"with-icon" : !!icon}]} aria-current={ariaCurrent} {...rest}>
@@ -60,36 +58,6 @@ const ariaCurrent = undefined;
 </a>
 
 <style>
-    a {
-        &.underline {
-            box-shadow: 0 2px 0 0 var(--color-accent-40);
-        }
-
-        &.with-icon {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-
-            &.left {
-                flex-direction: row-reverse;
-            }
-        }
-
-        &:not(.base) {
-            &.hover-text:hover {
-                color: var(--color-text-50);
-            }
-
-            &:not(.hover-text, [aria-current="page"]):hover {
-                background-color: var(--color-accent-15);
-            }
-
-            &[aria-current="page"] {
-                text-decoration: line-through var(--color-accent-secondary-100);
-            }
-        }
-    }
-
     svg {
         fill: currentColor;
     }

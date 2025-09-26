@@ -7,15 +7,15 @@ import Link from "./Link.astro";
         <p>Ethan Perry © 2025</p>
         <nav>
             <ul>
-                <li><Link href="/">Home</Link></li>
-                <li><Link href="/contact">Contact</Link></li>
-                <li><Link href="/sitemap">Sitemap</Link></li>
+                <li><Link href="/" classes="dark-standard">Home</Link></li>
+                <li><Link href="/contact" classes="dark-standard">Contact</Link></li>
+                <li><Link href="/sitemap" classes="dark-standard">Sitemap</Link></li>
             </ul>
 
             <ul class="socials">
-                <li><Link href="https://linkedin.com/in/perry-ethan" target="_blank" rel="noopener noreferrer" classes="hover-text" icon={{name: "linkedin", side: "left"}}></Link></li>
-                <li><Link href="https://github.com/perry-ethan" target="_blank" rel="noopener noreferrer" classes="hover-text" icon={{name: "github", side: "left"}}></Link></li>
-                <li><Link href="https://goodreads.com/ethanperry" target="_blank" rel="noopener noreferrer" classes="hover-text" icon={{name: "goodreads", side: "left"}}></Link></li>
+                <li><Link href="https://linkedin.com/in/perry-ethan" target="_blank" rel="noopener noreferrer" classes="dark-standard" icon={{name: "linkedin", side: "left"}}></Link></li>
+                <li><Link href="https://github.com/perry-ethan" target="_blank" rel="noopener noreferrer" classes="dark-standard" icon={{name: "github", side: "left"}}></Link></li>
+                <li><Link href="https://goodreads.com/ethanperry" target="_blank" rel="noopener noreferrer" classes="dark-standard" icon={{name: "goodreads", side: "left"}}></Link></li>
             </ul>
         </nav>
     </div>
@@ -25,7 +25,10 @@ import Link from "./Link.astro";
     footer {
         padding-block: 2rem;
         margin-top: 20rem;
-        background-color: var(--color-accent-15);
+        //background-color: var(--color-accent-15);
+
+        background-color: var(--color-dark-background);
+        color: #D4D4D4;
     }
 
     .footer {
@@ -47,6 +50,10 @@ import Link from "./Link.astro";
 
         padding-left: 2rem;
         border-left: 1px solid currentColor;
+
+        li {
+            display: grid;
+        }
     }
 
     @media (width < 768px) {
