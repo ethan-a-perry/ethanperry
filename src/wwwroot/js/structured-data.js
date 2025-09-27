@@ -16,9 +16,9 @@ const baseSchemas = {
     person: {
         "@type": "Person",
         "@id": personId,
-        name: siteData.name,
-        url: siteData.domain,
-        sameAs: [
+        "name": siteData.name,
+        "url": siteData.domain,
+        "sameAs": [
             "https://www.linkedin.com/in/perry-ethan",
             "https://github.com/perry-ethan",
             "https://goodreads.com/ethanperry"
@@ -27,10 +27,12 @@ const baseSchemas = {
     website: {
         "@type": "WebSite",
         "@id": websiteId,
-        name: "Ethan Perry",
-        description: "Portfolio website",
-        url: siteData.domain,
-        publisher: {
+        "name": "Ethan Perry",
+        "description": "Portfolio website",
+        "url": siteData.domain,
+        "logo": `${siteData.domain}/assets/icons/logo.svg`,
+        "publisher": {
+            "@type": "Person",
             "@id": personId,
         },
     }
