@@ -1,17 +1,45 @@
 ---
 import Base from './Base.astro';
-
+import { formatDate } from '../wwwroot/js/utils';
+import Link from "../components/Link.astro";
 const { frontmatter } = Astro.props;
-const { title, description, date, category, author, image, tags } = frontmatter;
+const { title, description, datePublished, dateUpdated, image, tags, externalLink } = frontmatter;
 ---
 
-<Base pageTitle={title}>
-    <section>
-        <h1>{title}</h1>
-        <p>{description}</p>
+<Base title={title} description={description} image={image} metadata={{ datePublished, dateUpdated, tags }}>
+    <section class="post--header">
+        <h1 class="">{title}</h1>
+
+        {externalLink && (
+                <Link href="/" icon={{name: "arrow-right", side: "right"}} classes="color-text-65">Open project</Link>
+        )}
     </section>
 
-    <section class="content-grid full-width prose">
-        <slot />
+    <section>
+        <div class="dual-column metadata with-border-top margin-top-2">
+            <div class="dates">
+                <p>Published {formatDate(datePublished)}</p>
+                {dateUpdated && (
+                        <p>Updated {formatDate(dateUpdated)}</p>
+                )}
+            </div>
+
+            <h2 class="description">{description}</h2>
+        </div>
+    </section>
+
+    {image && image.showFullWidth && (
+            <section class="post--image margin-top-4">
+                <img src={image.src} alt={image.alt} />
+            </section>
+    )}
+
+    <section class="single-column margin-top-4">
+        <div class="prose">
+            {image && image.showContent && (
+                    <img src={image.src} alt={image.alt} />
+            )}
+            <slot />
+        </div>
     </section>
 </Base>

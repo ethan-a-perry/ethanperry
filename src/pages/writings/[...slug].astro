@@ -3,7 +3,7 @@ import Writing from '../../layouts/Writing.astro'
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-    const posts = (await getCollection('writings')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    const posts = (await getCollection('writings')).sort((a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf());
 
     return posts.map((post, index) => {
         const previousPost = index > 0 ? posts[index - 1] : undefined;

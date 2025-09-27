@@ -3,15 +3,17 @@ import Base from './Base.astro';
 import { formatDate } from '../wwwroot/js/utils';
 import Link from "../components/Link.astro";
 
+import clay from '../../public/assets/images/clay.avif';
+
 const { frontmatter, previousPost, nextPost } = Astro.props;
 const { title, description, datePublished, dateUpdated, image, tags } = frontmatter;
 ---
 
 <Base title={title} description={description} image={image} metadata={{ datePublished, dateUpdated, tags }}>
-    <h1>{title}</h1>
+    <h1 class="">{title}</h1>
 
     <section>
-        <div class="dual-column metadata with-border-top margin-top-4">
+        <div class="dual-column metadata with-border-top margin-top-2">
             <div class="dates">
                 <p>Published {formatDate(datePublished)}</p>
                 {dateUpdated && (
@@ -23,29 +25,38 @@ const { title, description, datePublished, dateUpdated, image, tags } = frontmat
         </div>
     </section>
 
+    {image && image.showFullWidth && (
+            <section class="post--image margin-top-4">
+                <img src={image.src} alt="bird" />
+            </section>
+    )}
+
     <section class="single-column writing--content">
         <div class="prose">
+            {image && image.showContent && (
+                    <img src={image.src} alt={image.alt} />
+            )}
             <slot />
+            <nav class="with-border-top margin-top-4">
+                <ul>
+                    {previousPost && (
+                            <li>
+                                <Link href={previousPost.id} classes="theme-grey">
+                                    <span>Previous post:</span>
+                                    <div class="three-lines">{previousPost.title}</div>
+                                </Link>
+                            </li>
+                    )}
+                    {nextPost && (
+                            <li>
+                                <Link href={nextPost.id} classes="theme-grey">
+                                    <span>Next post:</span>
+                                    <div class="three-lines">{nextPost.title}</div>
+                                </Link>
+                            </li>
+                    )}
+                </ul>
+            </nav>
         </div>
-        <nav class="with-border-top margin-top-4">
-            <ul>
-                {previousPost && (
-                        <li>
-                            <Link href={previousPost.id} classes="theme-grey">
-                                <span>Previous post:</span>
-                                <div class="two-lines">{previousPost.title}</div>
-                            </Link>
-                        </li>
-                )}
-                {nextPost && (
-                        <li>
-                            <Link href={nextPost.id} classes="theme-grey">
-                                <span>Next post:</span>
-                                <div class="two-lines">{nextPost.title}</div>
-                            </Link>
-                        </li>
-                )}
-            </ul>
-        </nav>
     </section>
 </Base>

@@ -448,9 +448,9 @@
         text-overflow: ellipsis;
     }
 
-    .two-lines {
+    .three-lines {
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -588,7 +588,7 @@
         }
     }
 
-    @layer writings-post {
+    @layer post {
         .metadata {
             @media (width < 768px) {
                 row-gap: 2rem;
@@ -615,19 +615,41 @@
 
             nav ul {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
+
+                @media (width > 768px) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
 
                 li {
                     display: grid;
                 }
 
                 a {
+                    text-decoration: none;
+                    padding: 2rem;
+
                     display: grid;
                     align-content: start;
                     color: var(--color-accent-secondary-100);
                 }
             }
+        }
+
+        .post--image {
+            max-height: 400px;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .post--header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
         }
     }
 
