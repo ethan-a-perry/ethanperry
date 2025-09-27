@@ -3,13 +3,15 @@ import Link from "./Link.astro";
 ---
 
 <header class="content-grid">
-    <button class="nav-toggle" aria-controls="nav" aria-expanded="false">Menu</button>
+    <div class="header">
+        <Link href="/" classes="grid">
+            <img src="/assets/icons/logo.svg" alt="Ethan Perry Logo" width="30" height="20" />
+        </Link>
 
-    <div>
-        <!--<h4 class="logo">EP</h4>-->
+        <button class="nav-toggle" aria-controls="nav" aria-expanded="false">Menu</button>
+
         <nav id="nav" class="nav" data-visible="false">
             <ul class="nav--pages">
-                <li><Link href="/" isNavLink={true}>Home</Link></li>
                 <li><Link href="/work" isNavLink={true}>Work</Link></li>
                 <li><Link href="/writings" isNavLink={true}>Writings</Link></li>
                 <li><Link href="/about" isNavLink={true}>About</Link></li>
@@ -26,15 +28,21 @@ import Link from "./Link.astro";
 </header>
 
 <style>
-    header {
+    .header {
         z-index: 999;
         position: sticky;
         top: 0;
+        left: 0;
+        right: 0;
 
         padding-block: 4rem 2rem;
         margin-bottom: 10rem;
 
         background: var(--color-site-background);
+
+        display: flex;
+        align-items: center;
+        gap: 2rem;
     }
 
     .logo {
@@ -51,7 +59,6 @@ import Link from "./Link.astro";
 
         display: flex;
         flex-direction: row;
-        //justify-content: flex-end;
 
         background: var(--color-site-background);
     }
@@ -68,13 +75,12 @@ import Link from "./Link.astro";
     }
 
     @media (width < 768px) {
-        header {
+        .header {
             margin-bottom: 14rem;
 
             padding: 2rem;
 
-            display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
         }
 
         .logo {
