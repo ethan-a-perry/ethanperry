@@ -20,7 +20,7 @@ const appleTouchIcon = await getImage({
 
 const faviconSvg = await getImage({ src: faviconSvgSrc, format: 'svg' })
 
-const { title, description, image, metadata, classes } = Astro.props;
+const { title, description, image, metadata, robots, classes } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ const { title, description, image, metadata, classes } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description}/>
     <link rel="canonical" href={Astro.url} />
-    <SEO title={title} description={description} url={Astro.url} image={image} metadata={metadata} />
+    <SEO title={title} description={description} url={Astro.url} image={image} metadata={metadata} robots={robots}/>
 
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
