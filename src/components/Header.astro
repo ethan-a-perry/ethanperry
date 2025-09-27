@@ -1,11 +1,12 @@
 ---
 import Link from "./Link.astro";
+import favicon from '../wwwroot/assets/images/favicon.svg';
 ---
 
 <header class="content-grid">
     <div class="header">
-        <Link href="/" classes="grid">
-            <img src="/assets/icons/logo.svg" alt="Ethan Perry Logo" width="30" height="20" />
+        <Link href="/" classes="logo flex">
+            <img src={favicon.src} alt="Logo" width="30" height="20" />
         </Link>
 
         <button class="nav-toggle" aria-controls="nav" aria-expanded="false">Menu</button>
@@ -28,15 +29,18 @@ import Link from "./Link.astro";
 </header>
 
 <style>
-    .header {
+    header {
         z-index: 999;
         position: sticky;
         top: 0;
         left: 0;
         right: 0;
 
-        padding-block: 4rem 2rem;
         margin-bottom: 10rem;
+    }
+
+    .header {
+        padding-block: 4rem 2rem;
 
         background: var(--color-site-background);
 
@@ -46,7 +50,7 @@ import Link from "./Link.astro";
     }
 
     .logo {
-        padding-block: 4rem 2rem;
+        z-index: 1000;
     }
 
     .nav-toggle {
@@ -75,16 +79,12 @@ import Link from "./Link.astro";
     }
 
     @media (width < 768px) {
-        .header {
+        header {
             margin-bottom: 14rem;
-
-            padding: 2rem;
-
-            justify-content: space-between;
         }
 
-        .logo {
-            padding: 2rem 1rem;
+        .header {
+            justify-content: space-between;
         }
 
         .nav-toggle {
