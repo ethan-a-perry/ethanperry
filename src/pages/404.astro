@@ -1,10 +1,12 @@
 ---
 import Base from '../layouts/Base.astro'
 import Link from "../components/Link.astro";
-const pageTitle = "404: page not found";
+
+const title = "404: page not found";
+const description = "";
 ---
 
-<Base pageTitle={pageTitle}>
+<Base title={title} description={description}>
     <section class="error">
         <h1>404: Page Not Found</h1>
         <Link href="/" icon={{name: "arrow-right", side: "right"}}>Go home</Link>

@@ -1,0 +1,21 @@
+---
+import siteData from "../data/site-data.json";
+import {getStructuredData} from '../wwwroot/js/structured-data.js';
+
+const {
+    title,
+    description,
+    url = Astro.url,
+    image,
+    metadata,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.url);
+const structuredData = getStructuredData(canonicalURL, Astro.url.pathname, title, description, image, metadata);
+---
+{
+    structuredData && (
+        <!-- Structured Data -->
+        <script type="application/ld+json" set:html={JSON.stringify(structuredData, null, 2)}></script>
+    )
+}

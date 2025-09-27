@@ -1,14 +1,17 @@
 ---
 import Base from '../layouts/Base.astro'
 import Link from "../components/Link.astro";
-const pageTitle = "500 Error"
+
 interface Props {
     error: unknown;
 }
 
 const { error } = Astro.props;
+
+const title = "500 error";
+const description = "";
 ---
-<Base pageTitle={pageTitle}>
+<Base title={title} description={description}>
     <section class="error">
         <h1>500 Error</h1>
         <Link href="/" icon={{name: "arrow-right", side: "right"}}>Go home</Link>

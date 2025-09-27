@@ -9,8 +9,7 @@ const { title, description, datePublished, dateUpdated, image, tags } = sudoku.d
 
 const { Content } = await render(sudoku);
 ---
-
-<Base pageTitle={title}>
+<Base title={title} description={description} metadata={{ datePublished, dateUpdated, tags }}>
     <h1>{title}</h1>
 
     <section>

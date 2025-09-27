@@ -5,10 +5,12 @@ import { formatDate } from '../../wwwroot/js/utils'
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('writings');
-const pageTitle = "Writings";
+
+const title = "Writings";
+const description = "";
 ---
 
-<Base pageTitle={pageTitle}>
+<Base title={title} description={description}>
     <section class="dual-column with-border-top">
         <h1>Writings</h1>
         <ul class="flex-col-2">

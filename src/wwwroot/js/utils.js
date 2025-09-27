@@ -6,3 +6,8 @@ export function formatDate(date) {
         year: "numeric",
     });
 }
+
+export function formatDateYYYYMMDD(date) {
+    if (!date) return;
+    return date.toISOString().split('T')[0];
+}

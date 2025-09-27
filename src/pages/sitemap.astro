@@ -1,15 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
 import Link from "../components/Link.astro";
-const pageTitle = "Sitemap";
-
 import { getCollection } from "astro:content";
 
 const works = await getCollection("work");
 const writings = await getCollection("writings");
+
+const title = "Sitemap";
+const description = "";
 ---
 
-<Base pageTitle={pageTitle}>
+<Base title={title} description={description}>
     <section class="dual-column with-border-top">
         <h1>Sitemap</h1>
         <ul class="sitemap">

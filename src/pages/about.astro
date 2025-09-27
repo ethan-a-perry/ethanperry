@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro'
 import Link from "../components/Link.astro";
-const pageTitle = "About";
 
 import imgPortraitLagos from "/public/assets/images/about/portrait-lagos.webp";
 import imgPortraitTavira from "/public/assets/images/about/portrait-tavira.webp";
@@ -9,9 +8,12 @@ import imgPortraitTavira from "/public/assets/images/about/portrait-tavira.webp"
 import { getCollection } from 'astro:content';
 
 const works = await getCollection('work');
+
+const title = "About";
+const description = "";
 ---
 
-<Base pageTitle={pageTitle}>
+<Base title={title} description={description}>
     <section class="dual-column with-border-top">
         <div class="flow-1">
             <h1>Hi, I'm Ethan Perry</h1>

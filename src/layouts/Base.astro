@@ -8,6 +8,8 @@ import { getImage } from 'astro:assets'
 import faviconPngSrc from '../wwwroot/assets/images/favicon.png'
 import faviconSvgSrc from '../wwwroot/assets/images/favicon.svg'
 
+import SEO from "../components/SEO.astro";
+
 // for iOS versions < 15.4
 const appleTouchIcon = await getImage({
     src: faviconPngSrc,
@@ -18,7 +20,7 @@ const appleTouchIcon = await getImage({
 
 const faviconSvg = await getImage({ src: faviconSvgSrc, format: 'svg' })
 
-const { title, description, classes } = Astro.props;
+const { title, description, image, metadata, classes } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -29,6 +31,8 @@ const { title, description, classes } = Astro.props;
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description}/>
+    <link rel="canonical" href={Astro.url} />
+    <SEO title={title} description={description} url={Astro.url} image={image} metadata={metadata} />
 
     <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />

@@ -1,15 +1,14 @@
 ---
 import Base from '../../layouts/Base.astro';
-const pageTitle = "Work";
-
 import Link from "../../components/Link.astro";
-
 import { getCollection } from 'astro:content';
 
 const works = await getCollection('work');
----
 
-<Base pageTitle={pageTitle}>
+const title = "Work";
+const description = "";
+---
+<Base title={title} description={description}>
     <section class="dual-column with-border-top">
         <h2>Recent Work</h2>
 

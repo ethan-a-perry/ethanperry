@@ -1,0 +1,10 @@
+{
+  "domain": "https://ethanperry.net",
+  "title": "Ethan Perry",
+  "description": "My musings about the Astro framework",
+  "image": {
+    "src": "/images/image-default.jpg",
+    "alt": "My Astro Blog"
+  },
+  "name": "Ethan Perry"
+}
