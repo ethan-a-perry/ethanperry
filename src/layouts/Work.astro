@@ -28,17 +28,14 @@ const { title, description, datePublished, dateUpdated, image, tags, externalLin
         </div>
     </section>
 
-    {image && image.showFullWidth && (
+    {image && (
             <section class="post--image margin-top-4">
-                <img src={image.src} alt={image.alt} />
+                <img src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} />
             </section>
     )}
 
     <section class="single-column margin-top-4">
         <div class="prose">
-            {image && image.showContent && (
-                    <img src={image.src} alt={image.alt} />
-            )}
             <slot />
         </div>
     </section>

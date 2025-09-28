@@ -15,7 +15,7 @@ const description = "";
         {works.map((work: any) =>
                 <li>
                     <Link href={`/work/${work.id}/`} classes="work">
-                        <img src={work.data.image.src} alt={work.data.image.alt} />
+                        <img src={work.data.image.src} srcset={work.data.image.srcset} sizes={work.data.image.sizes} alt={work.data.image.alt} />
 
                         <div class="flex-col-1">
                             <div class="work--content--header fs-s color-text-35">

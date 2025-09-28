@@ -15,8 +15,9 @@ const writings = defineCollection({
         image: z.object({
             src: z.string(),
             alt: z.string(),
-            showFullWidth: z.boolean().optional().default(false),
-            showContent: z.boolean().optional().default(false)
+            srcset: z.string(),
+            sizes: z.string(),
+            og: z.string()
         }).optional(),
         tags: z.array(z.string()),
         draft: z.boolean().default(false)
@@ -33,8 +34,9 @@ const work = defineCollection({
         image: z.object({
             src: z.string(),
             alt: z.string(),
-            showFullWidth: z.boolean().optional().default(false),
-            showContent: z.boolean().optional().default(false)
+            srcset: z.string(),
+            sizes: z.string(),
+            og: z.string()
         }),
         tags: z.array(z.string()),
         externalLink: z.string().optional(),

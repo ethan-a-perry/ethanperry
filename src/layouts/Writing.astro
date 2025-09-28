@@ -3,8 +3,6 @@ import Base from './Base.astro';
 import { formatDate } from '../wwwroot/js/utils';
 import Link from "../components/Link.astro";
 
-import clay from '../../public/assets/images/clay.avif';
-
 const { frontmatter, previousPost, nextPost } = Astro.props;
 const { title, description, datePublished, dateUpdated, image, tags } = frontmatter;
 ---
@@ -25,17 +23,14 @@ const { title, description, datePublished, dateUpdated, image, tags } = frontmat
         </div>
     </section>
 
-    {image && image.showFullWidth && (
+    {image && (
             <section class="post--image margin-top-4">
-                <img src={image.src} alt="bird" />
+                <img src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} />
             </section>
     )}
 
     <section class="single-column writing--content">
         <div class="prose">
-            {image && image.showContent && (
-                    <img src={image.src} alt={image.alt} />
-            )}
             <slot />
             <nav class="with-border-top margin-top-4">
                 <ul>
