@@ -9,36 +9,35 @@ const title = "Work";
 const description = "";
 ---
 <Base title={title} description={description}>
-    <section class="dual-column with-border-top">
-        <h2>Recent Work</h2>
+    <h1>Recent Work</h1>
 
-        <ul class="works">
-            {works.map((work: any) =>
-                    <li>
-                        <Link href={`/work/${work.id}/`} classes="work">
-                            <div class="work--info">
-                                <div class="work--details fs-s">
-                                    <ul class="scroller horiz">
-                                        {work.data.tags.map((tag: any) =>
-                                                <li>{tag}</li>
-                                        )}
-                                    </ul>
-                                    <span>{work.data.datePublished.getFullYear()}</span>
-                                </div>
+    <ul class="works margin-top-4">
+        {works.map((work: any) =>
+                <li>
+                    <Link href={`/work/${work.id}/`} classes="work">
+                        <img src={work.data.image.src} alt={work.data.image.alt} />
 
-                                <div class="flow--5">
-                                    <h2 class="h3">{work.data.title}</h2>
-                                    <p class="">{work.data.description}</p>
-                                </div>
-
-                                <span class="work--details fs-s view">View project</span>
+                        <div class="flex-col-1">
+                            <div class="work--content--header fs-s color-text-35">
+                                <ul class="scroller horiz">
+                                    {work.data.tags.map((tag: any) =>
+                                            <li>{tag}</li>
+                                    )}
+                                </ul>
+                                <span>/ {work.data.datePublished.getFullYear()}</span>
                             </div>
 
-                            <img src={work.data.image.src} alt={work.data.image.alt}>
-                        </Link>
-                    </li>
-            )}
-        </ul>
-    </section>
+                            <div class="work--content flex-col-2">
+                                <div class="flex-col-1">
+                                    <h2>{work.data.title}</h2>
+                                    <p class="three-lines">{work.data.description}</p>
+                                </div>
 
+                                <span class="fs-s color-text-35">View project</span>
+                            </div>
+                        </div>
+                    </Link>
+                </li>
+        )}
+    </ul>
 </Base>
