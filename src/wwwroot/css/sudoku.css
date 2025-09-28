@@ -55,8 +55,8 @@
         --color-grid-solved: #6BCB77;
 
         /* Accents */
-        --color-accent-primary: rgb(90, 67, 66);
-        --color-accent-secondary: rgb(90, 67, 66);
+        --color-accent-primary: #3B4B61;
+        --color-accent-secondary: #3B4B61;
         --color-accent-tertiary: #69855e;
     }
 }
