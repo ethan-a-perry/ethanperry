@@ -7,7 +7,7 @@ const { frontmatter, previousPost, nextPost } = Astro.props;
 const { title, description, datePublished, dateUpdated, image, tags } = frontmatter;
 ---
 
-<Base title={title} description={description} image={image} metadata={{ datePublished, dateUpdated, tags }}>
+<Base title=`${title} | Ethan Perry` description={description} image={image} metadata={{ datePublished, dateUpdated, tags }}>
     <h1 class="">{title}</h1>
 
     <section>

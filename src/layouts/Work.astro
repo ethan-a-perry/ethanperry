@@ -6,7 +6,7 @@ const { frontmatter } = Astro.props;
 const { title, description, datePublished, dateUpdated, image, tags, externalLink } = frontmatter;
 ---
 
-<Base title={title} description={description} image={image} metadata={{ datePublished, dateUpdated, tags }}>
+<Base title=`${title} | Case Study | Ethan Perry` description={description} image={image} metadata={{ datePublished, dateUpdated, tags }}>
     <section class="post--header">
         <h1 class="">{title}</h1>
 
