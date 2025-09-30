@@ -1,43 +1,11 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Link from "../../components/Link.astro";
-import { getCollection } from 'astro:content';
-
-const works = await getCollection('work');
+import WorkIndex from '../../components/WorkIndex.astro';
 
 const title = "Case Studies | Software Development, Apps, UI/UX | Ethan Perry";
 const description = "Detailed case studies showcasing modern, cutting-edge apps, software development projects, and UI/UX design expertise.";
 ---
 <Base title={title} description={description}>
     <h1>Recent Work</h1>
-
-    <ul class="works margin-top-4">
-        {works.map((work: any) =>
-                <li>
-                    <Link href={`/work/${work.id}/`} classes="work">
-                        <img src={work.data.image.src} srcset={work.data.image.srcset} sizes={work.data.image.sizes} alt={work.data.image.alt} />
-
-                        <div class="flex-col-1">
-                            <div class="work--content--header fs-s color-text-35">
-                                <ul class="scroller horiz">
-                                    {work.data.tags.map((tag: any) =>
-                                            <li>{tag}</li>
-                                    )}
-                                </ul>
-                                <span>/ {work.data.datePublished.getFullYear()}</span>
-                            </div>
-
-                            <div class="work--content flex-col-2">
-                                <div class="flex-col-1">
-                                    <h2>{work.data.title}</h2>
-                                    <p class="three-lines">{work.data.description}</p>
-                                </div>
-
-                                <span class="fs-s color-text-35">View project</span>
-                            </div>
-                        </div>
-                    </Link>
-                </li>
-        )}
-    </ul>
+    <WorkIndex />
 </Base>
