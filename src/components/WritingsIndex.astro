@@ -1,0 +1,27 @@
+---
+import Link from "../components/Link.astro";
+import { formatDate, sortCollectionByMostRecent } from '../wwwroot/js/utils'
+import { getCollection } from 'astro:content';
+
+const posts = sortCollectionByMostRecent(await getCollection('writings'));
+
+const { limit } = Astro.props;
+const visiblePosts = limit ? posts.slice(0, limit) : posts;
+---
+
+<ul class="writings-index margin-top-4">
+    {visiblePosts.map((post: any) =>
+            <li>
+                <Link href={`/writings/${post.id}/`} classes="flex-col-1 content image-scale">
+                    <div class="image-wrapper">
+                        <img src={post.data.image.src} srcset={post.data.image.srcset} sizes={post.data.image.sizes} alt={post.data.image.alt} />
+                    </div>
+
+                    <span class="color-text-50 fs-base">{post.data.tags.join(', ')}</span>
+                    <h2>{post.data.title}</h2>
+                    <p class="two-lines">{post.data.description}</p>
+                    <span class="color-text-50 fs-base">{formatDate(post.data.datePublished)}</span>
+                </Link>
+            </li>
+    )}
+</ul>

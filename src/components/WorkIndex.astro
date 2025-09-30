@@ -1,0 +1,42 @@
+---
+import Link from "../components/Link.astro";
+import { getCollection } from 'astro:content';
+import { sortCollectionByMostRecent } from '../wwwroot/js/utils.js';
+
+const works = sortCollectionByMostRecent(await getCollection('work'));
+
+const { limit } = Astro.props;
+const visibleWork = limit ? works.slice(0, limit) : works;
+---
+
+<ul class="works margin-top-4">
+    {visibleWork.map((work: any) =>
+            <li>
+                <Link href={`/work/${work.id}/`} classes="work image-scale">
+                    <div class="image-wrapper">
+                        <img src={work.data.image.src} srcset={work.data.image.srcset} sizes={work.data.image.sizes} alt={work.data.image.alt} />
+                    </div>
+
+                    <div class="flex-col-1">
+                        <div class="work--content--header fs-s color-text-35">
+                            <ul class="scroller horiz">
+                                {work.data.tags.map((tag: any) =>
+                                        <li>{tag}</li>
+                                )}
+                            </ul>
+                            <span>/ {work.data.datePublished.getFullYear()}</span>
+                        </div>
+
+                        <div class="work--content flex-col-2">
+                            <div class="flex-col-1">
+                                <h2>{work.data.title}</h2>
+                                <p class="three-lines">{work.data.description}</p>
+                            </div>
+
+                            <span class="fs-s color-text-35">View project</span>
+                        </div>
+                    </div>
+                </Link>
+            </li>
+    )}
+</ul>

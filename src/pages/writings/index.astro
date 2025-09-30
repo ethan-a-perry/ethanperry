@@ -1,30 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Link from "../../components/Link.astro";
-import { formatDate } from '../../wwwroot/js/utils'
-import { getCollection } from 'astro:content';
-
-const allPosts = await getCollection('writings');
+import WritingsIndex from '../../components/WritingsIndex.astro';
 
 const description = "Read my writings, essays, book reviews, tech insights, and my general thoughts on writing, software, design, and innovation.";
 const title = "Ethan Perry Blog | Writings, Essays, Book Reviews & Tech Insights";
 ---
 
 <Base title={title} description={description}>
-    <section class="dual-column with-border-top">
-        <h1>Writings</h1>
-        <ul class="flex-col-2">
-            {allPosts.map((post: any) =>
-                    <li>
-                        <Link href={`/writings/${post.id}/`} classes="flex-row-2">
-                            <span class="writing--date color-accent-70">{formatDate(post.data.datePublished)}</span>
-                            <span>
-                                {post.data.title}
-                                <span class="writing--tags color-text-35 fs-s italic">[{post.data.tags.join(', ')}]</span>
-                            </span>
-                        </Link>
-                    </li>
-            )}
-        </ul>
-    </section>
+    <h1>Writings</h1>
+    <WritingsIndex />
 </Base>
