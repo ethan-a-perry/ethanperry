@@ -51,7 +51,7 @@ function getCreativeWorkSchema(canonicalURL, title, description, image, metadata
                     "@type": "Person",
                     "name": personId
                 },
-                ...(metadata.datePublished ? {"datePublished": formatDateYYYYMMDD(metadata.datePublished)} : {}),
+                ...(metadata?.datePublished ? {"datePublished": formatDateYYYYMMDD(metadata.datePublished)} : {}),
                 ...(metadata.dateUpdated ? {"dateModified": formatDateYYYYMMDD(metadata.dateUpdated)} : {}),
                 ...(image ? { "image": `${siteData.domain}${image.src}` } : {})
             },
@@ -84,7 +84,7 @@ function getBlogPostSchema(canonicalURL, title, description, image, metadata) {
                     "@type": "Person",
                     "name": personId
                 },
-                ...(metadata.datePublished ? {"datePublished": formatDateYYYYMMDD(metadata.datePublished)} : {}),
+                ...(metadata?.datePublished ? {"datePublished": formatDateYYYYMMDD(metadata.datePublished)} : {}),
                 ...(metadata.dateUpdated ? {"dateModified": formatDateYYYYMMDD(metadata.dateUpdated)} : {}),
                 "mainEntityOfPage": {
                     "@type": "WebPage",
