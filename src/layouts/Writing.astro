@@ -4,10 +4,10 @@ import { formatDate } from '../wwwroot/js/utils';
 import Link from "../components/Link.astro";
 
 const { frontmatter, previousPost, nextPost } = Astro.props;
-const { title, description, datePublished, dateUpdated, image, tags } = frontmatter;
+const { title, description, seoTitle, seoDescription, datePublished, dateUpdated, image, tags } = frontmatter;
 ---
 
-<Base title=`${title} | Ethan Perry` description={description} image={image} metadata={{ datePublished, dateUpdated, tags }}>
+<Base title=`${seoTitle || title} | Ethan Perry` description={seoDescription || description} image={image} metadata={{ datePublished, dateUpdated, tags }}>
     <h1 class="">{title}</h1>
 
     <section>
@@ -25,7 +25,7 @@ const { title, description, datePublished, dateUpdated, image, tags } = frontmat
 
     {image && image.fullWidth && (
             <section class="post--image margin-top-4">
-                <img src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} style={image.style} />
+                <img class="writing--image" src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} style={image.style} />
             </section>
     )}
 
@@ -33,11 +33,11 @@ const { title, description, datePublished, dateUpdated, image, tags } = frontmat
         <div class="prose">
             {image && !image.fullWidth && (
                         <section class="margin-top-4">
-                            <img src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} />
+                            <img class="writing--image" src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} />
                         </section>
             )}
             <slot />
-            <nav class="with-border-top margin-top-4">
+            <nav class="with-border-top margin-top-8">
                 <ul>
                     {previousPost && (
                             <li>

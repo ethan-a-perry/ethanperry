@@ -14,7 +14,7 @@ const visiblePosts = limit ? posts.slice(0, limit) : posts;
             <li>
                 <Link href={`/writings/${post.id}/`} classes="flex-col-1 content image-scale">
                     <div class="image-wrapper">
-                        <img src={post.data.image.src} srcset={post.data.image.srcset} sizes={post.data.image.sizes} alt={post.data.image.alt} />
+                        <img class="writing--image" src={post.data.image.src} srcset={post.data.image.srcset} sizes={post.data.image.sizes} alt={post.data.image.alt} style={post.data.image.style} />
                     </div>
 
                     <span class="color-text-50 fs-base">{post.data.tags.join(', ')}</span>

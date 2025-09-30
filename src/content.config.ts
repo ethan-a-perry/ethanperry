@@ -11,6 +11,8 @@ const writings = defineCollection({
         slug: z.string(),
         title: z.string(),
         description: z.string(),
+        seoTitle: z.string().optional(),
+        seoDescription: z.string().optional(),
         datePublished: z.date(),
         dateUpdated: z.date().optional(),
         image: z.object({
@@ -33,6 +35,8 @@ const work = defineCollection({
         slug: z.string(),
         title: z.string(),
         description: z.string(),
+        seoTitle: z.string().optional(),
+        seoDescription: z.string().optional(),
         datePublished: z.date(),
         dateUpdated: z.date().optional(),
         image: z.object({

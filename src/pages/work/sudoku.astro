@@ -5,14 +5,11 @@ import SudokuComponent from '../../components/Sudoku.astro';
 import { formatDate } from '../../wwwroot/js/utils';
 
 const sudoku = await getEntry('work', 'sudoku')!;
-const { title, description, datePublished, dateUpdated, image, tags } = sudoku.data;
+const { title, description, seoTitle, seoDescription, datePublished, dateUpdated, image, tags } = sudoku.data;
 
 const { Content } = await render(sudoku);
-
-const seoTitle = "C# Sudoku App | Modern Interactive App Built With C# | Ethan Perry";
-const seoDescription = "An interactive Sudoku app with playable puzzles and full pencil mark support.";
 ---
-<Base title={seoTitle} description={seoDescription} metadata={{ datePublished, dateUpdated, tags }}>
+<Base title={seoTitle || title} description={seoDescription || description} metadata={{ datePublished, dateUpdated, tags }}>
     <h1>{title}</h1>
 
     <section>

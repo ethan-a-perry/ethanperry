@@ -11,11 +11,10 @@ const description = "Creative software engineer building simple, modern apps. Sh
 <Base title={title} description={description}>
     <section class="dual-column">
         <h1>Ethan Perry</h1>
-        <div class="flow-1 color-text-65">
+        <div class="flow-1 color-text-5">
             <p class="indent-line-4">I'm a software developer with a background in data center operations and digital marketing, which gives me a unique lens into the ways technical problem-solving and creative thinking intersect.</p>
-            <p>Writing is another core part of my work—it helps me process and clarify my thoughts, opinions, and ideas.</p>
-            <p>On this site, you'll find a mix of my professional projects, technical experiments, and SaaS ventures, alongside my writing, including essays, book reviews, coding tutorials, poems, and more.</p>
-            <Link href="/about" icon={{name: "arrow-right", side: "right"}}>More about me</Link>
+            <p class="with-border-top margin-top-1">Writing is another core part of my work—it helps me process and clarify my thoughts, opinions, and ideas. On this site, you'll find a mix of my professional projects, technical experiments, and SaaS ventures, alongside my writing, including essays, book reviews, coding tutorials, poems, and more.</p>
+            <Link href="/about" classes="color-text-50" icon={{name: "arrow-right", side: "right"}}>More about me</Link>
         </div>
     </section>
 
@@ -25,7 +24,7 @@ const description = "Creative software engineer building simple, modern apps. Sh
             <Link href="/work" classes="color-text-50" icon={{name: "arrow-right", side: "right"}}>View all</Link>
         </div>
 
-        <WorkIndex limit={2} />
+        <WorkIndex limit={4} />
     </section>
 
     <section class="margin-top-12 with-border-top">
@@ -33,6 +32,6 @@ const description = "Creative software engineer building simple, modern apps. Sh
             <h2>Latest Writings</h2>
             <Link href="/writings" classes="color-text-50" icon={{name: "arrow-right", side: "right"}}>View all</Link>
         </div>
-        <WritingsIndex limit={2} />
+        <WritingsIndex limit={6} />
     </section>
 </Base>

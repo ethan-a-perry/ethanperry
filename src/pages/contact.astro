@@ -20,7 +20,7 @@ const description = "Get in touch for collaborations, project inquiries, or gene
 
             <div class="flex-col-2 form--wrapper margin-top-8 color-text-65">
                 <h2>Send me a message</h2>
-                <form>
+                <form method="POST" action="/api/submit">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" required>
