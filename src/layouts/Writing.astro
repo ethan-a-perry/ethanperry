@@ -23,14 +23,19 @@ const { title, description, datePublished, dateUpdated, image, tags } = frontmat
         </div>
     </section>
 
-    {image && (
+    {image && image.fullWidth && (
             <section class="post--image margin-top-4">
-                <img src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} />
+                <img src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} style={image.style} />
             </section>
     )}
 
     <section class="single-column writing--content">
         <div class="prose">
+            {image && !image.fullWidth && (
+                        <section class="margin-top-4">
+                            <img src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} />
+                        </section>
+            )}
             <slot />
             <nav class="with-border-top margin-top-4">
                 <ul>

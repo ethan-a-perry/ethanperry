@@ -261,7 +261,7 @@
 
     @layer prose {
         .prose, .prose .prose-include {
-            overflow: hidden;
+            /*overflow: hidden;*/
 
             &:not(h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .code-block) {
                 font-family: var(--copy-font), serif;
@@ -657,12 +657,14 @@
         }
 
         .post--image {
-            max-height: 600px;
+            --object-position: center;
+            max-height: 650px;
 
             img {
                 height: 100%;
                 width: 100%;
                 object-fit: cover;
+                object-position: var(--object-position);
             }
         }
 

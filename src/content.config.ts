@@ -8,6 +8,7 @@ import { z, defineCollection } from "astro:content";
 const writings = defineCollection({
     loader: glob({ pattern: '**/[^_]*.{md,mdx,mdoc}', base: "./src/content/writings" }),
     schema: z.object({
+        slug: z.string(),
         title: z.string(),
         description: z.string(),
         datePublished: z.date(),
@@ -17,7 +18,9 @@ const writings = defineCollection({
             alt: z.string(),
             srcset: z.string(),
             sizes: z.string(),
-            og: z.string()
+            og: z.string(),
+            fullWidth: z.boolean().optional().default(true),
+            style: z.string().optional()
         }).optional(),
         tags: z.array(z.string()),
         draft: z.boolean().default(false)
@@ -27,6 +30,7 @@ const writings = defineCollection({
 const work = defineCollection({
     loader: glob({ pattern: "**/[^_]*.{md,mdx,mdoc}", base: "./src/content/work",  }),
     schema: z.object({
+        slug: z.string(),
         title: z.string(),
         description: z.string(),
         datePublished: z.date(),

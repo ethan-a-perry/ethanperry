@@ -1,7 +1,8 @@
 ---
+slug: personal-website
 title: Personal Website
 description: First iteration of my personal website. Built with Astro, HTML, and CSS. Deployed on Netlify.
-datePublished: 2025-09-21
+datePublished: 2025-09-30
 image: {
     src: "/assets/images/work/personal-website/personal-website-full-width.webp",
     srcset: "/assets/images/work/personal-website/personal-website-thumb.webp 1600w, /assets/images/work/personal-website/personal-website-full-width.webp 2400w",
