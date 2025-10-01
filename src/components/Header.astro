@@ -5,9 +5,7 @@ import favicon from '../wwwroot/assets/images/favicon.svg';
 
 <header class="content-grid">
     <div class="header">
-        <Link href="/" classes="logo flex">
-            <img src={favicon.src} alt="Logo" width="30" height="20" />
-        </Link>
+        <Link href="/" classes="logo">Ethan Perry</Link>
 
         <button class="nav-toggle" aria-controls="nav" aria-expanded="false">Menu</button>
 
@@ -36,16 +34,17 @@ import favicon from '../wwwroot/assets/images/favicon.svg';
         left: 0;
         right: 0;
 
-        margin-bottom: 10rem;
+        margin-bottom: 8rem;
 
         background: var(--color-site-background);
     }
 
     .header {
-        padding-block: 4rem 2rem;
+        padding-block: 2rem;
 
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 2rem;
     }
 
@@ -56,6 +55,7 @@ import favicon from '../wwwroot/assets/images/favicon.svg';
     .nav-toggle {
         z-index: 1000;
         display: none;
+        color: var(--color-accent-100);
     }
 
     nav {
@@ -80,7 +80,7 @@ import favicon from '../wwwroot/assets/images/favicon.svg';
 
     @media (width < 768px) {
         header {
-            margin-bottom: 8rem;
+            margin-bottom: 3rem;
         }
 
         .header {

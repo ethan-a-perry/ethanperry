@@ -268,7 +268,7 @@
             }
 
             :first-child:is(img) {
-                margin-bottom: 3rem;
+                margin-bottom: 1rem;
             }
 
             &:not(h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .code-block) {
@@ -463,6 +463,10 @@
         margin-top: 16rem;
     }
 
+    .max-width-60ch {
+        max-width: 60ch;
+    }
+
     .grid-span-all {
         grid-column: 1 / -1;
     }
@@ -644,8 +648,6 @@
         }
 
         .writing--content {
-            margin-top: 4rem;
-
             nav ul {
                 display: grid;
                 gap: 2rem;
