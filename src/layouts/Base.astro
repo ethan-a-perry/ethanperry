@@ -41,13 +41,9 @@ const { title, description, image, metadata = {}, robots, classes } = Astro.prop
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
     <link rel="apple-touch-icon" href={appleTouchIcon.src} />
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://use.typekit.net/kse1sfa.css">
 </head>
 <body>
-
-<Header />
+    <Header />
 
 <main class={`content-grid ${classes || ""}`}>
     <slot />

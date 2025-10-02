@@ -12,7 +12,7 @@ const visibleWork = limit ? works.slice(0, limit) : works;
 <ul class="works margin-top-4">
     {visibleWork.map((work: any) =>
             <li>
-                <Link href={`/work/${work.id}/`} classes="work image-scale">
+                <Link href={`/work/${work.id}/`} classes="work image-scale content">
                     <div class="image-wrapper">
                         <img src={work.data.image.src} srcset={work.data.image.srcset} sizes={work.data.image.sizes} alt={work.data.image.alt} />
                     </div>

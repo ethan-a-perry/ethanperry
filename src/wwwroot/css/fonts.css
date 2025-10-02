@@ -1,0 +1,55 @@
+/**
+* @license
+*
+* Font Family: Erode
+* Designed by: Nikhil Ranganathan
+* URL: https://www.fontshare.com/fonts/erode
+* © 2025 Indian Type Foundry
+*
+* Erode Regular
+* Erode Medium
+
+*
+*/
+
+@font-face {
+    font-family: 'Erode-Regular';
+    src: url('/fonts/Erode/Erode-Regular.woff2') format('woff2'),
+    url('/fonts/Erode/Erode-Regular.woff') format('woff'),
+    url('/fonts/Erode/Erode-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Erode-Medium';
+    src: url('/fonts/Erode/Erode-Medium.woff2') format('woff2'),
+    url('/fonts/Erode/Erode-Medium.woff') format('woff'),
+    url('/fonts/Erode/Erode-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+}
+
+/**
+* @license
+*
+* Font Family: JetBrains Mono
+* Designed by: JetBrains, Philipp Nurullin, Konstantin Bulenkov
+* URL: https://www.fontshare.com/fonts/jet-brains-mono
+* © 2025 Indian Type Foundry
+*
+* JetBrains Mono Regular
+*
+*/
+
+@font-face {
+    font-family: 'JetBrainsMono-Regular';
+    src: url('/fonts/JetBrainsMono/JetBrainsMono-Regular.woff2') format('woff2'),
+    url('/fonts/JetBrainsMono/JetBrainsMono-Regular.woff') format('woff'),
+    url('/fonts/JetBrainsMono/JetBrainsMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+}
