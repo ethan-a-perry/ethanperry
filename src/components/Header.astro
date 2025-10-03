@@ -1,29 +1,25 @@
 ---
 import Link from "./Link.astro";
-import favicon from '../wwwroot/assets/images/favicon.svg';
 ---
 
 <header class="content-grid">
-    <div class="header">
-        <Link href="/" classes="logo">Ethan Perry</Link>
+    <button class="nav-toggle" aria-controls="nav" aria-expanded="false">Menu</button>
 
-        <button class="nav-toggle" aria-controls="nav" aria-expanded="false">Menu</button>
+    <nav id="nav" class="nav" data-visible="false">
+        <ul class="nav--pages">
+            <li><Link href="/" isNavLink={true}>Home</Link></li>
+            <li><Link href="/work" isNavLink={true}>Work</Link></li>
+            <li><Link href="/writings" isNavLink={true}>Writings</Link></li>
+            <li><Link href="/about" isNavLink={true}>About</Link></li>
+            <li><Link href="/contact" isNavLink={true}>Contact</Link></li>
+        </ul>
 
-        <nav id="nav" class="nav" data-visible="false">
-            <ul class="nav--pages">
-                <li><Link href="/work" isNavLink={true}>Work</Link></li>
-                <li><Link href="/writings" isNavLink={true}>Writings</Link></li>
-                <li><Link href="/about" isNavLink={true}>About</Link></li>
-                <li><Link href="/contact" isNavLink={true}>Contact</Link></li>
-            </ul>
-
-            <ul class="nav--socials">
-                <li><Link href="https://linkedin.com/in/perry-ethan" target="_blank" rel="noopener noreferrer" classes="copy-standard" icon={{name: "linkedin", side: "left"}}></Link></li>
-                <li><Link href="https://github.com/perry-ethan" target="_blank" rel="noopener noreferrer" classes="copy-standard" icon={{name: "github", side: "left"}}></Link></li>
-                <li><Link href="https://goodreads.com/ethanperry" target="_blank" rel="noopener noreferrer" classes="copy-standard" icon={{name: "goodreads", side: "left"}}></Link></li>
-            </ul>
-        </nav>
-    </div>
+        <ul class="nav--socials">
+            <li><Link href="https://linkedin.com/in/perry-ethan" target="_blank" rel="noopener noreferrer" classes="copy-standard" icon={{name: "linkedin", side: "left"}}></Link></li>
+            <li><Link href="https://github.com/perry-ethan" target="_blank" rel="noopener noreferrer" classes="copy-standard" icon={{name: "github", side: "left"}}></Link></li>
+            <li><Link href="https://goodreads.com/ethanperry" target="_blank" rel="noopener noreferrer" classes="copy-standard" icon={{name: "goodreads", side: "left"}}></Link></li>
+        </ul>
+    </nav>
 </header>
 
 <style>
@@ -34,28 +30,14 @@ import favicon from '../wwwroot/assets/images/favicon.svg';
         left: 0;
         right: 0;
 
+        padding-block: 3rem;
         margin-bottom: 8rem;
 
-        background: var(--color-site-background);
-    }
-
-    .header {
-        padding-block: 2rem;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 2rem;
-    }
-
-    .logo {
-        z-index: 1000;
+        background-color: var(--color-site-background);
     }
 
     .nav-toggle {
-        z-index: 1000;
         display: none;
-        color: var(--color-accent-100);
     }
 
     nav {
@@ -63,8 +45,6 @@ import favicon from '../wwwroot/assets/images/favicon.svg';
 
         display: flex;
         flex-direction: row;
-
-        background: var(--color-site-background);
     }
 
     .nav--pages {
@@ -80,15 +60,15 @@ import favicon from '../wwwroot/assets/images/favicon.svg';
 
     @media (width < 768px) {
         header {
+            padding-block: 2rem;
             margin-bottom: 3rem;
         }
 
-        .header {
-            justify-content: space-between;
-        }
-
         .nav-toggle {
+            z-index: 1000;
             display: block;
+            margin-left: auto;
+            color: var(--color-accent-100);
         }
 
         nav {
