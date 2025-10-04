@@ -4,8 +4,8 @@ export async function startSudoku() {
 
     try {
         window.addEventListener("sudokuAppReady", () => {
-            const loader = document.getElementById("sudoku--loader");
-            loader?.remove();
+            const loader = document.getElementById("sudoku-app");
+            loader.className = "full-width";
         });
 
         await new Promise((resolve, reject) => {

@@ -1,26 +1,8 @@
 ---
 import '../wwwroot/css/sudoku.css'
-
-const { classes } = Astro.props;
 ---
 
-<section class={`sudoku-app--wrapper ${classes || ""}`}>
-    <div id="sudoku-app"></div>
-
-    <div id="sudoku--loader">
-        <div class="loader">
-            {Array.from({ length: 15 }).map(() => (
-                    <span></span>
-            ))}
-        </div>
-
-        <div class="loader">
-            {Array.from({ length: 17 }).map(() => (
-                    <span></span>
-            ))}
-        </div>
-    </div>
-</section>
+<div id="sudoku-app" class="load-state"></div>
 
 <script>
     import { startSudoku } from '../wwwroot/js/sudoku.js';

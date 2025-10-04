@@ -1,3 +1,4 @@
+
 :root {
     --grid-theme: "Light";
 }
@@ -10,7 +11,7 @@
     --grid-theme: "Dark";
 }
 
-.sudoku-app--wrapper {
+#sudoku-app {
     padding: 5px;
     margin-block: 2rem;
     padding-block: 4rem;
@@ -65,20 +66,34 @@
     position: relative;
 
     display: grid;
-    grid-template-columns: minmax(0, 75svh) minmax(0, 300px);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+            "grid"
+            "hud"
+            "info";
     gap: 2rem;
 
-    &:focus {
-        outline: none;
+    @container content-grid (inline-size > 600px) {
+        grid-template-columns: minmax(min-content, 50%) 1fr;
+        grid-template-areas:
+            "grid grid"
+            "hud info";
+    }
+
+    @container content-grid (inline-size > 800px) {
+        grid-template-columns: minmax(0, 75svh) minmax(0, 300px);
+
+        grid-template-areas:
+            "grid info"
+            "grid hud";
     }
 }
 
-.sudoku--grid--wrapper {
-    position: relative;
-    width: 100%;
-}
+.sudoku-grid {
+    grid-area: grid;
 
-.sudoku--grid {
+    container-type: inline-size;
+
     aspect-ratio: 1;
 
     position: relative;
@@ -108,25 +123,27 @@
 
         background:
             /* vertical lines */
-            linear-gradient(to right, var(--color-grid-secondary) 3px, transparent 0) left 33.33% top / 2px 100% no-repeat,
-            linear-gradient(to right, var(--color-grid-secondary) 3px, transparent 0) left 66.66% top / 2px 100% no-repeat,
+                linear-gradient(to right, var(--color-grid-secondary) 3px, transparent 0) left 33.33% top / 2px 100% no-repeat,
+                linear-gradient(to right, var(--color-grid-secondary) 3px, transparent 0) left 66.66% top / 2px 100% no-repeat,
 
-            /* horizontal lines */
-            linear-gradient(to bottom, var(--color-grid-secondary) 3px, transparent 0) left top 33.33% / 100% 2px no-repeat,
-            linear-gradient(to bottom, var(--color-grid-secondary) 3px, transparent 0) left top 66.66% / 100% 2px no-repeat;
+                    /* horizontal lines */
+                linear-gradient(to bottom, var(--color-grid-secondary) 3px, transparent 0) left top 33.33% / 100% 2px no-repeat,
+                linear-gradient(to bottom, var(--color-grid-secondary) 3px, transparent 0) left top 66.66% / 100% 2px no-repeat;
     }
 }
 
 .cell {
-    font-size: 2.4rem;
-    aspect-ratio: 1;
     position: relative;
 
     display: grid;
-    place-items: center;
+    place-content: center;
 
+    aspect-ratio: 1;
+
+    font-size: 7cqw;
+
+    line-height: 1;
     outline: 1px solid var(--color-grid-secondary);
-
     background-color: var(--color-grid-primary);
 
     &:not(.is-given) {
@@ -138,111 +155,81 @@
     }
 }
 
-@media (width < 850px) {
-    .sudoku {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        gap: 2rem;
+.digit {
+    font-size: 1em;
+}
+
+.pencil-marks.center {
+    font-size: 0.5em;
+
+    &[data-pm-count="7"] {
+        font-size: 0.43em;
     }
 
-    .sudoku--grid {
-        width: 100%;
+    &[data-pm-count="8"] {
+        font-size: 0.4em;
     }
 
-    .sudoku--info {
-        order: 2;
-    }
-
-    .sudoku--hud {
-        order: 1;
-    }
-
-    .cell {
-        font-size: 1.5rem;
+    &[data-pm-count="9"] {
+        font-size: 0.36em;
     }
 }
 
-.pencil-marks {
+.pencil-marks.corner {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    font-size: 1.2rem;
+    inset: 0;
 
-    &.corner {
-        display: grid;
-        grid-auto-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-template-areas:
+    display: grid;
+    grid-template-areas:
             "p1 p5 p2"
             "p7 p9 p8"
             "p3 p6 p4";
 
-        & .pencil-mark {
-            display: grid;
-            place-content: center;
-            overflow: hidden;
+    font-size: 0.5em;
 
-            &.p1 { grid-area: p1; }
-            &.p2 { grid-area: p2; }
-            &.p3 { grid-area: p3; }
-            &.p4 { grid-area: p4; }
-            &.p5 { grid-area: p5; }
-            &.p6 { grid-area: p6; }
-            &.p7 { grid-area: p7; }
-            &.p8 { grid-area: p8; }
-            &.p9 { grid-area: p9; }
-        }
+    span {
+        display: grid;
+        place-content: center;
+
+        &:nth-child(1) { grid-area: p1; }
+        &:nth-child(2) { grid-area: p2; }
+        &:nth-child(3) { grid-area: p3; }
+        &:nth-child(4) { grid-area: p4; }
+        &:nth-child(5) { grid-area: p5; }
+        &:nth-child(6) { grid-area: p6; }
+        &:nth-child(7) { grid-area: p7; }
+        &:nth-child(8) { grid-area: p8; }
+        &:nth-child(9) { grid-area: p9; }
     }
+}
 
-    &.center {
+.info {
+    grid-area: info;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .info-title {
         display: flex;
         align-items: center;
-        justify-content: center;
-        flex-wrap: nowrap;
-        gap: 2px;
-
-        &[data-pm-count="8"] {
-            gap: 1px;
-            font-size: 1rem;
-        }
-
-        &[data-pm-count="9"] {
-            gap: 1px;
-            font-size: 0.9rem;
-        }
-    }
-}
-
-.sudoku--toolbar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-.sudoku--info {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
-    & .puzzle-title {
-        display: flex;
-        align-items: flex-end;
         justify-content: space-between;
         gap: 1rem;
 
-        & .restart svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--color-text-secondary);
-        }
+        .restart {
+            &:hover svg {
+                color: var(--color-accent-secondary);
+            }
 
-        & .restart:hover svg {
-            color: var(--color-accent-secondary);
+            svg {
+                width: 20px;
+                height: 20px;
+                fill: var(--color-text-secondary);
+            }
         }
     }
 
-    & .author {
+    .info-author {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
@@ -250,141 +237,137 @@
 
         padding-bottom: 1rem;
         border-bottom: 1px solid var(--color-accent-primary);
-    }
 
-    & .difficulty {
-        padding: 4px 8px;
-        background: var(--color-accent-secondary);
-        border-radius: 5px;
-        color: var(--color-text-light);
-    }
-}
-
-.sudoku--info .option {
-    position: relative;
-    height: 40px;
-
-    cursor: pointer;
-
-    & select {
-        position: absolute;
-        inset: 0;
-        appearance: none;
-
-        cursor: pointer;
-
-        border: 1px solid var(--color-text-secondary);
-        color: var(--color-text-secondary);
-        fill: var(--color-text-secondary);
-        border-radius: 5px;
-
-        background-color: transparent;
-
-        padding: 5px 15px;
-
-        &:focus {
-            outline: none;
+        .difficulty {
+            padding: 4px 8px;
+            background: var(--color-accent-secondary);
+            border-radius: 5px;
+            color: var(--color-text-light);
         }
     }
 
-    &::after {
-        content: '';
-        position: absolute;
+    .info-option {
+        position: relative;
+        height: 40px;
 
-        top: 50%;
-        transform: translateY(-50%);
-        right: 15px;
+        cursor: pointer;
 
-        width: 16px;
-        height: 16px;
+        & select {
+            position: absolute;
+            inset: 0;
+            appearance: none;
 
-        -webkit-mask: url("/public/assets/icons/chevron-right.svg") no-repeat center;
-        -webkit-mask-size: contain;
-        mask: url("/public/assets/icons/chevron-right.svg") no-repeat center;
-        mask-size: contain;
+            cursor: pointer;
 
-        /* Set the color of the icon */
-        background-color: currentColor; /* or any color you want */
+            border: 1px solid var(--color-text-secondary);
+            color: var(--color-text-secondary);
+            fill: var(--color-text-secondary);
+            border-radius: 5px;
+
+            background-color: transparent;
+
+            padding: 5px 15px;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+
+            top: 50%;
+            transform: translateY(-50%);
+            right: 15px;
+
+            width: 16px;
+            height: 16px;
+
+            -webkit-mask: url("/public/assets/icons/chevron-right.svg") no-repeat center;
+            -webkit-mask-size: contain;
+            mask: url("/public/assets/icons/chevron-right.svg") no-repeat center;
+            mask-size: contain;
+
+            /* Set the color of the icon */
+            background-color: currentColor; /* or any color you want */
+        }
     }
 }
 
-.sudoku--hud {
+.hud {
+    grid-area: hud;
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 1rem;
 
-    & button {
+    button {
         color: var(--color-text-primary);
 
         border: 1px solid var(--color-text-secondary);
         background: var(--color-accent-primary);
         border-radius: 5px;
     }
-}
 
-.input-mode-toggle {
-    cursor: pointer;
+    .hud-mode {
+        cursor: pointer;
 
-    display: flex;
+        display: flex;
 
-    border: 1px solid var(--color-text-secondary);
-    border-radius: 5px;
+        border: 1px solid var(--color-text-secondary);
+        border-radius: 5px;
 
-    & button {
-        flex: 1;
-        border: 0;
-        background: transparent;
-        padding: 10px 14px;
+        & button {
+            flex: 1;
+            border: 0;
+            background: transparent;
+            padding: 10px 14px;
 
-        &:not(.selected) {
-            color: var(--color-text-secondary);
-        }
+            &:not(.selected) {
+                color: var(--color-text-secondary);
+            }
 
-        &.selected {
-            background-color: var(--color-accent-primary);
-        }
-    }
-}
-
-.sudoku--controls {
-    position: relative;
-
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0.5rem;
-
-    @media (width > 850px) {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-
-        & .p0 {
-            display: none;
+            &.selected {
+                background-color: var(--color-accent-primary);
+            }
         }
     }
 
-    & button {
-        aspect-ratio: 1;
-    }
-}
-
-.tools {
-    grid-area: tools;
-    display: flex;
-    gap: 0.5rem;
-
-    & button {
-        flex: 1;
-
+    .hud-digits {
         display: grid;
-        place-items: center;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.5rem;
 
-        padding: 7px;
+        button {
+            aspect-ratio: 1;
+        }
 
-        & svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
+        @container content-grid (inline-size > 850px) {
+            grid-template-columns: repeat(3, 1fr);
+
+            .p0 {
+                display: none;
+            }
+        }
+    }
+
+    .hud-tools {
+        display: flex;
+        gap: 0.5rem;
+
+        & button {
+            flex: 1;
+
+            display: grid;
+            place-items: center;
+
+            padding: 7px;
+
+            & svg {
+                width: 16px;
+                height: 16px;
+                fill: currentColor;
+            }
         }
     }
 }
@@ -463,53 +446,38 @@
 }
 
 /* Sudoku App Loading State */
-#sudoku--loader {
-    display: grid;
-    grid-template-columns: minmax(0, 75svh) minmax(0, 300px);
-    gap: 2rem;
-
-    overflow: hidden;
-
-    @media(width < 850px) {
-        height: 892px;
-        grid-template-columns: 1fr;
-    }
-}
-
-.loader {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1.75rem;
-    height: 75svh;
-    overflow: hidden;
+.load-state {
     position: relative;
-}
 
-.loader::after {
-    position: absolute;
-    inset: 0;
-    transform: translateX(-100%);
-    background-image: linear-gradient(
-            90deg,
-            rgba(250, 250, 244, 0) 0,
-            rgba(250, 250, 244, 0.2) 20%,
-            rgba(250, 250, 244, 0.5) 60%,
-            rgba(250, 250, 244, 0)
-    );
-    animation: shimmer 5s infinite;
-    content: '';
+    height: 90svh;
+
+    @container content-grid (inline-size < 850px) {
+        height: 65svh;
+    }
+
+    @container content-grid (inline-size < 800px) {
+        height: 125svh;
+    }
+
+    @container content-grid (650px < inline-size < 750px) {
+        height: 120svh;
+    }
+
+    background: url("/assets/icons/loader.svg") repeat;
+    background-clip: content-box;
+    background-origin: content-box;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+
+        animation: shimmer 5s infinite;
+    }
 }
 
 @keyframes shimmer {
     100% {
         transform: translateX(100%);
     }
-}
-
-.loader span {
-    width: 100%;
-    height: 2svh;
-    background-color: rgb(232, 234, 237);
-    border-radius: 20px;
 }
