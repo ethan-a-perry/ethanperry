@@ -6,9 +6,9 @@ export async function onRequestPost(context) {
 
     try {
         const body = await request.formData();
-        const { name, email, phone, message, honeypot } = Object.fromEntries(body);
+        const { name, email, phone, message, hp } = Object.fromEntries(body);
 
-        if (honeypot) {
+        if (hp) {
             return new Response('Message Failed: Flagged As Spam (Honeypot)', { status: 200 });
         }
 
