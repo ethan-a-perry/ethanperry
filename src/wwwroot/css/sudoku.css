@@ -87,6 +87,10 @@
             "grid info"
             "grid hud";
     }
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .sudoku-grid {
