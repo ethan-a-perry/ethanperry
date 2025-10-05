@@ -2,8 +2,10 @@
  * POST /api/submit
  */
 export async function onRequestPost(context) {
+    const { request, env } = context;
+
     try {
-        const body = await context.request.formData();
+        const body = await request.formData();
         const { name, email, phone, message, honeypot } = Object.fromEntries(body);
 
         if (honeypot) {

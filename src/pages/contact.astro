@@ -20,7 +20,7 @@ const description = "Get in touch for collaborations, project inquiries, or gene
 
             <div class="flex-col-2 form--wrapper margin-top-8 color-text-65">
                 <h2>Send me a message</h2>
-                <form method="POST" action="/api/submit">
+                <form id="contact-form">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
@@ -47,7 +47,41 @@ const description = "Get in touch for collaborations, project inquiries, or gene
                         <textarea id="honeypot" name="honeypot"></textarea>
                     </div>
                 </form>
+
+                <div id="form-status" class="hidden">Sending...</div>
             </div>
         </div>
     </section>
 </Base>
+
+<script is:inline>
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        status.classList.remove('hidden');
+
+        const formData = new FormData(form);
+
+        try {
+            const res = await fetch('/api/submit', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (res.ok) {
+                status.textContent = "Thank you! Your message has been received. We'll get back to you soon.";
+                status.classList.add('color-success')
+                form.reset(); // optional: clear the form
+            } else {
+                status.classList.add('color-failure')
+                status.textContent = 'Apologies, something went wrong. Please send me a message directly or try again later.';
+            }
+        } catch (err) {
+            status.classList.add('color-failure')
+            status.textContent = 'Error submitting the form. Please check your connection.';
+        }
+    });
+</script>

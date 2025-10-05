@@ -312,6 +312,10 @@
 }
 
 @layer utilities {
+    .hidden {
+        display: none;
+    }
+
     .underline {
         text-decoration: underline;
         text-underline-offset: 4px;
@@ -349,6 +353,14 @@
     }
 
     .color-accent-secondary-100 {
+        color: var(--color-accent-secondary-100);
+    }
+
+    .color-success {
+        color: #6BCB77;
+    }
+
+    .color-failure {
         color: var(--color-accent-secondary-100);
     }
 
@@ -747,8 +759,6 @@
                 }
 
                 form {
-                    background-color: red;
-
                     display: grid;
                     gap: 2rem;
 
