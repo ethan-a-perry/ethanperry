@@ -19,8 +19,8 @@ const baseSchemas = {
         "name": siteData.name,
         "url": siteData.domain,
         "sameAs": [
-            "https://www.linkedin.com/in/perry-ethan",
-            "https://github.com/perry-ethan",
+            "https://www.linkedin.com/in/ethan-a-perry",
+            "https://github.com/ethan-a-perry",
             "https://goodreads.com/ethanperry"
         ]
     },
