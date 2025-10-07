@@ -29,7 +29,7 @@ const { Content } = await render(sudoku);
                     <ul class="flex-row-1 flex-wrap">
                         {links.map((link: any) =>
                                 <li>
-                                    <Link href={link.url} classes="fs-base button">{link.text}</Link>
+                                    <Link href={link.url} classes="fs-base button" target="_blank" rel="noopener noreferrer">{link.text}</Link>
                                 </li>
                         )}
                     </ul>
