@@ -4,8 +4,8 @@ import shiki from '@astrojs/markdoc/shiki';
 export default defineMarkdocConfig({
     nodes: {
         document: {
-            ...nodes.document, // Apply defaults for other options
-            render: null, // default 'article'
+            ...nodes.document,
+            render: null,
         },
     },
     extends: [
@@ -21,6 +21,14 @@ export default defineMarkdocConfig({
                 alt: { type: String, required: true },
                 width: { type: Number },
                 height: { type: Number },
+            },
+        },
+        ExternalLink: {
+            render: 'a',
+            attributes: {
+                href: { type: String, required: true },
+                target: { type: String, default: '_blank' },
+                rel: { type: String, default: 'noopener noreferrer' },
             },
         },
         CodeBlock: {

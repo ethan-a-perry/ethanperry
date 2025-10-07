@@ -47,7 +47,12 @@ const work = defineCollection({
             og: z.string()
         }),
         tags: z.array(z.string()),
-        externalLink: z.string().optional(),
+        links: z.array(
+            z.object({
+                url: z.string(),
+                text: z.string().optional()
+            })
+        ).optional(),
         draft: z.boolean().default(false)
     })
 });

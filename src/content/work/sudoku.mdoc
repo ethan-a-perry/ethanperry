@@ -4,6 +4,7 @@ title: Sudoku App
 description: An interactive Sudoku app with playable puzzles and full pencil mark support.
 seoTitle: "C# Sudoku App | Modern Interactive App Built With C# | Ethan Perry"
 datePublished: 2025-09-08
+dateUpdated: 2025-10-06
 image: {
     src: "/assets/images/work/sudoku/sudoku-full-width.webp",
     srcset: "/assets/images/work/sudoku/sudoku-thumb.webp 1600w, /assets/images/work/sudoku/sudoku-full-width.webp 2400w",
@@ -11,8 +12,14 @@ image: {
     sizes: "(max-width: 1200px) 100vw, 1200px",
     og: "/assets/images/work/sudoku/sudoku-og.webp"
 }
-tags: ["C#", ".NET 9", "MongoDB", "App", "Blazor", "WASM", "Astro", "HTML", "CSS"]
-draft: true
+tags: ["C#", ".NET 9", "MongoDB", "App", "Blazor", "WASM", "Astro", "HTML", "CSS", "Cloudflare"]
+links: [
+  {
+    url: "https://github.com/perry-ethan/Sudoku",
+    text: "GitHub repo",
+  },
+]
+draft: false
 ---
 
 ## Overview & Goals
@@ -79,7 +86,7 @@ Continue reading to learn more about my process and the challenges I faced.
 ### Architecture & Deployment Notes
 
 The final version is a WASM app/package I published and deployed here on my personal website as an Astro Interactive Island.
-However, my codebase, which you can [find on my GitBub](https://github.com/perry-ethan/Sudoku) is still structured as a
+However, my codebase, which you can [find on my GitHub](https://github.com/perry-ethan/Sudoku) is still structured as a
 Blazor web app with both server-side and WebAssembly (WASM) rendering support.
 
 The client side (WASM) handles all interactive gameplay and logic, while the server side, if I choose to use it,
@@ -92,6 +99,9 @@ demonstrate integration with MongoDB and the ability to use different data acces
 
 Lastly, publishing and embedding the app into my Astro website makes managing global layout and styling simpler and
 also offers users a more unified experience.
+
+*Note: sometimes WASM apps run slightly slower on Firefox on IOS devices. If you notice a slight lag, try switching
+to a different browser. Firefox should run very well on desktop/computers.*
 
 ## Challenges
 

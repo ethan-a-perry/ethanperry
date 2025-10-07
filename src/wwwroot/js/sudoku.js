@@ -23,6 +23,12 @@ export async function startSudoku() {
         });
     } catch (err) {
         console.error("Error starting Blazor WASM:", err);
-        sudokuElement.textContent = "Failed to load Sudoku app.";
+
+        const span = document.createElement('span');
+
+        span.textContent = 'Failed to load Sudoku app. Please try again later.';
+        span.classList.add("sudoku-app-failure")
+
+        sudokuElement.appendChild(span);
     }
 }

@@ -15,10 +15,12 @@ function validateField(field) {
 }
 
 form.querySelectorAll('input:not([name="hp"]), textarea').forEach(field => {
+    // When the user clicks or tabs out of the field
     field.addEventListener("blur", () => {
         validateField(field);
     })
 
+    // When the user enters anything into the field
     field.addEventListener("input", () => {
         if (field.validity.valid) {
             const error = field.parentElement.querySelector('.error-message');
@@ -35,7 +37,6 @@ form.addEventListener('submit', async (e) => {
     const fields = form.querySelectorAll('input:not([name="hp"]), textarea');
 
     fields.forEach(field => {
-        console.log(`Checking ${field.name}`);
         const fieldValid = validateField(field);
         if (!fieldValid) {
             isValid = false;

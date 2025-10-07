@@ -3,28 +3,31 @@ import Base from './Base.astro';
 import { formatDate } from '../wwwroot/js/utils';
 import Link from "../components/Link.astro";
 const { frontmatter } = Astro.props;
-const { title, description, seoTitle, seoDescription, datePublished, dateUpdated, image, tags, externalLink } = frontmatter;
+const { title, description, seoTitle, seoDescription, datePublished, dateUpdated, image, tags, links } = frontmatter;
 ---
 
 <Base title=`${seoTitle || title} | Case Study | Ethan Perry` description={seoDescription || description} image={image} metadata={{ datePublished, dateUpdated, tags }}>
-    <section class="post--header">
-        <h1 class="">{title}</h1>
+    <h1 class="post--header">{title}</h1>
 
-        {externalLink && (
-                <Link href="/" icon={{name: "arrow-right", side: "right"}} classes="color-text-65">Open project</Link>
-        )}
-    </section>
+    <section class="dual-column metadata with-border-top margin-top-2">
+        <div class="dates flex-col--5">
+            <p>Published {formatDate(datePublished)}</p>
+            {dateUpdated && (
+                    <p>Updated {formatDate(dateUpdated)}</p>
+            )}
+        </div>
 
-    <section>
-        <div class="dual-column metadata with-border-top margin-top-2">
-            <div class="dates">
-                <p>Published {formatDate(datePublished)}</p>
-                {dateUpdated && (
-                        <p>Updated {formatDate(dateUpdated)}</p>
-                )}
-            </div>
-
-            <h2 class="description">{description}</h2>
+        <div class="flex-col-2">
+            <h2 class="description color-text-80">{description}</h2>
+            {links && (
+                    <ul class="flex-row-1 flex-wrap">
+                        {links.map((link: any) =>
+                                <li>
+                                    <Link href={link.url} classes="fs-base button">{link.text}</Link>
+                                </li>
+                        )}
+                    </ul>
+            )}
         </div>
     </section>
 

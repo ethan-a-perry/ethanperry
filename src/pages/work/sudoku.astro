@@ -3,25 +3,37 @@ import { getEntry, render } from "astro:content";
 import Base from '../../layouts/Base.astro';
 import SudokuComponent from '../../components/Sudoku.astro';
 import { formatDate } from '../../wwwroot/js/utils';
+import Link from "../../components/Link.astro";
 
 const sudoku = await getEntry('work', 'sudoku')!;
-const { title, description, seoTitle, seoDescription, datePublished, dateUpdated, image, tags } = sudoku.data;
+const { title, description, seoTitle, seoDescription, datePublished, dateUpdated, image, tags, links } = sudoku.data;
 
 const { Content } = await render(sudoku);
 ---
 <Base title={seoTitle || title} description={seoDescription || description} metadata={{ datePublished, dateUpdated, tags }}>
-    <h1>{title}</h1>
+    <h1 class="post--header">{title}</h1>
 
-    <section>
-        <div class="dual-column metadata with-border-top">
-            <div class="dates">
-                <p>Published {formatDate(datePublished)}</p>
-                {dateUpdated && (
-                        <p>Updated {formatDate(dateUpdated)}</p>
-                )}
-            </div>
+    <section class="dual-column metadata with-border-top">
+        <div class="dates flex-col--5">
+            <p>Published {formatDate(datePublished)}</p>
 
+            {dateUpdated && (
+                    <p>Updated {formatDate(dateUpdated)}</p>
+            )}
+        </div>
+
+        <div class="flex-col-2">
             <h2 class="description">{description}</h2>
+
+            {links && (
+                    <ul class="flex-row-1 flex-wrap">
+                        {links.map((link: any) =>
+                                <li>
+                                    <Link href={link.url} classes="fs-base button">{link.text}</Link>
+                                </li>
+                        )}
+                    </ul>
+            )}
         </div>
     </section>
 
