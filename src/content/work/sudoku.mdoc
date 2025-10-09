@@ -1,10 +1,10 @@
 ---
 slug: sudoku
 title: Sudoku App
-description: An interactive Sudoku app with playable puzzles and full pencil mark support.
+description: An interactive Sudoku app built in C#. Features playable puzzles and full pencil mark support.
 seoTitle: "C# Sudoku App | Modern Interactive App Built With C# | Ethan Perry"
 datePublished: 2025-09-08
-dateUpdated: 2025-10-06
+dateUpdated: 2025-10-09
 image: {
     src: "/assets/images/work/sudoku/sudoku-full-width.webp",
     srcset: "/assets/images/work/sudoku/sudoku-thumb.webp 1600w, /assets/images/work/sudoku/sudoku-full-width.webp 2400w",
@@ -137,7 +137,7 @@ This function below shows the code that finds an edge turn within a region:
 
 {% CodeBlock language="c#" filename="BorderStylingService.cs" %}
 ```c#
-public static (Cell, Border)? GetDiagonalNeighbors(Cell anchor) {
+public static (Cell, Border)? FindEdgeTurn(Cell anchor) {
     Cell topLeft = anchor.Neighbors.topLeft;
     Cell topRight = anchor.Neighbors.topRight;
     Cell bottomLeft = anchor.Neighbors.topLeft;
@@ -245,7 +245,7 @@ the variants, some of which took me 4+ hours to beat, and many of which I never 
 
 This project is not only a technical effort, but also a love letter to a game I have enjoyed for many years.
 
-I want to emphasize that this project is entirely my own implementation, though it was inspired by my experience
+I want to emphasize that the code for this project is entirely my own implementation, though it was inspired by my experience
 playing Sudoku on [Sven's Sudoku Pad](https://sudokupad.app/)
 (featured on [Cracking the Cryptic YouTube channel](https://www.youtube.com/@CrackingTheCryptic)) and, more loosely, on
 the [New York Times Sudoku](https://www.nytimes.com/puzzles/sudoku) website.
