@@ -194,7 +194,6 @@
     font-size: 0.5em;
 
     span {
-        background-color: red;
         display: grid;
         place-content: center;
 
