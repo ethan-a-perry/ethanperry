@@ -188,10 +188,13 @@
             "p1 p5 p2"
             "p7 p9 p8"
             "p3 p6 p4";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 
     font-size: 0.5em;
 
     span {
+        background-color: red;
         display: grid;
         place-content: center;
 
