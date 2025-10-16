@@ -43,7 +43,8 @@ const { title, description, image, metadata = {}, robots, classes } = Astro.prop
     <link rel="apple-touch-icon" href={appleTouchIcon.src} />
 </head>
 <body>
-    <Header />
+
+<Header />
 
 <main class={`content-grid ${classes || ""}`}>
     <slot />

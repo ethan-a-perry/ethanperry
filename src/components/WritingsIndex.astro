@@ -5,11 +5,11 @@ import { getCollection } from 'astro:content';
 
 const posts = sortCollectionByMostRecent(await getCollection('writings'));
 
-const { limit } = Astro.props;
+const { limit, classes } = Astro.props;
 const visiblePosts = limit ? posts.slice(0, limit) : posts;
 ---
 
-<ul class="writings-index margin-top-4">
+<ul class={`writings-index ${classes || ""}`}>
     {visiblePosts.map((post: any) =>
             <li>
                 <Link href={`/writings/${post.id}/`} classes="flex-col-1 image-scale">

@@ -8,29 +8,24 @@ const title = "Ethan Perry | Software Engineer & Writer | Portfolio"
 const description = "Creative software engineer building simple, modern apps. Sharing essays, tutorials, book reviews, technical insights, and more.";
 ---
 
-<Base title={title} description={description}>
+<Base title={title} description={description} classes="footer-spacer-beige">
     <section class="dual-column">
         <h1>Ethan Perry</h1>
         <div class="flow-2">
             <p>I'm currently a software developer passionate about creating intuitive applications and building systems with optimized, scalable infrastructure.</p>
-            <p>Writing is another core part of my work—it helps me process and clarify my thoughts, opinions, and ideas.</p>
-            <p>On this portfolio site, you'll find a mix of my professional projects, technical experiments, and SaaS ventures, alongside my writing, including essays, book reviews, coding tutorials, poems, and more.</p>
         </div>
     </section>
-
-    <section class="margin-top-10 with-border-top">
-        <div class="flex-space">
-            <h2>Latest Work</h2>
-            <Link href="/work" classes="color-text-50" icon={{name: "arrow-right", side: "right"}}>View all</Link>
-        </div>
+    <section class="margin-top-4">
         <WorkIndex limit={4} />
+        <Link href="/work" classes="color-text-50 margin-top-2" icon={{name: "arrow-right", side: "right"}}>View all work</Link>
     </section>
 
-    <section class="margin-top-12 with-border-top">
-        <div class="flex-space">
+    <section class="full-width theme-beige margin-top-12">
+        <div class="flex-col-1">
             <h2>Latest Writings</h2>
-            <Link href="/writings" classes="color-text-50" icon={{name: "arrow-right", side: "right"}}>View all</Link>
+            <p class="max-width-60ch">Writing is another core part of my work—it helps me process and clarify my thoughts, opinions, and ideas. Read some of my writings here.</p>
+            <Link href="/writings" classes="color-text-50 flex-align-self-start" icon={{name: "arrow-right", side: "right"}}>View all writings</Link>
+            <WritingsIndex limit={6} classes="margin-top-2"/>
         </div>
-        <WritingsIndex limit={6} />
     </section>
 </Base>

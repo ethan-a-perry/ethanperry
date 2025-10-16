@@ -3,6 +3,7 @@ import Link from "./Link.astro";
 ---
 
 <footer class="content-grid">
+    <div class="footer-spacer full-width"></div>
     <div class="footer">
         <p>Ethan Perry © 2025</p>
         <nav>
@@ -23,11 +24,14 @@ import Link from "./Link.astro";
 
 <style>
     footer {
-        padding-block: 2rem;
-        margin-top: 20rem;
-
         background-color: var(--color-dark-background);
-        color: #D4D4D4;
+    }
+
+    .footer-spacer {
+        background-color: var(--color-footer-spacer, var(--color-site-background));
+
+        height: 20rem;
+        width: 100%;
     }
 
     .footer {
@@ -36,6 +40,10 @@ import Link from "./Link.astro";
         align-items: center;
         justify-content: space-between;
         gap: 1rem 2rem;
+
+        padding-block: 2rem;
+
+        color: #D4D4D4;
     }
 
     nav, ul {
