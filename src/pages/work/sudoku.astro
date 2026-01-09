@@ -11,35 +11,31 @@ const { title, description, seoTitle, seoDescription, datePublished, dateUpdated
 const { Content } = await render(sudoku);
 ---
 <Base title={seoTitle || title} description={seoDescription || description} metadata={{ datePublished, dateUpdated, tags }}>
-    <h1 class="post--header">{title}</h1>
+	<section class="flow-1 max-width-70ch">
+		<h1>{title}</h1>
+		<p>{description}</p>
+	</section>
 
-    <section class="dual-column metadata with-border-top">
-        <div class="dates flex-col--5">
-            <p>Published {formatDate(datePublished)}</p>
+	<section class="with-border-top">
+		<span>Published {formatDate(datePublished)}</span>
+        {dateUpdated && (
+            <span>| Updated {formatDate(dateUpdated)}</span>
+        )}
 
-            {dateUpdated && (
-                    <p>Updated {formatDate(dateUpdated)}</p>
-            )}
-        </div>
-
-        <div class="flex-col-2">
-            <h2 class="description">{description}</h2>
-
-            {links && (
-                    <ul class="flex-row-1 flex-wrap">
-                        {links.map((link: any) =>
-                                <li>
-                                    <Link href={link.url} classes="fs-base button" target="_blank" rel="noopener noreferrer">{link.text}</Link>
-                                </li>
-                        )}
-                    </ul>
-            )}
-        </div>
-    </section>
+		{links && (
+			<ul class="flex-row-1 flex-wrap margin-top-1">
+                {links.map((link: any) =>
+                    <li>
+                        <Link href={link.url} classes="fs-base button" target="_blank" rel="noopener noreferrer">{link.text}</Link>
+                    </li>
+                )}
+            </ul>
+        )}
+	</section>
 
     <SudokuComponent />
 
-    <section class="single-column">
+    <section class="max-width-70ch margin-top-4">
         <div class="prose">
             <Content />
         </div>

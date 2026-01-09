@@ -3,38 +3,21 @@ import Link from "./Link.astro";
 ---
 
 <footer class="content-grid">
-    <div class="footer-spacer full-width"></div>
-    <div class="footer">
-        <p>Ethan Perry © 2025</p>
-        <nav>
-            <ul>
-                <li><Link href="/" classes="dark-standard">Home</Link></li>
-                <li><Link href="/contact" classes="dark-standard">Contact</Link></li>
-                <li><Link href="/sitemap" classes="dark-standard">Sitemap</Link></li>
-            </ul>
-
-            <ul class="socials">
-                <li><Link href="https://linkedin.com/in/ethan-a-perry" target="_blank" rel="noopener noreferrer" classes="dark-standard" icon={{name: "linkedin", side: "left"}}></Link></li>
-                <li><Link href="https://github.com/ethan-a-perry" target="_blank" rel="noopener noreferrer" classes="dark-standard" icon={{name: "github", side: "left"}}></Link></li>
-                <li><Link href="https://goodreads.com/ethanperry" target="_blank" rel="noopener noreferrer" classes="dark-standard" icon={{name: "goodreads", side: "left"}}></Link></li>
-            </ul>
-        </nav>
-    </div>
+	<div class="footer with-border-top">
+		<p>Ethan Perry © 2025 – 2026</p>
+	    <nav>
+	        <ul>
+	            <li><Link href="/" classes="dark-standard">Home</Link></li>
+	            <li><Link href="/contact" classes="dark-standard">Contact</Link></li>
+	            <li><Link href="/sitemap" classes="dark-standard">Sitemap</Link></li>
+	        </ul>
+	    </nav>
+	</div>
 </footer>
 
 <style>
-    footer {
-        background-color: var(--color-dark-background);
-    }
-
-    .footer-spacer {
-        background-color: var(--color-footer-spacer, var(--color-site-background));
-
-        height: 20rem;
-        width: 100%;
-    }
-
     .footer {
+    	margin-top: 20rem;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -43,35 +26,19 @@ import Link from "./Link.astro";
 
         padding-block: 2rem;
 
-        color: #D4D4D4;
+        color: var(--color-text-65);
     }
 
-    nav, ul {
+    nav ul {
         display: flex;
         align-items: center;
         gap: 1.5rem 2rem;
     }
 
-    .socials {
-        gap: 1rem;
-
-        padding-left: 2rem;
-        border-left: 1px solid currentColor;
-
-        li {
-            display: grid;
-        }
-    }
-
     @media (width < 768px) {
-        .footer, nav {
+        .footer {
             flex-direction: column;
             align-items: flex-start;
-        }
-
-        .socials {
-            padding: unset;
-            border-left: 0;
         }
     }
 </style>

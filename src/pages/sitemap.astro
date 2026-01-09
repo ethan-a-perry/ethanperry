@@ -7,55 +7,37 @@ const works = await getCollection("work");
 const writings = await getCollection("writings");
 
 const title = "Sitemap | Ethan Perry";
-const description = "Full sitemap of main pages, blog posts, and project case studies.";
+const description = "Full sitemap of website.";
 ---
 
 <Base title={title} description={description}>
-    <section class="dual-column with-border-top">
-        <h1>Sitemap</h1>
-        <ul class="sitemap">
-            <li class="scr">
-                <p>Main</p>
-
-                <ul>
-                    <li><Link href="/">Home</Link></li>
-                    <li><Link href="/writings">Writings</Link></li>
-                    <li><Link href="/work">Work</Link></li>
-                    <li><Link href="/about">About</Link></li>
-                    <li><Link href="/contact">Contact</Link></li>
-                </ul>
-            </li>
-            <li class="scr">
-                <p>Work</p>
-                <ul class="may-scroll">
-                    {works.map((work: any) =>
-                            <li><Link href={`/work/${work.id}/`}>{work.data.title}</Link></li>
-                    )}
-                </ul>
-            </li>
-            <li class="scr">
-                <p>Writings</p>
-                <ul class="may-scroll">
-                    {writings.map((writing: any) =>
-                            <li><Link href={`/writings/${writing.id}/`}>{writing.data.title}</Link></li>
-                    )}
-                </ul>
-            </li>
-        </ul>
-    </section>
+    <h1>Sitemap</h1>
+    <ul class="sitemap margin-top-2">
+        <li>
+            <p class="color-accent-100">Main</p>
+            <ul>
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="/writings">Writings</Link></li>
+                <li><Link href="/work">Work</Link></li>
+                <li><Link href="/about">About</Link></li>
+                <li><Link href="/contact">Contact</Link></li>
+            </ul>
+        </li>
+        <li>
+            <p class="color-accent-100">Work</p>
+            <ul>
+                {works.map((work: any) =>
+                   	<li><Link href={`/work/${work.id}/`}>{work.data.title}</Link></li>
+                )}
+            </ul>
+        </li>
+        <li>
+            <p class="color-accent-100">Writings</p>
+            <ul>
+                {writings.map((writing: any) =>
+                    <li><Link href={`/writings/${writing.id}/`}>{writing.data.title}</Link></li>
+                )}
+            </ul>
+        </li>
+    </ul>
 </Base>
-
-<script is:inline>
-    const elements = document.querySelectorAll('.may-scroll');
-
-    function checkHeight() {
-        elements.forEach(el => {
-            console.log("helo")
-            if (el.offsetHeight >= 400) {
-                el.classList.add('scroller', 'vert');
-            }
-        });
-    }
-
-    checkHeight();
-</script>

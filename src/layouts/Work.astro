@@ -7,37 +7,35 @@ const { title, description, seoTitle, seoDescription, datePublished, dateUpdated
 ---
 
 <Base title=`${seoTitle || title} | Case Study | Ethan Perry` description={seoDescription || description} image={image} metadata={{ datePublished, dateUpdated, tags }}>
-    <h1 class="post--header">{title}</h1>
+	<section class="flow-1 max-width-70ch">
+		<h1>{title}</h1>
+		<p>{description}</p>
+	</section>
 
-    <section class="dual-column metadata with-border-top margin-top-2">
-        <div class="dates flex-col--5">
-            <p>Published {formatDate(datePublished)}</p>
-            {dateUpdated && (
-                    <p>Updated {formatDate(dateUpdated)}</p>
-            )}
-        </div>
+	<section class="with-border-top">
+		<span>Published {formatDate(datePublished)}</span>
+        {dateUpdated && (
+            <span>| Updated {formatDate(dateUpdated)}</span>
+        )}
 
-        <div class="flex-col-2">
-            <h2 class="description color-text-80">{description}</h2>
-            {links && (
-                    <ul class="flex-row-1 flex-wrap">
-                        {links.map((link: any) =>
-                                <li>
-                                    <Link href={link.url} classes="fs-base button" target="_blank" rel="noopener noreferrer">{link.text}</Link>
-                                </li>
-                        )}
-                    </ul>
-            )}
-        </div>
-    </section>
+		{links && (
+			<ul class="flex-row-1 flex-wrap margin-top-1">
+                {links.map((link: any) =>
+                    <li>
+                        <Link href={link.url} classes="fs-base button" target="_blank" rel="noopener noreferrer">{link.text}</Link>
+                    </li>
+                )}
+            </ul>
+        )}
+	</section>
 
     {image && (
-            <section class="post--image margin-top-4">
+            <section class="post-image margin-top-4">
                 <img src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} />
             </section>
     )}
 
-    <section class="single-column margin-top-4">
+    <section class="max-width-70ch margin-top-4">
         <div class="prose">
             <slot />
         </div>

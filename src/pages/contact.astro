@@ -7,55 +7,52 @@ const description = "Get in touch for collaborations, project inquiries, or gene
 ---
 
 <Base title={title} description={description}>
-    <section class="dual-column with-border-top">
-        <h1>Contact</h1>
+	<section>
+		<h1>Contact</h1>
+		<ul class="flow-1 margin-top-1">
+            <li><Link href="mailto:ethan.perry.a@gmail.com" icon={{name: "arrow-right", side: "right"}}>ethan.perry.a@gmail.com</Link></li>
+            <li><Link href="https://linkedin.com/in/ethan-a-perry" target="_blank" rel="noopener noreferrer" icon={{name: "arrow-right", side: "right"}}>LinkedIn</Link></li>
+            <li><Link href="https://github.com/ethan-a-perry" target="_blank" rel="noopener noreferrer" icon={{name: "arrow-right", side: "right"}}>Github</Link></li>
+            <li><Link href="https://goodreads.com/ethanperry" target="_blank" rel="noopener noreferrer" icon={{name: "arrow-right", side: "right"}}>Goodreads</Link></li>
+        </ul>
 
-        <div class="contact">
-            <ul class="flex-col-1">
-                <li><Link href="mailto:ethan.perry.a@gmail.com" icon={{name: "arrow-right", side: "right"}}>ethan.perry.a@gmail.com</Link></li>
-                <li><Link href="https://linkedin.com/in/ethan-a-perry" target="_blank" rel="noopener noreferrer" icon={{name: "arrow-right", side: "right"}}>LinkedIn</Link></li>
-                <li><Link href="https://github.com/ethan-a-perry" target="_blank" rel="noopener noreferrer" icon={{name: "arrow-right", side: "right"}}>Github</Link></li>
-                <li><Link href="https://goodreads.com/ethanperry" target="_blank" rel="noopener noreferrer" icon={{name: "arrow-right", side: "right"}}>Goodreads</Link></li>
-            </ul>
+        <div class="form--wrapper margin-top-4">
+            <h2>Send me a message</h2>
+            <form id="contact-form" novalidate>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" data-error="Please enter a valid email address" required>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" data-error="Please enter a valid phone number">
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+                <div class="form-group grid-span">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required />
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
 
-            <div class="flex-col-2 form--wrapper margin-top-8 color-text-65">
-                <h2>Send me a message</h2>
-                <form id="contact-form" novalidate>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                        <span class="error-message" aria-live="polite"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" data-error="Please enter a valid email address" required>
-                        <span class="error-message" aria-live="polite"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone" data-error="Please enter a valid phone number">
-                        <span class="error-message" aria-live="polite"></span>
-                    </div>
-                    <div class="form-group grid-span">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required />
-                        <span class="error-message" aria-live="polite"></span>
-                    </div>
+                <div class="form-group grid-span">
+                    <button>Submit</button>
+                </div>
 
-                    <div class="form-group grid-span">
-                        <button>Submit</button>
-                    </div>
+                <div class="hp">
+                    <label for="hp"></label>
+                    <input id="hp" name="hp" aria-hidden="true" tabindex="-1" autocomplete="off" >
+                </div>
+            </form>
 
-                    <div class="hp">
-                        <label for="hp"></label>
-                        <input id="hp" name="hp" aria-hidden="true" tabindex="-1" autocomplete="off" >
-                    </div>
-                </form>
-
-                <div id="form-status"></div>
-            </div>
+            <div id="form-status"></div>
         </div>
-    </section>
+	</section>
 </Base>
 
 <script src="../wwwroot/js/form.js"></script>

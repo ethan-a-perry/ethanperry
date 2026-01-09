@@ -8,20 +8,17 @@ const { title, description, seoTitle, seoDescription, datePublished, dateUpdated
 ---
 
 <Base title=`${seoTitle || title} | Ethan Perry` description={seoDescription || description} image={image} metadata={{ datePublished, dateUpdated, tags }}>
-    <h1>{title}</h1>
+	<section class="flex-col-1">
+		<h1>{title}</h1>
+		<h2 class="color-text-80">{description}</h2>
 
-    <section>
-        <div class="dual-column metadata with-border-top margin-top-2">
-            <div class="dates">
-                <p>Published {formatDate(datePublished)}</p>
-                {dateUpdated && (
-                        <p>Updated {formatDate(dateUpdated)}</p>
-                )}
-            </div>
-
-            <h2 class="description">{description}</h2>
-        </div>
-    </section>
+		<div class="with-border-top">
+			<span>Published {formatDate(datePublished)}</span>
+	        {dateUpdated && (
+	            <span>| Updated {formatDate(dateUpdated)}</span>
+	        )}
+		</div>
+	</section>
 
     {image && image.fullWidth && (
             <section class="post--image">
@@ -29,37 +26,37 @@ const { title, description, seoTitle, seoDescription, datePublished, dateUpdated
             </section>
     )}
 
-    <section class="single-column writing--content margin-top-2">
+    <section class="max-width-70ch writing--content margin-top-2">
         <div class="prose">
             {image && !image.fullWidth && (
-                        <section class="">
-                            <img class="writing--image" src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} />
-                        </section>
+                <section>
+                    <img class="writing--image" src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} />
+                </section>
             )}
 
             <slot />
 
             {previousPost || nextPost && (
-                    <nav class="with-border-top margin-top-4">
-                        <ul>
-                            {previousPost && (
-                                    <li>
-                                        <Link href={previousPost.id} classes="theme-grey">
-                                            <span>Previous post:</span>
-                                            <div class="three-lines">{previousPost.title}</div>
-                                        </Link>
-                                    </li>
-                            )}
-                            {nextPost && (
-                                    <li>
-                                        <Link href={nextPost.id} classes="theme-grey">
-                                            <span>Next post:</span>
-                                            <div class="three-lines">{nextPost.title}</div>
-                                        </Link>
-                                    </li>
-                            )}
-                        </ul>
-                    </nav>
+                <nav class="with-border-top margin-top-4">
+                    <ul>
+                        {previousPost && (
+                                <li>
+                                    <Link href={previousPost.id} classes="theme-grey">
+                                        <span>Previous post:</span>
+                                        <div class="three-lines">{previousPost.title}</div>
+                                    </Link>
+                                </li>
+                        )}
+                        {nextPost && (
+                                <li>
+                                    <Link href={nextPost.id} classes="theme-grey">
+                                        <span>Next post:</span>
+                                        <div class="three-lines">{nextPost.title}</div>
+                                    </Link>
+                                </li>
+                        )}
+                    </ul>
+                </nav>
             )}
         </div>
     </section>
