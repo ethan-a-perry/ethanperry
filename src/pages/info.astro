@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import Link from "../components/Link.astro";
+
+import imgPortraitLagos from "/public/assets/images/about/portrait-lagos.webp";
+import imgPortraitTavira from "/public/assets/images/about/portrait-tavira.webp";
+
+const title = "Info"
+const description = "Creative software engineer buildi"
+---
+
+<Base title={title} description={description}>
+	<section class="flow-1 max-width-70ch">
+		<h1>Information</h1>
+        <p>I'm originally from Denver, Colorado.</p>
+        <p>My current work focuses on software development, and my background in data center operations, web design, and digital marketing gives me a unique perspective on how technical problem-solving intersects with creative thinking.</p>
+	</section>
+
+	<section class="margin-top-6">
+		<h2>Experience</h2>
+		<ul class="work-items margin-top-1">
+			<li>
+				<span class="color-text-65 fs-s">2026–PRESENT</span>
+				ESL teacher in Taiwan
+			</li>
+			<li>
+				<span class="color-text-65 fs-s">2023–2024</span>
+				Software engineer at HPE
+			</li>
+			<li>
+				<span class="color-text-65 fs-s">2023</span>
+				Data center technician at HPE
+			</li>
+			<li>
+				<span class="color-text-65 fs-s">2020–2021</span>
+				Digital marketing and web deisgn
+			</li>
+			<li>
+				<span class="color-text-65 fs-s">2015–2020</span>
+				Server and busser at a local BBQ restaurant in Loveland, CO
+			</li>
+		</ul>
+		<Link href="/resume_ethan_perry.pdf" classes="color-accent-100" icon={{name: "arrow-right", side: "right"}}>Download resume</Link>
+	</section>
+
+	<section class="margin-top-6">
+		<h2>Current photos</h2>
+		<div class="info-images margin-top-1 color-text-65 fs-s">
+			<div>
+				<img src={imgPortraitLagos.src} alt="ex1">
+				<p>Taken in Lagos, Portugal</p>
+			</div>
+
+			<div>
+				<img src={imgPortraitTavira.src} alt="ex2">
+				<p>Taken in Tavira, Portugal</span>
+			</div>
+		</div>
+	</section>
+</Base>
