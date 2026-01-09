@@ -31,6 +31,7 @@
         --_color-accent: 210, 80%, 40%;
         --color-accent-100: hsla(var(--_color-accent), 1);
         --color-accent-70: hsla(var(--_color-accent), 0.7);
+        --color-accent-40: hsla(var(--_color-accent), 0.4);
         --color-accent-40-rgb: rgb(165, 188, 218);
         --color-accent-25: hsla(var(--_color-accent), 0.25);
         --color-accent-15: hsla(var(--_color-accent), 0.15);
@@ -75,52 +76,55 @@
 		font-size: var(--font-size-s);
 	}
 
-	a {
-        &.with-underline {
-            text-decoration: underline;
+	.link--default {
+		&:hover {
+			background-color: var(--color-accent-15);
+		}
+	}
+
+	.link--blue, .prose a {
+		color: var(--color-accent-100);
+
+		&:hover,
+		&:focus-visible {
+			background-color: var(--color-accent-15);
+		}
+	}
+
+	.link--button {
+		display: inline-flex;
+
+		padding: 7px 12px;
+		border-radius: 10px;
+
+		color: var(--color-text-65);
+		background-color: var(--color-accent-15);
+
+        &:hover,
+		&:focus-visible {
+            background-color: var(--color-accent-40);
         }
+	}
 
-        .prose & {
-            text-decoration: underline;
+	.link.with-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 7px;
 
-            code {
-                color: var(--color-accent-100);
-                text-decoration: underline;
-                text-decoration-color: var(--color-accent-100);
-            }
-        }
+		&.left {
+			flex-direction: row-reverse;
+		}
+	}
 
-        &.with-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: start;
-            gap: 7px;
+	.link--icon-only:hover {
+		background-color: unset;
+		color: var(--color-text-65);
+	}
 
-            &.left {
-                flex-direction: row-reverse;
-            }
-        }
-
-        &:hover {
-            background-color: var(--color-accent-15);
-        }
-
-        &.dark-standard {
-            color: #fff;
-
-            &:hover {
-                background-color: unset;
-                color: var(--color-text-35);
-            }
-        }
-
-        &.copy-standard {
-            &:hover {
-                background-color: unset;
-                color: var(--color-text-50);
-            }
-        }
-    }
+	.prose a {
+		text-decoration: underline;
+	}
 }
 
 @layer layout {
@@ -293,6 +297,28 @@
 
     .flow-1 * + * {
         margin-top: 1rem;
+    }
+
+    .bold {
+    	font-weight: 500;
+    }
+
+    .ellipsis {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .three-lines {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .three-lines {
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
     }
 }
 

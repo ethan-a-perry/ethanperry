@@ -7,16 +7,16 @@ import Link from "./Link.astro";
 
     <nav id="nav" class="nav" data-visible="false">
         <ul class="nav--pages">
-            <li><Link href="/" isNavLink={true}>Home</Link></li>
-            <li><Link href="/work" isNavLink={true}>Work</Link></li>
-            <li><Link href="/writings" isNavLink={true}>Writings</Link></li>
-            <li><Link href="/info" isNavLink={true}>Info</Link></li>
-            <li><Link href="/contact" isNavLink={true}>Contact</Link></li>
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/work">Work</Link></li>
+            <li><Link href="/writings">Writings</Link></li>
+            <li><Link href="/info">Info</Link></li>
+            <li><Link href="/contact">Contact</Link></li>
         </ul>
 
         <ul class="nav--socials">
-            <li><Link href="https://linkedin.com/in/ethan-a-perry" target="_blank" rel="noopener noreferrer" classes="copy-standard" icon={{name: "linkedin", side: "left"}}></Link></li>
-            <li><Link href="https://github.com/ethan-a-perry" target="_blank" rel="noopener noreferrer" classes="copy-standard" icon={{name: "github", side: "left"}}></Link></li>
+            <li><Link href="https://linkedin.com/in/ethan-a-perry" variant="icon-only" icon="linkedin" external={true} aria-label="linkedin"></Link></li>
+            <li><Link href="https://github.com/ethan-a-perry" variant="icon-only" icon="github" external={true} aria-label="github"></Link></li>
         </ul>
     </nav>
 </header>

@@ -13,12 +13,8 @@ const visibleWork = limit ? works.slice(0, limit) : works;
 	{visibleWork.map((work: any) =>
 		<li>
 			<Link href={`/work/${work.id}/`}>
-				<div class="control">
-					<h3>{work.data.title}</h3>
-					<span class="color-text-65 fs-s">{work.data.datePublished.getFullYear()}</span>
-				</div>
-
-				<p>{work.data.description}</p>
+				<span class="color-text-65 fs-s">{work.data.datePublished.getFullYear()}</span>
+				<p><span class="bold">{work.data.title}</span>: {work.data.description}</p>
 			</Link>
 		</li>
 	)}
