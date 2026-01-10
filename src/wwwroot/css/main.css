@@ -83,12 +83,6 @@
 		font-size: var(--font-size-base);
 	}
 
-	.link svg {
-		width: 24px;
-		height: 24px;
-		fill: currentColor;
-	}
-
 	.link--default:hover {
 		background-color: var(--color-accent-15);
 	}
@@ -242,7 +236,7 @@
 
 .post-nav .link {
 	display: inline-block;
-	background-color: rgb(245, 245, 245);
+	background-color: var(--color-grey-background);
 
 	padding: 2rem;
 
@@ -528,15 +522,18 @@
 @layer components {
 	@layer code-block {
 		.code-block {
-			font-family: var(--code-font), monospace;
+			--_color-background-ui: var(--color-grey-background);
+			--_color-background-header: var(--color-accent-40-rgb);
 
 			position: relative;
 
-			background-color: var(--color-grey-background);
+			font-family: var(--font-code), monospace;
+			font-size: var(--font-size-s);
 
 			overflow: scroll;
-
 			max-height: min(600px, 60svh);
+
+			background-color: var(--_color-background-ui);
 		}
 
 		.code-block--header {
@@ -545,23 +542,20 @@
 			left: 0;
 			right: 0;
 
-			background: var(--color-accent-40-rgb);
-			padding: 0.5rem 2rem 0 2rem;
-
 			display: flex;
-			align-items: center;
-			justify-content: space-between;
+
+			padding-inline: 2rem;
+
+			background: var(--_color-background-header);
 		}
 
 		.filename {
-			padding: 2px 14px;
-			border-radius: 5px 5px 0 0;
-			background-color: var(--color-grey-background);
+			padding: 8px 14px;
+
+			background-color: var(--_color-background-ui);
 		}
 
 		pre {
-			font-size: var(--font-size-base);
-
 			padding: 1rem;
 
 			background-color: unset !important;

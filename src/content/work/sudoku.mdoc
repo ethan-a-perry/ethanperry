@@ -112,7 +112,7 @@ One potential solution is to add a small pseudo-element where the break occurs t
 
 This function below shows the code that finds an edge turn within a region:
 
-{% CodeBlock language="c#" filename="BorderStylingService.cs" %}
+{% CodeBlock filename="BorderStylingService.cs" %}
 
 ```c
 public static (Cell, Border)? FindEdgeTurn(Cell anchor) {
@@ -134,9 +134,9 @@ public static (Cell, Border)? FindEdgeTurn(Cell anchor) {
 
 Here is the corresponding CSS:
 
-{% CodeBlock language="css" filename="site.css" %}
+{% CodeBlock filename="site.css" %}
 
-```css
+```c
 .cell[aria-selected="true"] {
 	--clr-cell-bg: rgba(255, 255, 255, 0.5);
 	--clr-border: rgba(76, 175, 80, 0.5);

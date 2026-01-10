@@ -1,19 +1,16 @@
 ---
 interface Props {
-    language: string;
-    filename?: string;
+    filename: string;
 }
 
 const {
-    language,
     filename
 } = Astro.props as Props;
 ---
 
 <div class="code-block">
-    <div class="code-block--header flex-row-1 fs-base">
+    <div class="code-block--header">
         <span class="filename ellipsis">{filename}</span>
-        <span class="language">{language}</span>
     </div>
     <slot />
 </div>

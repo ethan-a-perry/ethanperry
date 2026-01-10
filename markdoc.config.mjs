@@ -40,7 +40,6 @@ export default defineMarkdocConfig({
 		CodeBlock: {
 			render: component("./src/components/CodeBlock.astro"),
 			attributes: {
-				language: { type: String },
 				filename: { type: String },
 			},
 		},

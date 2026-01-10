@@ -12,10 +12,8 @@ const title = "500 Internal Server Error | Ethan Perry";
 const description = "Oops, something went wrong. Please try again later, visit the homepage, or reach out for support.";
 ---
 <Base title={title} description={description}>
-	<section class="flow-1">
-		<h1>500: Internal Server Error ({error instanceof Error ? error.message : "unknown error"})</h1>
-		<div>
-			<Link href="/" icon={{name: "arrow-right", side: "right"}}>Go home</Link>
-		</div>
+	<section>
+		<h1>500: Internal Server Error — {error instanceof Error ? error.message : "unknown error"}</h1>
+		<Link href="/" variant="button" classes="margin-top-2">Go home</Link>
 	</section>
 </Base>
