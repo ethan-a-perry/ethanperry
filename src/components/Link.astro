@@ -18,20 +18,12 @@ const {
     ...rest
 } = Astro.props as Props;
 
-const isExternal = external || href.startsWith('http');
+const isExternal = external || (
+  href.startsWith('http') &&
+  !href.startsWith(Astro.site?.href || '')
+);
 
 const isCurrentPage = Astro.url.pathname === href;
 ---
 
-<a href={href} class:list={['link', `link--${variant}`, classes, {"with-icon" : !!icon}]} aria-current={isCurrentPage ? 'page' : undefined} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener noreferrer' : undefined} {...rest}>
-    <slot />
-    {icon && <svg><use href={`/assets/icons/icons.svg#${icon}`}></use></svg>}
-</a>
-
-<style>
-svg {
-	width: 24px;
-	height: 24px;
-	fill: currentColor;
-}
-</style>
+<a href={href} class:list={['link', `link--${variant}`, classes, {"with-icon" : !!icon}]} aria-current={isCurrentPage ? 'page' : undefined} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener noreferrer' : undefined} {...rest}><slot />{icon && <svg><use href={`/assets/icons/icons.svg#${icon}`}></use></svg>}</a>

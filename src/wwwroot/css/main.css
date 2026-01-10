@@ -83,10 +83,18 @@
 		font-size: var(--font-size-base);
 	}
 
-	.link--default {
-		&:hover {
-			background-color: var(--color-accent-15);
-		}
+	.link svg {
+		width: 24px;
+		height: 24px;
+		fill: currentColor;
+	}
+
+	.link--default:hover {
+		background-color: var(--color-accent-15);
+	}
+
+	.prose a {
+		text-decoration: underline;
 	}
 
 	.link--blue,
@@ -128,10 +136,6 @@
 	.link--icon-only:hover {
 		background-color: unset;
 		color: var(--color-text-65);
-	}
-
-	.prose a {
-		text-decoration: underline;
 	}
 }
 
@@ -400,6 +404,17 @@
 		.sitemap {
 			display: grid;
 			gap: 2rem;
+
+			ul li {
+				display: flex;
+				align-items: flex-start;
+				gap: 1ch;
+			}
+
+			ul li::before {
+				content: "–";
+				display: inline-block;
+			}
 		}
 	}
 }

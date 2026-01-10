@@ -3,47 +3,56 @@ slug: personal-website
 title: Personal Website | ethan-perry.com
 description: Personal website (this website) showcasing my projects, work, and writings—built from scratch with Astro, JavaScript, HTML, and CSS.
 datePublished: 2025-10-06
-image: {
-  src: "/assets/images/work/personal-website/personal-website-full-width.webp",
-  srcset: "/assets/images/work/personal-website/personal-website-thumb.webp 1600w, /assets/images/work/personal-website/personal-website-full-width.webp 2400w",
-  alt: "Image showing featured sections of a website",
-  sizes: "(max-width: 1200px) 100vw, 1200px",
-  og: "/assets/images/work/personal-website/personal-website-og.webp"
-}
-tags: ["Astro", "JavaScript", "HTML", "CSS", "Cloudflare", "Airtable", "Figma", "Markdoc"]
-links: [
-  {
-    url: "https://github.com/ethan-a-perry/ethanperry",
-    text: "GitHub repo"
-  }
-]
+image:
+    {
+        src: "/assets/images/work/personal-website/personal-website-full-width.webp",
+        srcset: "/assets/images/work/personal-website/personal-website-thumb.webp 1600w, /assets/images/work/personal-website/personal-website-full-width.webp 2400w",
+        alt: "Image showing featured sections of a website",
+        sizes: "(max-width: 1200px) 100vw, 1200px",
+        og: "/assets/images/work/personal-website/personal-website-og.webp",
+    }
+tags:
+    [
+        "Astro",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Cloudflare",
+        "Airtable",
+        "Figma",
+        "Markdoc",
+    ]
+links:
+    [
+        {
+            url: "https://github.com/ethan-a-perry/ethanperry",
+            text: "GitHub repo",
+        },
+    ]
 draft: false
 ---
 
 # Introduction
 
-This report documents the build process for my personal website (this website), ethan-perry.com. Below I outline what I built, how I
-built it, and what I learned along the way.
+This report documents the build process for my personal website (this website), ethan-perry.com. Below I outline what I built, how I built it, and what I learned along the way.
 
 ## Overview
 
-I built this website with Astro. By default, Astro delivers static pages, but it also allows JavaScript, TypeScript, and
-other frameworks/integrations where needed. That mix of simplicity and freedom, alongside a growing dev community, made the choice
-easy.
+I built this website with Astro. By default, Astro delivers static pages, but it also allows JavaScript, TypeScript, and other frameworks/integrations where needed. That mix of simplicity and freedom, alongside a growing dev community, made the choice easy.
 
-My goal was to create a place to share my work, projects, and writings. I wanted the design to feel modern, but also simple
-and not overstated.
+My goal was to create a place to share my work, projects, and writings. I wanted the design to feel modern, but also simple and not overstated.
 
 **Tools:**
-* Astro
-* JavaScript
-* TypeScript
-* HTML
-* CSS
-* Cloudflare Pages (deployment)
-* Airtable (to store contact form submissions)
-* Figma
-* Markdoc
+
+- Astro
+- JavaScript
+- TypeScript
+- HTML
+- CSS
+- Cloudflare Pages (deployment)
+- Airtable (to store contact form submissions)
+- Figma
+- Markdoc
 
 ## Process
 
@@ -51,145 +60,103 @@ Continue reading to learn more about my process, challenges, and insights.
 
 ### Selecting my tech stack
 
-My background in marketing and software development has shown me both sides of the web: building from scratch and
-using website builders such as WordPress, Webflow, Framer, and Squarespace.
+My background in marketing and software development has shown me both sides of the web: building from scratch and using website builders such as WordPress, Webflow, Framer, and Squarespace.
 
 Most website builders are user-friendly and simple to maintain, but lack the customizability I needed for this project.
 
-Static site builders like Hugo and Eleventy prioritize speed and delivery, but Astro is also extremely fast and I
-appreciate their approach to JavaScript hydration and a relatively new {% ExternalLink href="https://docs.astro.build/en/concepts/islands/" %}frontend architecture pattern called *Islands Architecture*{% /ExternalLink %}.
-Astro also offers numerous integrations in their ecosystem which removed a lot of roadblocks for me.
+Static site builders like Hugo and Eleventy prioritize speed and delivery, but Astro is also extremely fast and I appreciate their approach to JavaScript hydration and a relatively new [frontend architecture pattern called _Islands Architecture_](https://docs.astro.build/en/concepts/islands/). Astro also offers numerous integrations in their ecosystem which removed a lot of roadblocks for me.
 
-I used Cloudflare Pages for its global reach and simple deployment process. In the future, I plan to self-host a server
-on Dokploy, but for now, I'm enjoying the ease of serverless deployment.
+I used Cloudflare Pages for its global reach and simple deployment process. In the future, I plan to self-host a server on Dokploy, but for now, I'm enjoying the ease of serverless deployment.
 
 ### Design
 
-I explored Figma for the first time during this project, and it really helped me streamline my development process
-(more on this later in the *Insights* section of this article).
+I explored Figma for the first time during this project, and it really helped me streamline my development process (more on this later in the _Insights_ section of this article).
 
 My outside inspiration came from websites and web components I discovered on Awwwards, Behance, Dribble, and Figma Community.
 
 ### Development
 
-Even though I position myself as a C#/Python backend developer, I may need to reframe that because there is something
-about HTML and CSS that I just absolutely love and have always loved. I do consider myself more of a developer than a designer,
-but I enjoy frontend development a lot.
+Even though I position myself as a C#/Python backend developer, I may need to reframe that because there is something about HTML and CSS that I just absolutely love and have always loved. I do consider myself more of a developer than a designer, but I enjoy frontend development a lot.
 
-I didn't use any CSS frameworks because I enjoy scaffolding my CSS architecture from scratch. I like my CSS to feel
-as lightweight as possible.
+I didn't use any CSS frameworks because I enjoy scaffolding my CSS architecture from scratch. I like my CSS to feel as lightweight as possible.
 
-Also, I have never been particularly interested in JavaScript or TypeScript, but after using them throughout this build, I started
-to understand the appeal and spirit of the language. I'm looking forward to improving my JS/TS skills
-as I build more Astro sites in the future. However, it would be remiss of me not to mention that finding JS workarounds will
-never cease to bring me joy!
+Also, I have never been particularly interested in JavaScript or TypeScript, but after using them throughout this build, I started to understand the appeal and spirit of the language. I'm looking forward to improving my JS/TS skills as I build more Astro sites in the future. However, it would be remiss of me not to mention that finding JS workarounds will never cease to bring me joy!
 
 #### Contact Form
 
-For some unknown reason, I love building contact forms—they show just how powerful the web can be when HTML, CSS, and JavaScript
-come together.
+For some unknown reason, I love building contact forms—they show just how powerful the web can be when HTML, CSS, and JavaScript come together.
 
-I was happy to work through the extra steps necessary when building a form on a Cloudflare pages site,
-which unlike other serverless hosts—and unfortunately so, I might add—does not have any plug-and-play form handling.
-This meant I was required to build out a custom API endpoint.
+I was happy to work through the extra steps necessary when building a form on a Cloudflare pages site, which unlike other serverless hosts—and unfortunately so, I might add—does not have any plug-and-play form handling. This meant I was required to build out a custom API endpoint.
 
-I built it and connected it to my Airtable base, which will automatically email me new submissions.
-This `Astro => Cloudflare => Airtable => Email Client` flow is a simple, free, lightweight "email service" that I can take
-advantage of until my requirements become more demanding.
+I built it and connected it to my Airtable base, which will automatically email me new submissions. This `Astro => Cloudflare => Airtable => Email Client` flow is a simple, free, lightweight "email service" that I can take advantage of until my requirements become more demanding.
 
 #### Sudoku App
 
-Another project I built this year was an interactive Sudoku web app written entirely in C#.
-{% ExternalLink href="/work/sudoku" %}You can play and read about it here{% /ExternalLink %}.
+Another project I built this year was an interactive Sudoku web app written entirely in C#. {%ExternalLink href="/work/sudoku" %}You can play and read about it here{% /ExternalLink %}.
 
-I deployed the app—a Blazor WebAssembly app—directly on this site. Integrate a WASM app so easily confirmed that I had
-made the right choice in choosing Astro over Hugo or Eleventy.
+I deployed the app—a Blazor WebAssembly app—directly on this site. Integrate a WASM app so easily confirmed that I had made the right choice in choosing Astro over Hugo or Eleventy.
 
-The Sudoku app is served in my `/public/` directory and since WASM essentially runs JavaScript, everything
-worked smoothly on Cloudflare pages.
+The Sudoku app is served in my `/public/` directory and since WASM essentially runs JavaScript, everything worked smoothly on Cloudflare pages.
 
 #### Anchor Positioning!
 
-During this build, I explored several new CSS features. My favorite was {% ExternalLink href="https://developer.chrome.com/blog/anchor-positioning-api" %}Anchor Positioning, a new API introduced in Chrome{% /ExternalLink %}
-that's quickly gaining traction.
+During this build, I explored several new CSS features. My favorite was [Anchor Positioning, a new API introduced in Chrome](https://developer.chrome.com/blog/anchor-positioning-api) that's quickly gaining traction.
 
-I built three components using anchor positioning (see graphics below for two of them)—each of which would have been cumbersome to build without it.
-I decided to exclude all three components because they didn't fit the design, but if I had included them, I would have added
-an anchor positioning polyfill for browser support.
+I built three components using anchor positioning (see graphics below for two of them)—each of which would have been cumbersome to build without it. I decided to exclude all three components because they didn't fit the design, but if I had included them, I would have added an anchor positioning polyfill for browser support.
 
-The most interesting of the three was a sitemap component, which is a tree structure.
-I plan to write an article outlining my approach to this element.
+The most interesting of the three was a sitemap component, which is a tree structure. I plan to write an article outlining my approach to this element.
 
 ![sitemap including links to pages](/assets/images/work/personal-website/personal-website-figure-1.webp)
 
-*Note: The credit for this design goes to {% ExternalLink href="https://www.figma.com/@nicolemyers" %}Nicole Myers on Figma{% /ExternalLink %}*. I did implement it myself with code though.
+_Note: The credit for this design goes to [Nicole Myers on Figma](https://www.figma.com/@nicolemyers). I did implement it myself with code though._
 
 ![tree structure web component with a heading and sub-headings](/assets/images/work/personal-website/personal-website-figure-2.png)
 
 This is another tree-like structure anchor positioning is perfect for. It was intended to be a sidebar on my articles, but for now, I have omitted it.
 
-The third element I built with anchor positioning was—of course—a tooltip! Tooltips are ubiquitous, so I won't share
-an image here, but it was a standard tooltip.
-
+The third element I built with anchor positioning was—of course—a tooltip! Tooltips are ubiquitous, so I won't share an image here, but it was a standard tooltip.
 
 #### Container Queries and Layers
 
-I also explored the new {% ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer" %}`@layer`{% /ExternalLink %} and
-{% ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/@container" %}`@container`{% /ExternalLink %} specs. They were extremely useful and made
-it to the final edit.
-
+I also explored the new [`@layer`](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) and [`@container`](https://developer.mozilla.org/en-US/docs/Web/CSS/@container) specs. They were extremely useful and made it to the final edit.
 
 ## Insights + Opportunities for Growth
 
 ### Asking myself the right questions
 
-When I begin a project, I like to define an MVP based off a strict set of requirements. However, as I built this site for
-myself and not for a client, it was too easy and too tempting to dream up a new feature and just begin coding.
+When I begin a project, I like to define an MVP based off a strict set of requirements. However, as I built this site for myself and not for a client, it was too easy and too tempting to dream up a new feature and just begin coding.
 
-This made my process too scattered and slow. In the future, I'll be more careful
-to ask myself the usual questions I might pose to a client, or at least frame as a part of my conversations with clients:
-* What do you want this project to achieve?
-* Why now?
-* Would another solution be better or cheaper or [enter reason]?
-* Does this feature align with the goals or is it just a distraction?
+This made my process too scattered and slow. In the future, I'll be more careful to ask myself the usual questions I might pose to a client, or at least frame as a part of my conversations with clients:
+
+- What do you want this project to achieve?
+- Why now?
+- Would another solution be better or cheaper or [enter reason]?
+- Does this feature align with the goals or is it just a distraction?
 
 ### Design first, then develop
 
-I used to write code without a proper design guiding the development process, which meant building something became *expensive* because
-I wouldn't be sure I would like the design. This workflow was slow and led to a lot of scrapped components and wasted time.
-Once I stopped designing on the fly and worked in Figma, my process improved and became much faster.
+I used to write code without a proper design guiding the development process, which meant building something became _expensive_ because I wouldn't be sure I would like the design. This workflow was slow and led to a lot of scrapped components and wasted time. Once I stopped designing on the fly and worked in Figma, my process improved and became much faster.
 
 In the future, all my projects will run through a design tool before I write any code.
 
 ### Islands Architecture is great + why is everything so much better with less JavaScript?
 
-Astro takes a static-first approach which I really appreciate, but they also realize that a lot of modern websites require
-more than just static. I can use JS and TS where needed, but also keep my site very fast elsewhere.
+Astro takes a static-first approach which I really appreciate, but they also realize that a lot of modern websites require more than just static. I can use JS and TS where needed, but also keep my site very fast elsewhere.
 
-As someone who enjoys CSS, I can't help but try to avoid JavaScript as much as possible, and seeing how Astro handles
-JavaScript, it shows how fast a site can be when the JavaScript is controlled and tamed. And by comparison, it also shows how much
-slower a site it when the JS becomes too unruly. Many websites I found for inspiration, especially on Awwwards, were
-sprinkled with JS everywhere, which made some of the websites unusable. It is so sad to see great design throttled by the
-limitations of current browsers/tech.
+As someone who enjoys CSS, I can't help but try to avoid JavaScript as much as possible, and seeing how Astro handles JavaScript, it shows how fast a site can be when the JavaScript is controlled and tamed. And by comparison, it also shows how much slower a site it when the JS becomes too unruly. Many websites I found for inspiration, especially on Awwwards, were sprinkled with JS everywhere, which made some of the websites unusable. It is so sad to see great design throttled by the limitations of current browsers/tech.
 
 ### CSS is improving really fast
 
-CSS is becoming more akin to a functional programming language by the day, especially with the planned
-{% ExternalLink href="https://www.w3.org/TR/css-mixins-1/" %}Functions and Mixins Module{% /ExternalLink %}.
+CSS is becoming more akin to a functional programming language by the day, especially with the planned [Functions and Mixins Module](https://www.w3.org/TR/css-mixins-1/).
 
-Browsers struggle to keep up with the improvements the CSS dev team is making, but in a sense, this is a good thing
-because it means the CSS Working Group is hard at work developing improvements.
+Browsers struggle to keep up with the improvements the CSS dev team is making, but in a sense, this is a good thing because it means the CSS Working Group is hard at work developing improvements.
 
-Using container queries, layers, anchor positioning, new systems for fluid typography, new syntax, the {% ExternalLink href="http://developer.mozilla.org/en-US/docs/Web/CSS/attr" %}new and improved `attr`{% /ExternalLink %},
-along with many new-ish selectors including {% ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has" %}`:has`{% /ExternalLink %}, {% ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is" %}`:is`{% /ExternalLink %},
-and more, all made using CSS much easier and more approachable.
+Using container queries, layers, anchor positioning, new systems for fluid typography, new syntax, the [new and improved `attr`](http://developer.mozilla.org/en-US/docs/Web/CSS/attr), along with many new-ish selectors including [`:has`](https://developer.mozilla.org/en-US/docs/Web/CSS/:has), [`:is`](https://developer.mozilla.org/en-US/docs/Web/CSS/:is), and more, all made using CSS much easier and more approachable.
 
-I'm looking forward to the continued improvements and continued browser support for the aforementioned features as well as
-the new grid-flex hybrid spec.
+I'm looking forward to the continued improvements and continued browser support for the aforementioned features as well as the new grid-flex hybrid spec.
 
 ## Closing Thoughts
 
-Overall, I'm very satisfied with this website. I needed a place to share my work, and I'm looking forward to updating
-and improving the site in the future.
+Overall, I'm very satisfied with this website. I needed a place to share my work, and I'm looking forward to updating and improving the site in the future.
 
 Thank you for reading and if you have any questions, please send me a message and we can chat!
