@@ -1,0 +1,60 @@
+---
+import Base from './Base.astro';
+import Link from "../components/Link.astro";
+import { formatDate } from '../wwwroot/js/utils';
+
+const { frontmatter, previousPost, nextPost } = Astro.props;
+const { title, description, seoTitle, seoDescription, datePublished, dateUpdated, image, tags, links, component } = frontmatter;
+---
+
+<Base title=`${seoTitle || title} | Ethan Perry` description={seoDescription || description} image={image} metadata={{ datePublished, dateUpdated, tags }}>
+	<div class="flow-1 max-width-90ch">
+		<h1>{title}</h1>
+		<h2 class="color-text-80">{description}</h2>
+	</div>
+
+	<div class="with-border-top">
+		<div class="max-width-70ch">
+			<span>{formatDate(datePublished)}</span>
+			{dateUpdated && (
+     			<span>| Updated {formatDate(dateUpdated)}</span>
+          		)}
+		</div>
+
+		{links && (
+			<div class="post-links margin-top-1 max-width-70ch">
+                {links.map((link: any) =>
+                    <Link href={link.url} variant="button" external={true} classes="fs-base">{link.text}</Link>
+                )}
+			</div>
+        )}
+	</div>
+
+	{image && (
+		<img class={`margin-top-4 ${image.fullWidth ? "" : "max-width-70ch"}`} src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} style={image.style} />
+    )}
+
+	<div class="prose margin-top-4">
+		<slot />
+	</div>
+
+	{(previousPost || nextPost) && (
+		<div class="margin-top-4 with-border-top">
+			<nav class="post-nav max-width-70ch">
+				{previousPost && (
+					<Link href={previousPost.id}>
+						<span>Previous post:</span>
+                    <div class="three-lines">{previousPost.title}</div>
+					</Link>
+				)}
+
+				{nextPost && (
+					<Link href={nextPost.id}>
+						<span>Next post:</span>
+                    <div class="three-lines">{nextPost.title}</div>
+					</Link>
+				)}
+			</nav>
+		</div>
+	)}
+</Base>

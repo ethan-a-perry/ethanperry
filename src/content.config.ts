@@ -25,7 +25,8 @@ const writings = defineCollection({
             style: z.string().optional()
         }).optional(),
         tags: z.array(z.string()),
-        draft: z.boolean().default(false)
+			draft: z.boolean().default(false),
+        component: z.string().optional(),
     })
 });
 
@@ -44,8 +45,9 @@ const work = defineCollection({
             alt: z.string(),
             srcset: z.string(),
             sizes: z.string(),
-            og: z.string()
-        }),
+            og: z.string(),
+            fullWidth: z.boolean().optional().default(true),
+        }).optional(),
         tags: z.array(z.string()),
         links: z.array(
             z.object({
@@ -56,6 +58,10 @@ const work = defineCollection({
         draft: z.boolean().default(false)
     })
 });
+
+// const post = defineCollection({
+// 	loader: glob({ pattern: "**/[^_]*.{md,mdx,mdoc}", base: "./src/content"})
+// })
 
 // Export a single `collections` object to register your collection(s)
 export const collections = { writings, work };

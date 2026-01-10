@@ -13,7 +13,6 @@
 
 #sudoku-app {
     padding: 5px;
-    margin-block: 2rem;
     padding-block: 4rem;
 
     background-color: var(--color-grid-primary, var(--color-site-background));

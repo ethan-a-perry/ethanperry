@@ -24,11 +24,10 @@ export default defineMarkdocConfig({
             },
         },
         ExternalLink: {
-            render: 'a',
+            render: component('./src/components/Link.astro'),
             attributes: {
-                href: { type: String, required: true },
-                target: { type: String, default: '_blank' },
-                rel: { type: String, default: 'noopener noreferrer' },
+            		href: { type: String, required: true },
+              	external: { type: Boolean, default: true }
             },
         },
         CodeBlock: {
@@ -37,6 +36,15 @@ export default defineMarkdocConfig({
                 language: { type: String },
                 filename: { type: String }
             }
-        }
+        },
+		FullWidth: {
+      		render: 'div',
+        	attributes: {
+				class: { type: String, default: 'full-width' }
+         	},
+		},
+		Sudoku: {
+			render: component('./src/components/Sudoku.astro'),
+		}
     },
 });

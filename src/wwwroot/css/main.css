@@ -76,6 +76,10 @@
 		font-size: var(--font-size-s);
 	}
 
+	.fs-base {
+		font-size: var(--font-size-base);
+	}
+
 	.link--default {
 		&:hover {
 			background-color: var(--color-accent-15);
@@ -157,7 +161,23 @@
 	}
 
 	@layer prose {
-        .prose, .prose .prose-include {
+		.prose {
+			display: grid;
+        	grid-template-columns:
+         		[full-width-start content-start] min(100%, 70ch) [content-end]
+           		1fr [full-width-end]
+         	;
+		}
+
+		.prose > :not(.full-width) {
+        	grid-column: content;
+        }
+
+        .prose > .full-width {
+        	grid-column: full-width;
+        }
+
+        .prose {
             overflow: hidden;
 
             :first-child {
@@ -199,6 +219,39 @@
             }
         }
     }
+}
+
+.post-nav {
+	display: grid;
+	gap: 1rem;
+
+	@container content-grid (inline-size > 768px) {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.post-nav .link {
+	display: inline-block;
+	background-color: rgb(245, 245, 245);
+
+    padding: 2rem;
+
+    border-radius: 5px;
+
+    &:hover {
+    	background-color: var(--color-accent-15);
+    }
+
+    span {
+    	color: var(--color-accent-100);
+    }
+}
+
+.post-links {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1rem;
 }
 
 .control {
@@ -277,6 +330,10 @@
 
     .max-width-70ch {
         max-width: 70ch;
+    }
+
+    .max-width-90ch {
+        max-width: 90ch;
     }
 
     .margin-top-1 {

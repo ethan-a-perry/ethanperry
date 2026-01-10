@@ -3,6 +3,7 @@ slug: reviews/the-netanyahus-by-joshua-cohen
 title: "Book Review: The Netanyahus by Joshua Cohen"
 description: Coming soon!
 datePublished: 2025-10-10
+dateUpdated: 2026-01-09
 tags: ["Book review"]
 image: {
   src: "/assets/images/writings/the-netanyahus/netanyahus-full-width.webp",
@@ -14,6 +15,7 @@ image: {
   fullWidth: false
 }
 draft: true
+component: "../components/Sudoku.astro"
 ---
 
 Stay tuned, coming soon!
