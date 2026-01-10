@@ -5,36 +5,36 @@
 
 @layer base {
 	:root {
-		--font-serif: 'Erode';
-		--font-code: 'JetBrainsMono';
+		--font-serif: "Erode";
+		--font-code: "JetBrainsMono";
 
 		--font-size-base: 1rem;
-        --font-size-body: 1.25rem;
-        --font-size-s: .95rem;
+		--font-size-body: 1.25rem;
+		--font-size-s: 0.95rem;
 
-        --font-size-4: 1.25rem;
-        --font-size-3: 1.375rem;
-        --font-size-2: 1.7rem;
-        --font-size-1: 2rem;
+		--font-size-4: 1.25rem;
+		--font-size-3: 1.375rem;
+		--font-size-2: 1.7rem;
+		--font-size-1: 2rem;
 
-        --color-site-background: white;
-        --color-grey-background: rgb(245, 245, 245);
+		--color-site-background: white;
+		--color-grey-background: rgb(245, 245, 245);
 
-        --color-text-100: hsl(0, 0%, 10%);
-        --color-text-80: hsl(0, 0%, 20%);
-        --color-text-65: hsl(0, 0%, 30%);
-        --color-text-50: hsl(0, 0%, 41%);
-        --color-text-35: hsl(0, 0%, 60%);
-        --color-text-20: hsl(0, 0%, 85%);
-        --color-text-10: hsl(0, 0%, 93%);
+		--color-text-100: hsl(0, 0%, 10%);
+		--color-text-80: hsl(0, 0%, 20%);
+		--color-text-65: hsl(0, 0%, 30%);
+		--color-text-50: hsl(0, 0%, 41%);
+		--color-text-35: hsl(0, 0%, 60%);
+		--color-text-20: hsl(0, 0%, 85%);
+		--color-text-10: hsl(0, 0%, 93%);
 
-        --_color-accent: 210, 80%, 40%;
-        --color-accent-100: hsla(var(--_color-accent), 1);
-        --color-accent-70: hsla(var(--_color-accent), 0.7);
-        --color-accent-40: hsla(var(--_color-accent), 0.4);
-        --color-accent-40-rgb: rgb(165, 188, 218);
-        --color-accent-25: hsla(var(--_color-accent), 0.25);
-        --color-accent-15: hsla(var(--_color-accent), 0.15);
+		--_color-accent: 210, 80%, 40%;
+		--color-accent-100: hsla(var(--_color-accent), 1);
+		--color-accent-70: hsla(var(--_color-accent), 0.7);
+		--color-accent-40: hsla(var(--_color-accent), 0.4);
+		--color-accent-40-rgb: rgb(165, 188, 218);
+		--color-accent-25: hsla(var(--_color-accent), 0.25);
+		--color-accent-15: hsla(var(--_color-accent), 0.15);
 	}
 
 	body {
@@ -52,7 +52,10 @@
 		grid-template-rows: auto 1fr auto;
 	}
 
-	h1, h2, h3, h4 a {
+	h1,
+	h2,
+	h3,
+	h4 a {
 		font-weight: 500;
 	}
 
@@ -86,7 +89,8 @@
 		}
 	}
 
-	.link--blue, .prose a {
+	.link--blue,
+	.prose a {
 		color: var(--color-accent-100);
 
 		&:hover,
@@ -104,10 +108,10 @@
 		color: var(--color-text-65);
 		background-color: var(--color-accent-15);
 
-        &:hover,
+		&:hover,
 		&:focus-visible {
-            background-color: var(--color-accent-40);
-        }
+			background-color: var(--color-accent-40);
+		}
 	}
 
 	.link.with-icon {
@@ -142,9 +146,11 @@
 			display: grid;
 			grid-template-columns:
 				[full-width-start] minmax(var(--padding-inline), 1fr)
-				[content-start] min(100% - (var(--padding-inline) * 2), var(--content-max-width)) [content-end]
+				[content-start] min(
+					100% - (var(--padding-inline) * 2),
+					var(--content-max-width)
+				) [content-end]
 				minmax(var(--padding-inline), 1fr) [full-width-end];
-			;
 		}
 
 		.content-grid > :not(.full-width),
@@ -163,62 +169,62 @@
 	@layer prose {
 		.prose {
 			display: grid;
-        	grid-template-columns:
-         		[full-width-start content-start] min(100%, 70ch) [content-end]
-           		1fr [full-width-end]
-         	;
+			grid-template-columns:
+				[full-width-start content-start] min(100%, 70ch) [content-end]
+				1fr [full-width-end];
 		}
 
 		.prose > :not(.full-width) {
-        	grid-column: content;
-        }
+			grid-column: content;
+		}
 
-        .prose > .full-width {
-        	grid-column: full-width;
-        }
+		.prose > .full-width {
+			grid-column: full-width;
+		}
 
-        .prose {
-            overflow: hidden;
+		.prose {
+			overflow: hidden;
 
-            :first-child {
-                margin-top: 0;
-            }
+			:first-child {
+				margin-top: 0;
+			}
 
-            :first-child:is(img) {
-                margin-bottom: 1rem;
-            }
+			:first-child:is(img) {
+				margin-bottom: 1rem;
+			}
 
-            > h1,
-            > h2,
-            > h3,
-            > h4 {
-                margin-top: 2.5rem;
-            }
+			> h1,
+			> h2,
+			> h3,
+			> h4 {
+				margin-top: 2.5rem;
+			}
 
-            > p, img {
-                margin-top: 1rem;
-            }
+			> p,
+			img {
+				margin-top: 1rem;
+			}
 
-            > ul {
-                list-style: disc;
-                padding-left: 2rem;
+			> ul {
+				list-style: disc;
+				padding-left: 2rem;
 
-                li ul {
-                    list-style: circle;
-                    padding-left: 2rem;
-                }
+				li ul {
+					list-style: circle;
+					padding-left: 2rem;
+				}
 
-                li::marker {
-                    font-size: var(--font-size-s);
-                }
-            }
+				li::marker {
+					font-size: var(--font-size-s);
+				}
+			}
 
-            > div:not(.prose-exclude) {
-                margin-top: 1rem;
-                margin-bottom: 1rem;
-            }
-        }
-    }
+			> div:not(.prose-exclude) {
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+			}
+		}
+	}
 }
 
 .post-nav {
@@ -234,17 +240,17 @@
 	display: inline-block;
 	background-color: rgb(245, 245, 245);
 
-    padding: 2rem;
+	padding: 2rem;
 
-    border-radius: 5px;
+	border-radius: 5px;
 
-    &:hover {
-    	background-color: var(--color-accent-15);
-    }
+	&:hover {
+		background-color: var(--color-accent-15);
+	}
 
-    span {
-    	color: var(--color-accent-100);
-    }
+	span {
+		color: var(--color-accent-100);
+	}
 }
 
 .post-links {
@@ -257,12 +263,13 @@
 .control {
 	display: flex;
 	align-items: flex-end;
-	gap: 1rem
+	gap: 1rem;
 }
 
 .work-items {
 	/* Also selects <li> without <a> child */
-	a, li:not(:has(> a)) {
+	a,
+	li:not(:has(> a)) {
 		display: grid;
 		gap: 1rem;
 
@@ -279,13 +286,13 @@
 }
 
 .post-image {
-    max-height: 650px;
+	max-height: 650px;
 
-    img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
+	img {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
 }
 
 .info-images {
@@ -305,78 +312,78 @@
 
 @layer utilities {
 	.with-border-top {
-        margin-top: 1rem;
-        border-top: 1px solid var(--color-text-10);
-        padding-top: 1rem;
-    }
+		margin-top: 1rem;
+		border-top: 1px solid var(--color-text-10);
+		padding-top: 1rem;
+	}
 
 	.color-text-65 {
-        color: var(--color-text-65);
-    }
+		color: var(--color-text-65);
+	}
 
-    .color-text-80 {
-           color: var(--color-text-80);
-       }
+	.color-text-80 {
+		color: var(--color-text-80);
+	}
 
-    .color-accent-100 {
-        color: var(--color-accent-100);
-    }
+	.color-accent-100 {
+		color: var(--color-accent-100);
+	}
 
-    .flex-space {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+	.flex-space {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
 
-    .max-width-70ch {
-        max-width: 70ch;
-    }
+	.max-width-70ch {
+		max-width: 70ch;
+	}
 
-    .max-width-90ch {
-        max-width: 90ch;
-    }
+	.max-width-90ch {
+		max-width: 90ch;
+	}
 
-    .margin-top-1 {
-    	margin-top: 1rem;
-    }
+	.margin-top-1 {
+		margin-top: 1rem;
+	}
 
-    .margin-top-2 {
-    	margin-top: 2rem;
-    }
+	.margin-top-2 {
+		margin-top: 2rem;
+	}
 
-    .margin-top-4 {
-    	margin-top: 4rem;
-    }
+	.margin-top-4 {
+		margin-top: 4rem;
+	}
 
-    .margin-top-6 {
-    	margin-top: 6rem;
-    }
+	.margin-top-6 {
+		margin-top: 6rem;
+	}
 
-    .flow-1 * + * {
-        margin-top: 1rem;
-    }
+	.flow-1 * + * {
+		margin-top: 1rem;
+	}
 
-    .bold {
-    	font-weight: 500;
-    }
+	.bold {
+		font-weight: 500;
+	}
 
-    .ellipsis {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
+	.ellipsis {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
 
-    .three-lines {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+	.three-lines {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
 
-    .three-lines {
-        -webkit-line-clamp: 3;
-        line-clamp: 3;
-    }
+	.three-lines {
+		-webkit-line-clamp: 3;
+		line-clamp: 3;
+	}
 }
 
 @layer pages {
@@ -398,161 +405,162 @@
 }
 
 @layer components {
-    @layer form {
-        .form--wrapper {
-            width: min(600px, 100%);
+	@layer form {
+		.form--wrapper {
+			width: min(600px, 100%);
 
-            display: grid;
-            gap: 2rem;
-        }
+			display: grid;
+			gap: 2rem;
+		}
 
-        form {
-            display: grid;
-            gap: 2rem;
+		form {
+			display: grid;
+			gap: 2rem;
 
-            color: var(--color-text-65);
-        }
+			color: var(--color-text-65);
+		}
 
-        .form-group {
-            display: grid;
-            grid-auto-rows: min-content;
-            gap: 0.25rem;
+		.form-group {
+			display: grid;
+			grid-auto-rows: min-content;
+			gap: 0.25rem;
 
-            &:has([required]) label {
-                display: flex;
-                gap: 1ch;
+			&:has([required]) label {
+				display: flex;
+				gap: 1ch;
 
-                &::after {
-                    content: "*";
-                    color: var(--color-accent-100);
-                }
-            }
-        }
+				&::after {
+					content: "*";
+					color: var(--color-accent-100);
+				}
+			}
+		}
 
-        input, textarea {
-            --_color-box-shadow: var(--color-accent-40);
+		input,
+		textarea {
+			--_color-box-shadow: var(--color-accent-40);
 
-            padding: 0.75em 1em;
+			padding: 0.75em 1em;
 
-            border: 1px solid var(--color-text-50);
-            border-radius: 5px;
+			border: 1px solid var(--color-text-50);
+			border-radius: 5px;
 
-            background: transparent;
+			background: transparent;
 
-            outline: none;
-            accent-color: var(--color-accent-40);
+			outline: none;
+			accent-color: var(--color-accent-40);
 
-            transition: box-shadow 0.2s ease;
+			transition: box-shadow 0.2s ease;
 
-            &:focus-visible {
-                box-shadow: 6px 6px 0 var(--_color-box-shadow);
-            }
+			&:focus-visible {
+				box-shadow: 6px 6px 0 var(--_color-box-shadow);
+			}
 
-            .form-group:has(.error-message:not(:empty)) & {
-                border-color: var(--color-accent-secondary-100);
+			.form-group:has(.error-message:not(:empty)) & {
+				border-color: var(--color-accent-secondary-100);
 
-                &:focus-visible {
-                    --_color-box-shadow: var(--color-accent-secondary-30);
-                }
-            }
-        }
+				&:focus-visible {
+					--_color-box-shadow: var(--color-accent-secondary-30);
+				}
+			}
+		}
 
-        textarea {
-            box-sizing: content-box;
-            resize: vertical;
-            min-block-size: 3lh;
-        }
+		textarea {
+			box-sizing: content-box;
+			resize: vertical;
+			min-block-size: 3lh;
+		}
 
-        form button {
-            padding: 1em 1.5em;
+		form button {
+			padding: 1em 1.5em;
 
-            border-radius: 16px;
+			border-radius: 16px;
 
-            background-color: var(--color-accent-15);
-            color: var(--color-text-65);
+			background-color: var(--color-accent-15);
+			color: var(--color-text-65);
 
-            &:hover,
-            &:focus-visible {
-                background-color: var(--color-accent-40);
-            }
-        }
+			&:hover,
+			&:focus-visible {
+				background-color: var(--color-accent-40);
+			}
+		}
 
-        .hp {
-            opacity: 0;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 0;
-            width: 0;
-            z-index: -1;
-        }
+		.hp {
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 0;
+			width: 0;
+			z-index: -1;
+		}
 
-        #form-status:empty {
-            display: none;
-        }
+		#form-status:empty {
+			display: none;
+		}
 
-        .error-message {
-            font-size: var(--font-size-base);
-            color: var(--color-accent-secondary-100);
-        }
+		.error-message {
+			font-size: var(--font-size-base);
+			color: var(--color-accent-secondary-100);
+		}
 
-        .error-message:empty {
-            display: none;
-        }
-    }
+		.error-message:empty {
+			display: none;
+		}
+	}
 }
 
 @layer components {
 	@layer code-block {
-        .code-block {
-            font-family: var(--code-font), monospace;
+		.code-block {
+			font-family: var(--code-font), monospace;
 
-            position: relative;
+			position: relative;
 
-            background-color: var(--color-grey-background);
+			background-color: var(--color-grey-background);
 
-            overflow: scroll;
+			overflow: scroll;
 
-            max-height: min(600px, 60svh);
-        }
+			max-height: min(600px, 60svh);
+		}
 
-        .code-block--header {
-            position: sticky;
-            top: 0;
-            left: 0;
-            right: 0;
+		.code-block--header {
+			position: sticky;
+			top: 0;
+			left: 0;
+			right: 0;
 
-            background: var(--color-accent-40-rgb);
-            padding: 0.5rem 2rem 0 2rem;
+			background: var(--color-accent-40-rgb);
+			padding: 0.5rem 2rem 0 2rem;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
 
-        .filename {
-            padding: 2px 14px;
-            border-radius: 5px 5px 0 0;
-            background-color: var(--color-grey-background);
-        }
+		.filename {
+			padding: 2px 14px;
+			border-radius: 5px 5px 0 0;
+			background-color: var(--color-grey-background);
+		}
 
-        pre {
-            font-size: var(--font-size-base);
+		pre {
+			font-size: var(--font-size-base);
 
-            padding: 1rem;
+			padding: 1rem;
 
-            background-color: unset !important;
-            color: unset !important;
-            overflow-x: unset !important;
-        }
-    }
+			background-color: unset !important;
+			color: unset !important;
+			overflow-x: unset !important;
+		}
+	}
 
-    @layer code-inline {
-        code:not(pre code) {
-            font-size: var(--font-size-base);
-            background-color: var(--color-accent-25);
+	@layer code-inline {
+		code:not(pre code) {
+			font-size: var(--font-size-base);
+			background-color: var(--color-accent-25);
 
-            padding: 2px 6px;
-        }
-    }
+			padding: 2px 6px;
+		}
+	}
 }

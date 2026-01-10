@@ -9,13 +9,14 @@
 *
 */
 @font-face {
-    font-family: 'Erode';
-    src: url('/fonts/Erode/Erode-Variable.woff2') format('woff2'),
-    url('/fonts/Erode/Erode-Variable.woff') format('woff'),
-    url('/fonts/Erode/Erode-Variable.ttf') format('truetype');
-    font-weight: 300 700;
-    font-display: swap;
-    font-style: normal;
+	font-family: "Erode";
+	src:
+		url("/fonts/Erode/Erode-Variable.woff2") format("woff2"),
+		url("/fonts/Erode/Erode-Variable.woff") format("woff"),
+		url("/fonts/Erode/Erode-Variable.ttf") format("truetype");
+	font-weight: 300 700;
+	font-display: swap;
+	font-style: normal;
 }
 
 /**
@@ -29,11 +30,12 @@
 *
 */
 @font-face {
-    font-family: 'JetBrainsMono';
-    src: url('/fonts/JetBrainsMono/JetBrainsMono-Variable.woff2') format('woff2'),
-    url('/fonts/JetBrainsMono/JetBrainsMono-Variable.woff') format('woff'),
-    url('/fonts/JetBrainsMono/JetBrainsMono-Variable.ttf') format('truetype');
-    font-weight: 100 800;
-    font-display: swap;
-    font-style: normal;
+	font-family: "JetBrainsMono";
+	src:
+		url("/fonts/JetBrainsMono/JetBrainsMono-Variable.woff2") format("woff2"),
+		url("/fonts/JetBrainsMono/JetBrainsMono-Variable.woff") format("woff"),
+		url("/fonts/JetBrainsMono/JetBrainsMono-Variable.ttf") format("truetype");
+	font-weight: 100 800;
+	font-display: swap;
+	font-style: normal;
 }
