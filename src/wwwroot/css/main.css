@@ -545,8 +545,6 @@
             color: unset !important;
             overflow-x: unset !important;
         }
-
-        .astro-code {}
     }
 
     @layer code-inline {
