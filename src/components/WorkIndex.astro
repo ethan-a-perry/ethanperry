@@ -9,11 +9,11 @@ const { limit } = Astro.props;
 const visibleWork = limit ? works.slice(0, limit) : works;
 ---
 
-<ul class="work-items margin-top-1">
+<ul class="record margin-top-1">
 	{visibleWork.map((work: any) =>
 		<li>
 			<Link href={`/work/${work.id}/`}>
-				<span class="color-text-65 fs-s">{work.data.datePublished.getFullYear()}</span>
+				<span class="color-text-65 fs-s">{work.data.datePublished.toLocaleString('en-US', { month: 'short' })} {work.data.datePublished.getFullYear()}</span>
 				<p><span class="bold">{work.data.title}</span>: {work.data.description}</p>
 			</Link>
 		</li>
