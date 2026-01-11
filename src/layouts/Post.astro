@@ -31,7 +31,9 @@ const { title, description, seoTitle, seoDescription, datePublished, dateUpdated
 	</div>
 
 	{image && (
-		<img class={`margin-top-4 ${image.fullWidth ? "" : "max-width-70ch"}`} src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} style={image.style} />
+		<div class={`post-image-wrapper margin-top-4 ${image.fullWidth ? "" : "max-width-70ch"}`}>
+			<img src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} style={image.style} />
+		</div>
     )}
 
 	<div class="prose margin-top-4">

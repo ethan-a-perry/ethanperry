@@ -12,6 +12,7 @@ image:
         alt: "Image showing featured sections of a website",
         sizes: "(max-width: 1200px) 100vw, 1200px",
         og: "/assets/images/writing/the-netanyahus/netanyahus-og.jpg",
+        style: "--object-position: top",
         fullWidth: false,
     }
 draft: true
