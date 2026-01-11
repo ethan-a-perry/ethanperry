@@ -1,10 +1,11 @@
 ---
 slug: sudoku
-title: Sudoku App
+title: Sudoku
 description: An interactive Sudoku app built in C#. Features playable puzzles and full pencil mark support.
-seoTitle: "C# Sudoku App | Modern Interactive App Built With C# | Ethan Perry"
+seoTitle: Sudoku | Ethan Perry
+seoDescription: An interactive Sudoku app built in C#. Features playable puzzles and full pencil mark support.
 datePublished: 2025-09-08
-dateUpdated: 2025-10-09
+dateUpdated: 2026-01-10
 tags:
     [
         "C#",
@@ -38,7 +39,7 @@ My focus was clean, minimal code with no hacky workarounds, while still deliveri
 
 ## Initial Checks & Guiding Principles
 
-I decided to build this app in C# using the Blazor ecosystem. Before discussing the advantages of Blazor, I think it’s prudent to quickly address requirement #3: no JavaScript allowed. Building web apps or components without JavaScript a badge of honor for many, especially amongst web developers. However, both Blazor Server and Blazor WebAssembly always run a bit of JavaScript under the hood, so while it cannot be avoided entirely, minimizing it better aligns with the spirit of the Blazor ecosystem.
+I decided to build this app in C# using the Blazor ecosystem. Before discussing the advantages of Blazor, I think it’s prudent to quickly address requirement #3: no JavaScript allowed. Both Blazor Server and Blazor WebAssembly always run a bit of JavaScript under the hood, so while it cannot be avoided entirely, minimizing it better aligns with the spirit of the Blazor ecosystem.
 
 Another motivation of mine was to modernize an earlier version of this app I had built three years ago, which worked quite well, but from a code perspective, was messy and not maintainable.
 
@@ -64,9 +65,7 @@ _Note: if you are interested in playing any of the puzzles above and would like 
 
 ## Summary
 
-Overall, this project was a success and met all the requirements: fast, responsive, and fully featured.
-
-As described earlier, the framework uses JavaScript under the hood in a few places, through the method JSInterop and I invoked this JSInterop service once during production to trigger a flag that informs Astro the app is ready.I couldn't avoid, but in terms of development, I did not write a single line of JavaScript
+Overall, this project was a success and met all the requirements.
 
 Although the framework uses JavaScript under the hood in a few places via JSInterop, I only invoked this service once in production to trigger a flag informing Astro that the app is ready. Beyond that, I did not write a single line of JavaScript during development.
 
@@ -78,7 +77,7 @@ Continue reading to learn more about my process and the challenges I faced.
 
 ### Architecture & Deployment Notes
 
-The final version is a WASM app/package I published and deployed here on my personal website as an Astro Interactive Island. However, my codebase, which you can [find on my GitHub](https://github.com/ethan-a-perry/Sudoku) is still structured as a Blazor web app with both server-side and WebAssembly (WASM) rendering support.
+The final version is a WASM app/package I published and deployed here on my personal website as an Astro Interactive Island. However, my codebase, which you can [find on my GitHub](https://github.com/ethan-a-perry/Sudoku), is still structured as a Blazor web app with both server-side and WebAssembly (WASM) rendering support.
 
 The client side (WASM) handles all interactive gameplay and logic, while the server side, if I choose to use it, renders the component on the frontend and maintains a SignalR connection. When rendered through the server, puzzle data is loaded from MongoDB, but in WebAssembly mode, puzzle data is loaded from a local JSON file embedded within the project for fast, offline-friendly access.
 
@@ -86,7 +85,7 @@ Rather than building a standalone Blazor WebAssembly app from the start, I kept 
 
 Lastly, publishing and embedding the app into my Astro website makes managing global layout and styling simpler and also offers users a more unified experience.
 
-_Note: sometimes WASM apps run slightly slower on Firefox on IOS devices. If you notice a slight lag, try switching to a different browser. Firefox should run very well on desktop/computers._
+_Note: sometimes WASM apps run slightly slower on Firefox on IOS devices. If you notice a slight lag, try switching to a different browser._
 
 ## Challenges
 
@@ -94,13 +93,13 @@ Continue reading to learn more about the challenges I faced.
 
 ### Canvas Element?
 
-Working against the limitations of HTML and CSS proved to be a constant challenge. Using the HTML `<canvas>` element, could have helped at moments, but ultimately would have been overkill considering the requirements of the app.
+Working against the limitations of HTML and CSS proved to be a constant challenge. Using the HTML `<canvas>` element could have helped at moments, but ultimately would have been overkill considering the requirements of the app.
 
 ### Border Styling Challenge
 
 The toughest challenge I experienced was implementing the border styling logic, which would visually outline a region of selected cells. Due to the limitations of CSS, this proved trickier than I had first anticipated.
 
-On certain regions, drawing a border is quite simple. A one-cell-large region simply receives a top, right, bottom, and left border (I actually used box-shadows). When cells are orthogonally adjacent, remove the border along their shared edge, thus creating a unified region. See examples below.
+On certain regions, drawing a border is quite simple. A one-cell-large region simply receives a top, right, bottom, and left border (I used box-shadows for a very specific reason I can no longer recall). When cells are orthogonally adjacent, remove the border along their shared edge, thus creating a unified region. See variations below.
 
 ![small sudoku grid with examples of selected cells and their styles](/assets/images/work/sudoku/sudoku-figure-1.webp)
 
@@ -213,7 +212,7 @@ Here is the corresponding CSS:
 
 Drawing the borders included a lot of other code related to checking cell neighbors, and considering the CSS, I ultimately decided to remove the border styling and opt for a minimal cell selection design. If I refactor the app to use the HTML `<canvas>` element, it will be the perfect opportunity to re-implement the border styling.
 
-I enjoyed building out the cell neighbor relationships, and if I ever expand the app in ways that utilize this functionality more, it will be nice to reimplement that logic.
+I enjoyed coding the cell neighbor relationship logic, and if I ever expand the app in ways that utilize this functionality more, it will be nice to reimplement it.
 
 ## What I Would Do Differently + Opportunities for Growth
 
@@ -223,11 +222,11 @@ Here are a few additional improvements I would love to make in the future:
 - Improve data access by adding an API layer between the WebAssembly project and a MongoDB Atlas cluster.
 - Utilize the HTML `<canvas>` element to reduce CSS overhead and simplify the border styling and cell highlighting features.
 
-If I were to rebuild this app, I would reconsider the tech stack: C# proved to be a fantastic backend, but I would likely consider using a different frontend.
+If I were to rebuild this app, I would reconsider the tech stack: C# was a sufficient backend, but I would likely rebuild the entire thing from scratch.
 
 ## Acknowledgements and Closing Thoughts
 
-I was first exposed to Sudoku when I discovered the [Cracking the Cryptic YouTube channel](https://www.youtube.com/@CrackingTheCryptic) and subsequently solved my first Sudoku. I quickly grew bored with the classic sudoku puzzles and started tackling the variants, some of which took me 4+ hours to beat, and many of which I never completed, even after many hours of trying.
+I was first exposed to Sudoku when I discovered the [Cracking the Cryptic YouTube channel](https://www.youtube.com/@CrackingTheCryptic) and subsequently solved my first Sudoku. I quickly grew bored with the classic sudoku puzzles and started tackling the variants, some of which took me 6+ hours to beat, and many of which I never completed, even after many hours of trying.
 
 This project is not only a technical effort, but also a love letter to a game I have enjoyed for many years.
 

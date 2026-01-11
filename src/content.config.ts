@@ -5,14 +5,14 @@ import { glob } from "astro/loaders";
 import { z, defineCollection } from "astro:content";
 
 // Define a `loader` and `schema` for each collection
-const writings = defineCollection({
-    loader: glob({ pattern: '**/[^_]*.{md,mdx,mdoc}', base: "./src/content/writings" }),
+const writing = defineCollection({
+    loader: glob({ pattern: '**/[^_]*.{md,mdx,mdoc}', base: "./src/content/writing" }),
     schema: z.object({
         slug: z.string(),
         title: z.string(),
-        description: z.string(),
-        seoTitle: z.string().optional(),
-        seoDescription: z.string().optional(),
+        description: z.string().optional(),
+        seoTitle: z.string(),
+        seoDescription: z.string(),
         datePublished: z.date(),
         dateUpdated: z.date().optional(),
         image: z.object({
@@ -25,8 +25,7 @@ const writings = defineCollection({
             style: z.string().optional()
         }).optional(),
         tags: z.array(z.string()),
-			draft: z.boolean().default(false),
-        component: z.string().optional(),
+		draft: z.boolean().default(false),
     })
 });
 
@@ -36,8 +35,8 @@ const work = defineCollection({
         slug: z.string(),
         title: z.string(),
         description: z.string(),
-        seoTitle: z.string().optional(),
-        seoDescription: z.string().optional(),
+        seoTitle: z.string(),
+        seoDescription: z.string(),
         datePublished: z.date(),
         dateUpdated: z.date().optional(),
         image: z.object({
@@ -64,4 +63,4 @@ const work = defineCollection({
 // })
 
 // Export a single `collections` object to register your collection(s)
-export const collections = { writings, work };
+export const collections = { writing, work };

@@ -4,7 +4,7 @@ import Link from "../components/Link.astro";
 import { getCollection } from "astro:content";
 
 const works = await getCollection("work");
-const writings = await getCollection("writings");
+const writing = await getCollection("writing");
 
 const title = "Sitemap | Ethan Perry";
 const description = "Full sitemap of website.";
@@ -17,7 +17,7 @@ const description = "Full sitemap of website.";
             <p class="color-accent-100">Main</p>
             <ul>
                 <li><Link href="/">Home</Link></li>
-                <li><Link href="/writings">Writings</Link></li>
+                <li><Link href="/writing">Writing</Link></li>
                 <li><Link href="/work">Work</Link></li>
                 <li><Link href="/about">About</Link></li>
                 <li><Link href="/contact">Contact</Link></li>
@@ -32,10 +32,10 @@ const description = "Full sitemap of website.";
             </ul>
         </li>
         <li>
-            <p class="color-accent-100">Writings</p>
+            <p class="color-accent-100">Writing</p>
             <ul>
-                {writings.map((writing: any) =>
-                    <li><Link href={`/writings/${writing.id}/`}>{writing.data.title}</Link></li>
+                {writing.map((writing: any) =>
+                    <li><Link href={`/writing/${writing.id}/`}>{writing.data.title}</Link></li>
                 )}
             </ul>
         </li>

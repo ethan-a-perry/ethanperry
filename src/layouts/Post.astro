@@ -7,10 +7,10 @@ const { frontmatter, previousPost, nextPost } = Astro.props;
 const { title, description, seoTitle, seoDescription, datePublished, dateUpdated, image, tags, links, component } = frontmatter;
 ---
 
-<Base title=`${seoTitle || title} | Ethan Perry` description={seoDescription || description} image={image} metadata={{ datePublished, dateUpdated, tags }}>
+<Base title={seoTitle} | Ethan Perry` description={seoDescription} image={image} metadata={{ datePublished, dateUpdated, tags }}>
 	<div class="flow-1 max-width-90ch">
 		<h1>{title}</h1>
-		<h2 class="color-text-80">{description}</h2>
+		{description && <h2 class="color-text-80">{description}</h2>}
 	</div>
 
 	<div class="with-border-top">

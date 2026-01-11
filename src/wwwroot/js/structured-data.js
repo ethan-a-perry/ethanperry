@@ -6,7 +6,7 @@ const include = [
     "/about",
     "/contact",
     "/work",
-    "/writings",
+    "/writing",
 ]
 
 const personId = `${siteData.domain}/#/schema/person`;
@@ -98,7 +98,7 @@ function getBlogPostSchema(canonicalURL, title, description, image, metadata) {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Work",
-                    "item": `${siteData.domain}/writings`
+                    "item": `${siteData.domain}/writing`
                 },{
                     "@type": "ListItem",
                     "position": 2,
@@ -114,7 +114,7 @@ function getWebPageSchema(canonicalURL, pathname, title, description) {
         "/about": "AboutPage",
         "/contact": "ContactPage",
         "/work": "CollectionPage",
-        "/writings": "CollectionPage"
+        "/writing": "CollectionPage"
     };
 
     const type = pageTypes[pathname] || "WebPage";
@@ -152,7 +152,7 @@ export function getStructuredData(canonicalURL, pathname, title, description, im
     else if (pathname.startsWith("/work/")) {
         return getCreativeWorkSchema(canonicalURL, title, description, image, metadata);
     }
-    else if (pathname.startsWith("/writings/")) {
+    else if (pathname.startsWith("/writing/")) {
         return getBlogPostSchema(canonicalURL, title, description, image, metadata)
     }
     else {

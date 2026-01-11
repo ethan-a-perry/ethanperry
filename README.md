@@ -1,7 +1,7 @@
 # ethan-perry.com
 
 Welcome to the source code for my [personal website](https://ethan-perry.com), where I share my recent projects,
-work, writings, and more.
+work, writing, and more.
 
 Built with Astro and deployed on Cloudflare Pages (for now).
 

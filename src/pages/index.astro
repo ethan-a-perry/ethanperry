@@ -1,16 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
 import Link from "../components/Link.astro";
-import WritingsIndex from "../components/WritingsIndex.astro";
+import WritingIndex from "../components/WritingIndex.astro";
 import WorkIndex from "../components/WorkIndex.astro";
 
-const title = "Ethan Perry | Software Engineer & Writer | Portfolio"
-const description = "Creative software engineer buildi"
+const title = "Ethan Perry"
+const description = "Personal website showcasing my work and writing."
 ---
 
 <Base title={title} description={description}>
 	<section class="home">
-		<h1>Hi, my name is Ethan Perry. This website showcases my apps, projects, and writings.</h1>
+		<h1>Hi, I'm Ethan. This is where I share what I'm working on and thinking about.</h1>
 
 		<div>
 			<h2>Recent Work</h2>
@@ -19,9 +19,9 @@ const description = "Creative software engineer buildi"
 		</div>
 
 		<div>
-			<h2>Writings</h2>
-			<WritingsIndex limit={6} />
-			<Link href="/writings" variant="button" classes="margin-top-1">View all writings</Link>
+			<h2>Writing</h2>
+			<WritingIndex limit={6} />
+			<Link href="/writing" variant="button" classes="margin-top-1">View all writing</Link>
 		</div>
 	</section>
 </Base>

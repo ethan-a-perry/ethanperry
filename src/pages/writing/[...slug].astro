@@ -4,7 +4,7 @@ import Post from '../../layouts/Post.astro'
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-    const posts = (await getCollection('writings')).sort((a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf());
+    const posts = (await getCollection('writing')).sort((a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf());
 
     return posts.map((post, index) => {
         const previousPost = index > 0 ? posts[index - 1] : undefined;
@@ -16,13 +16,13 @@ export async function getStaticPaths() {
                 post,
                 previousPost: previousPost
                     ? {
-                        id: `/writings/${previousPost.id}`,
+                        id: `/writing/${previousPost.id}`,
                         title: previousPost.data.title,
                     }
                     : undefined,
                 nextPost: nextPost
                     ? {
-                        id: `/writings/${nextPost.id}`,
+                        id: `/writing/${nextPost.id}`,
                         title: nextPost.data.title,
                     }
                     : undefined

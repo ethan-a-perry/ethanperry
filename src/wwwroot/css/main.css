@@ -461,8 +461,8 @@
 		}
 	}
 
-	@layer info {
-		.info-images {
+	@layer about {
+		.about-images {
 			max-width: 800px;
 
 			display: grid;
@@ -552,6 +552,10 @@
 
 	.bold {
 		font-weight: 500;
+	}
+
+	.italic {
+		font-style: italic;
 	}
 
 	.ellipsis {

@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import WritingIndex from '../../components/WritingIndex.astro';
+
+const title = "Writing | Ethan Perry";
+const description = "A collection of my writing including essays, book reviews, tech insights, poems, and more.";
+---
+
+<Base title={title} description={description}>
+	<section class="max-width-70ch">
+		<h1>Writing</h1>
+    	<WritingIndex />
+	</section>
+</Base>
