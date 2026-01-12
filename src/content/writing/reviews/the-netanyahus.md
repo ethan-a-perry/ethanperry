@@ -1,5 +1,5 @@
 ---
-slug: reviews/the-netanyahus-by-joshua-cohen
+slug: reviews/books/the-netanyahus
 title: "Book Review: The Netanyahus by Joshua Cohen"
 seoTitle: "Book Review: The Netanyahus by Joshua Cohen | Ethan Perry"
 seoDescription: "Book review—my thoughts and reflections."
