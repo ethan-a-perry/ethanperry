@@ -45,7 +45,8 @@ const work = defineCollection({
             srcset: z.string(),
             sizes: z.string(),
             og: z.string(),
-            fullWidth: z.boolean().optional().default(true),
+			fullWidth: z.boolean().optional().default(true),
+            style: z.string().optional()
         }).optional(),
         tags: z.array(z.string()),
         links: z.array(

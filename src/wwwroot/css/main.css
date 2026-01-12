@@ -35,6 +35,11 @@
 		--color-accent-40-rgb: rgb(165, 188, 218);
 		--color-accent-25: hsla(var(--_color-accent), 0.25);
 		--color-accent-15: hsla(var(--_color-accent), 0.15);
+
+		--_color-accent-secondary: 10, 55%, 45%;
+        --color-accent-secondary-15: hsla(var(--_color-accent-secondary), 0.15);
+        --color-accent-secondary-30: hsla(var(--_color-accent-secondary), 0.3);
+        --color-accent-secondary-100: hsla(var(--_color-accent-secondary), 1);
 	}
 
 	body {
