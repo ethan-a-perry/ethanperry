@@ -6,6 +6,6 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://ethan-perry.com',
+    site: 'https://ethanperry.co',
     integrations: [markdoc(), sitemap()]
 });
