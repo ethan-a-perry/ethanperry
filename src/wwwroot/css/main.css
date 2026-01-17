@@ -324,7 +324,13 @@
 			}
 
 			a:hover {
-				background-color: var(--color-accent-15);
+				background-color: unset;
+
+				> span {
+					text-decoration: underline;
+					text-decoration-thickness: 1px;
+					text-underline-offset: 2px;
+				}
 			}
 
 			li:not(:last-child) {
