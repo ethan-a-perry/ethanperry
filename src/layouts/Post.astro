@@ -17,7 +17,7 @@ const { title, description, seoTitle, seoDescription, datePublished, dateUpdated
 		<div class="max-width-70ch">
 			<span>{formatDate(datePublished)}</span>
 			{dateUpdated && (
-     			<span>| Updated {formatDate(dateUpdated)}</span>
+     			<span> | Updated {formatDate(dateUpdated)}</span>
           		)}
 		</div>
 
@@ -44,16 +44,16 @@ const { title, description, seoTitle, seoDescription, datePublished, dateUpdated
 		<div class="margin-top-4 with-border-top">
 			<nav class="post-nav max-width-70ch">
 				{previousPost && (
-					<Link href={previousPost.id}>
+					<Link href={`/${previousPost.collection}/${previousPost.id}/`}>
 						<span>Previous post:</span>
-                    <div class="three-lines">{previousPost.title}</div>
+                    <div class="three-lines">{previousPost.data.title}</div>
 					</Link>
 				)}
 
 				{nextPost && (
-					<Link href={nextPost.id}>
+					<Link href={`/${nextPost.collection}/${nextPost.id}/`}>
 						<span>Next post:</span>
-                    <div class="three-lines">{nextPost.title}</div>
+                    <div class="three-lines">{nextPost.data.title}</div>
 					</Link>
 				)}
 			</nav>

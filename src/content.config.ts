@@ -1,12 +1,14 @@
-// Import the glob loader
-import { glob } from "astro/loaders";
+// 1. Import utilities from `astro:content`
+import { defineCollection } from 'astro:content';
 
-// Import utilities from `astro:content`
-import { z, defineCollection } from "astro:content";
+// 2. Import loader(s)
+import { glob } from 'astro/loaders';
 
-// Define a `loader` and `schema` for each collection
+// 3. Import Zod
+import { z } from 'astro/zod';
+
 const writing = defineCollection({
-    loader: glob({ pattern: '**/[^_]*.{md,mdx,mdoc}', base: "./src/content/writing" }),
+    loader: glob({ base: "./src/content/writing", pattern: '**/*.{md,mdx,mdoc}' }),
     schema: z.object({
         slug: z.string(),
         title: z.string(),
@@ -30,7 +32,7 @@ const writing = defineCollection({
 });
 
 const work = defineCollection({
-    loader: glob({ pattern: "**/[^_]*.{md,mdx,mdoc}", base: "./src/content/work",  }),
+    loader: glob({ base: "./src/content/work", pattern: '**/*.{md,mdx,mdoc}' }),
     schema: z.object({
         slug: z.string(),
         title: z.string(),
@@ -59,9 +61,4 @@ const work = defineCollection({
     })
 });
 
-// const post = defineCollection({
-// 	loader: glob({ pattern: "**/[^_]*.{md,mdx,mdoc}", base: "./src/content"})
-// })
-
-// Export a single `collections` object to register your collection(s)
 export const collections = { writing, work };
