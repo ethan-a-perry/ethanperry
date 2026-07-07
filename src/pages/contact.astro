@@ -8,16 +8,14 @@ const description = "Get in touch with me for project inquiries, collaborations,
 
 <Base title={title} description={description}>
 	<section>
-		<h1>Get in touch</h1>
-		<p class="margin-top-1">Please don't hesitate to reach out!</p>
 		<ul class="flow-1 margin-top-1">
-            <li><Link href="mailto:ethan@ethanperry.co" variant="blue" icon="arrow-right">ethan@ethanperry.co</Link></li>
-            <li><Link href="https://linkedin.com/in/ethan-a-perry" variant="blue" icon="arrow-right" external={true}>LinkedIn</Link></li>
-            <li><Link href="https://github.com/ethan-a-perry" variant="blue" icon="arrow-right" external={true}>GitHub</Link></li>
+            <li><Link href="mailto:ethan@ethanperry.co" variant="underline">ethan@ethanperry.co</Link></li>
+            <li><Link href="https://instagram.com/_ethan_perry/" variant="underline" external={true}>Instagram</Link></li>
+            <li><Link href="https://linkedin.com/in/ethan-a-perry" variant="underline" external={true}>LinkedIn</Link></li>
+            <li><Link href="https://github.com/ethan-a-perry" variant="underline" external={true}>GitHub</Link></li>
         </ul>
 
-        <div class="form--wrapper margin-top-4">
-            <h2>Send me a message</h2>
+        <div class="form--wrapper margin-top-6">
             <form id="contact-form" novalidate>
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -55,4 +53,4 @@ const description = "Get in touch with me for project inquiries, collaborations,
 	</section>
 </Base>
 
-<script src="../wwwroot/js/form.js"></script>
+<script src="../scripts/form.js"></script>

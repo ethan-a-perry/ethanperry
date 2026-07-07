@@ -1,6 +1,6 @@
 ---
 import Link from "../components/Link.astro";
-import { formatDate, sortCollectionByMostRecent } from '../wwwroot/js/utils'
+import { formatDate, sortCollectionByMostRecent } from '../utils/dates.js'
 import { getCollection } from 'astro:content';
 
 const posts = sortCollectionByMostRecent(await getCollection('writing'));
@@ -9,12 +9,12 @@ const { limit, classes } = Astro.props;
 const visiblePosts = limit ? posts.slice(0, limit) : posts;
 ---
 
-<ul class="record margin-top-1">
+<ul class="record">
 	{visiblePosts.map((post: any) =>
 		<li>
 			<Link href={`/writing/${post.id}/`}>
-				<span class="color-text-65 fs-s">{post.data.tags.join(', ')} | {formatDate(post.data.datePublished)}</span>
-				<p class="bold">{post.data.title}</p>
+				<span class="color-text-65 fs-s">{formatDate(post.data.datePublished)}</span>
+				<p>{post.data.title}</p>
 			</Link>
 		</li>
 	)}

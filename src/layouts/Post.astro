@@ -1,46 +1,37 @@
 ---
 import Base from './Base.astro';
 import Link from "../components/Link.astro";
-import { formatDate } from '../wwwroot/js/utils';
+import { formatDate } from '../utils/dates.js';
 
 const { frontmatter, previousPost, nextPost } = Astro.props;
 const { title, description, seoTitle, seoDescription, datePublished, dateUpdated, image, tags, links, component } = frontmatter;
 ---
 
 <Base title={seoTitle} | Ethan Perry` description={seoDescription} image={image} metadata={{ datePublished, dateUpdated, tags }}>
-	<div class="flow-1 max-width-90ch">
-		<h1>{title}</h1>
-		{description && <h2 class="color-text-80">{description}</h2>}
+	<div class="flow-1 max-width-70ch">
+		<span class="color-text-65 fs-s">{formatDate(datePublished)}</span>
+		<p>{title}</p>
 	</div>
 
-	<div class="with-border-top">
-		<div class="max-width-70ch">
-			<span>{formatDate(datePublished)}</span>
-			{dateUpdated && (
-     			<span> | Updated {formatDate(dateUpdated)}</span>
-          		)}
-		</div>
-
-		{links && (
-			<div class="post-links margin-top-1 max-width-70ch">
+	{links && (
+		<ul class="flow-1 margin-top-6 max-width-70ch">
                 {links.map((link: any) =>
-                    <Link href={link.url} variant="button" external={true} classes="fs-base">{link.text}</Link>
+                    <li><Link href={link.url} variant="underline" external={true}>{link.text}</Link></li>
                 )}
-			</div>
-        )}
-	</div>
-
-	{image && (
-		<div class={`post-image-wrapper margin-top-4 ${image.fullWidth ? "" : "max-width-70ch"}`}>
-			<img src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} style={image.style} />
-		</div>
+		</ul>
     )}
 
-	<div class="prose margin-top-4">
+	<div class="prose margin-top-6">
 		<slot />
 	</div>
 
-	{(previousPost || nextPost) && (
+	<!-- {image && (
+		<div class={`post-image-wrapper margin-top-4 ${image.fullWidth ? "" : "max-width-70ch"}`}>
+			<img src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} style={image.style} />
+		</div>
+    )} -->
+
+	<!-- {(previousPost || nextPost) && (
 		<div class="margin-top-4 with-border-top">
 			<nav class="post-nav max-width-70ch">
 				{previousPost && (
@@ -58,5 +49,5 @@ const { title, description, seoTitle, seoDescription, datePublished, dateUpdated
 				)}
 			</nav>
 		</div>
-	)}
+	)} -->
 </Base>

@@ -1,7 +1,7 @@
 ---
 import Link from "../components/Link.astro";
 import { getCollection } from 'astro:content';
-import { sortCollectionByMostRecent } from '../wwwroot/js/utils.js';
+import { sortCollectionByMostRecent } from '../utils/dates.js';
 
 const works = sortCollectionByMostRecent(await getCollection('work'));
 
@@ -9,12 +9,12 @@ const { limit } = Astro.props;
 const visibleWork = limit ? works.slice(0, limit) : works;
 ---
 
-<ul class="record margin-top-1">
+<ul class="record">
 	{visibleWork.map((work: any) =>
 		<li>
 			<Link href={`/work/${work.id}/`}>
 				<span class="color-text-65 fs-s">{work.data.datePublished.toLocaleString('en-US', { month: 'short' })} {work.data.datePublished.getFullYear()}</span>
-				<p><span class="bold">{work.data.title}</span>: {work.data.description}</p>
+				<span>{work.data.title}: {work.data.description}</span>
 			</Link>
 		</li>
 	)}
