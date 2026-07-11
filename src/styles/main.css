@@ -1,0 +1,389 @@
+@layer reset, base, layout, components, pages, utilities;
+
+@import "reset.css" layer(reset);
+@import "fonts.css" layer(base);
+
+@layer base {
+	:root {
+		--font-serif: "PlusJakartaSans";
+		--font-code: "JetBrainsMono";
+
+		--font-size-base: 1rem;
+		--font-size-body: 1rem;
+		--font-size-s: 0.8rem;
+
+		--color-site-background: white;
+		--color-grey-background: rgb(245, 245, 245);
+
+		--color-text-100: hsl(0, 0%, 10%);
+		--color-text-80: hsl(0, 0%, 20%);
+		--color-text-65: hsl(0, 0%, 30%);
+		--color-text-50: hsl(0, 0%, 41%);
+		--color-text-35: hsl(0, 0%, 60%);
+		--color-text-20: hsl(0, 0%, 85%);
+		--color-text-10: hsl(0, 0%, 93%);
+
+		--_color-accent: 210, 80%, 40%;
+		--color-accent-100: hsla(var(--_color-accent), 1);
+		--color-accent-70: hsla(var(--_color-accent), 0.7);
+		--color-accent-40: hsla(var(--_color-accent), 0.4);
+		--color-accent-40-rgb: rgb(165, 188, 218);
+		--color-accent-25: hsla(var(--_color-accent), 0.25);
+		--color-accent-15: hsla(var(--_color-accent), 0.15);
+
+		--_color-accent-secondary: 10, 55%, 45%;
+        --color-accent-secondary-15: hsla(var(--_color-accent-secondary), 0.15);
+        --color-accent-secondary-30: hsla(var(--_color-accent-secondary), 0.3);
+        --color-accent-secondary-100: hsla(var(--_color-accent-secondary), 1);
+	}
+
+	body {
+		font-family: var(--font-serif), serif;
+
+		font-weight: 400;
+		font-style: normal;
+		line-height: 1.6;
+
+		overflow-x: hidden;
+
+		background-color: var(--color-site-background);
+
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-size: var(--font-size-body);
+		font-weight: 500;
+	}
+
+	.fs-s {
+		font-size: var(--font-size-s);
+	}
+
+	.fs-base {
+		font-size: var(--font-size-base);
+	}
+
+	.link {
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
+	}
+
+	.link--default:hover,
+	.link--default:focus-visible,
+	.link--underline,
+	.prose a {
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 2px;
+	}
+
+	.prose a {
+		color: var(--color-accent-100);
+	}
+}
+
+@layer utilities {
+	.with-border-top {
+		margin-top: 1rem;
+		border-top: 1px solid var(--color-text-10);
+		padding-top: 1rem;
+	}
+
+	.color-text-65 {
+		color: var(--color-text-65);
+	}
+
+	.color-text-80 {
+		color: var(--color-text-80);
+	}
+
+	.color-accent-100 {
+		color: var(--color-accent-100);
+	}
+
+	.flex-space {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.max-width-50ch {
+		max-width: 50ch;
+	}
+
+	.max-width-60ch {
+		max-width: 60ch;
+	}
+
+	.max-width-70ch {
+		max-width: 70ch;
+	}
+
+	.max-width-90ch {
+		max-width: 90ch;
+	}
+
+	.margin-top-1 {
+		margin-top: 1rem;
+	}
+
+	.margin-top-2 {
+		margin-top: 2rem;
+	}
+
+	.margin-top-4 {
+		margin-top: 4rem;
+	}
+
+	.margin-top-6 {
+		margin-top: 6rem;
+	}
+
+	.flex-row-1 {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.flow-1 * + * {
+		margin-top: 1rem;
+	}
+
+	.bold {
+		font-weight: 500;
+	}
+
+	.italic {
+		font-style: italic;
+	}
+
+	.ellipsis {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
+	.three-lines {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.three-lines {
+		-webkit-line-clamp: 3;
+		line-clamp: 3;
+	}
+}
+
+@layer layout {
+	@layer content-grid {
+		.content-grid {
+			padding-inline: 1.5rem;
+
+			max-width: 50ch;
+		}
+	}
+
+	@layer prose {
+		.prose {
+			display: grid;
+			grid-template-columns:
+				[full-width-start content-start] min(100%, 70ch) [content-end]
+				1fr [full-width-end];
+		}
+
+		.prose > :not(.full-width) {
+			grid-column: content;
+		}
+
+		.prose > .full-width {
+			grid-column: full-width;
+		}
+
+		.prose {
+			overflow: hidden;
+
+			:first-child {
+				margin-top: 0;
+			}
+
+			:first-child:is(img) {
+				margin-bottom: 1rem;
+			}
+
+			> h1,
+			> h2,
+			> h3,
+			> h4 {
+				margin-top: 2.5rem;
+			}
+
+			> p,
+			img {
+				margin-top: 1rem;
+			}
+
+			> ul {
+				list-style: disc;
+				padding-left: 2rem;
+
+				li ul {
+					list-style: circle;
+					padding-left: 2rem;
+				}
+
+				li::marker {
+					font-size: var(--font-size-s);
+				}
+			}
+
+			> div:not(.prose-exclude) {
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+			}
+		}
+	}
+}
+
+@layer components {
+	.records {
+		display: grid;
+		gap: 4rem;
+		margin-block: 2rem 4rem;
+	}
+
+	.record {
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	@layer code-block {
+		.code-block {
+			--_color-background-ui: var(--color-grey-background);
+			--_color-background-header: var(--color-accent-40-rgb);
+
+			position: relative;
+
+			font-family: var(--font-code), monospace;
+			font-size: var(--font-size-s);
+
+			overflow: scroll;
+			max-height: min(600px, 60svh);
+
+			background-color: var(--_color-background-ui);
+		}
+
+		.code-block--header {
+			position: sticky;
+			top: 0;
+			left: 0;
+			right: 0;
+
+			display: flex;
+
+			padding-inline: 2rem;
+
+			background: var(--_color-background-header);
+		}
+
+		.filename {
+			padding: 8px 14px;
+
+			background-color: var(--_color-background-ui);
+		}
+
+		pre {
+			padding: 1rem;
+
+			background-color: unset !important;
+			color: unset !important;
+			overflow-x: unset !important;
+		}
+	}
+
+	@layer code-inline {
+		code:not(pre code) {
+			font-size: var(--font-size-base);
+			background-color: var(--color-accent-25);
+
+			padding: 2px 6px;
+		}
+	}
+}
+
+@layer pages {
+	@layer post {
+		.post-links {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 1rem;
+		}
+
+		.post-image-wrapper {
+			max-height: 650px;
+
+			img {
+				--object-position: center;
+				object-position: var(--object-position);
+
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+
+		.post-nav {
+			display: grid;
+			gap: 1rem;
+
+			@container content-grid (inline-size > 768px) {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		.post-nav .link {
+			display: inline-block;
+			background-color: var(--color-grey-background);
+
+			padding: 2rem;
+
+			border-radius: 5px;
+
+			&:hover {
+				background-color: var(--color-accent-15);
+			}
+
+			span {
+				color: var(--color-accent-100);
+			}
+		}
+	}
+
+	@layer about {
+		.about-images {
+			max-width: 800px;
+
+			display: grid;
+			gap: 2rem;
+
+			@container content-grid (inline-size > 700px) {
+				grid-template-columns: 1fr 1fr;
+			}
+
+			img {
+				width: min(400px, 100%);
+			}
+		}
+	}
+}

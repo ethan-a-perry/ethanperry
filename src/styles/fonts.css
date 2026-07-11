@@ -1,0 +1,64 @@
+/**
+* @license
+*
+* Font Family: Plus Jakarta Sans
+* Designed by: Tokotype
+* URL: https://www.fontshare.com/fonts/plus-jakarta-sans
+* © 2025 Indian Type Foundry
+*
+* Plus Jakarta Sans Variable (Variable font)
+
+*
+*/
+@font-face {
+	font-family: "PlusJakartaSans";
+	src:
+		url("/fonts/PlusJakartaSans/PlusJakartaSans-Variable.woff2") format("woff2"),
+		url("/fonts/PlusJakartaSans/PlusJakartaSans-Variable.woff") format("woff"),
+		url("/fonts/PlusJakartaSans/PlusJakartaSans-Variable.ttf") format("truetype");
+	font-weight: 300 700;
+	font-display: swap;
+	font-style: normal;
+}
+
+/**
+* @license
+*
+* Font Family: Erode
+* Designed by: Nikhil Ranganathan
+* URL: https://www.fontshare.com/fonts/erode
+* © 2025 Indian Type Foundry
+
+*
+*/
+@font-face {
+	font-family: "Erode";
+	src:
+		url("/fonts/Erode/Erode-Variable.woff2") format("woff2"),
+		url("/fonts/Erode/Erode-Variable.woff") format("woff"),
+		url("/fonts/Erode/Erode-Variable.ttf") format("truetype");
+	font-weight: 300 700;
+	font-display: swap;
+	font-style: normal;
+}
+
+/**
+* @license
+*
+* Font Family: JetBrains Mono
+* Designed by: JetBrains, Philipp Nurullin, Konstantin Bulenkov
+* URL: https://www.fontshare.com/fonts/jet-brains-mono
+* © 2025 Indian Type Foundry
+
+*
+*/
+@font-face {
+	font-family: "JetBrainsMono";
+	src:
+		url("/fonts/JetBrainsMono/JetBrainsMono-Variable.woff2") format("woff2"),
+		url("/fonts/JetBrainsMono/JetBrainsMono-Variable.woff") format("woff"),
+		url("/fonts/JetBrainsMono/JetBrainsMono-Variable.ttf") format("truetype");
+	font-weight: 100 800;
+	font-display: swap;
+	font-style: normal;
+}
