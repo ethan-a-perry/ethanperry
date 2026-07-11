@@ -1,7 +1,7 @@
 ---
 import Base from './Base.astro';
 import Link from "../components/Link.astro";
-import { formatDate } from '../utils/dates.js';
+import { formatDate } from '../lib/dates.js';
 
 const { frontmatter, previousPost, nextPost } = Astro.props;
 const { title, description, seoTitle, seoDescription, datePublished, dateUpdated, image, tags, links, component } = frontmatter;
@@ -16,7 +16,7 @@ const { title, description, seoTitle, seoDescription, datePublished, dateUpdated
 	{links && (
 		<ul class="flow-1 margin-top-6 max-width-70ch">
                 {links.map((link: any) =>
-                    <li><Link href={link.url} variant="underline" external={true}>{link.text}</Link></li>
+                    <li><Link href={link.url} variant="underline">{link.text}</Link></li>
                 )}
 		</ul>
     )}

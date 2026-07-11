@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Link from "../components/Link.astro";
+import Icon from "../components/Icon.astro";
 
 import imgPortraitLagos from "/public/assets/images/about/portrait-lagos.webp";
 import imgPortraitTavira from "/public/assets/images/about/portrait-tavira.webp";
@@ -45,7 +46,10 @@ const description = "Some info about my background, experience, and interests."
 				Server and busser at a BBQ restaurant
 			</li>
 		</ul>
-		<Link href="/resume_ethan_perry.pdf?v=2026-01" variant="button" icon="open-in-new" iconSize="16px" external={true} classes="margin-top-1">Download resume</Link>
+		<Link class="margin-top-1" href="/resume_ethan_perry.pdf?v=2026-01" variant="underline">
+			Download Resume
+			<Icon name="open-in-new" size="16px"/>
+		</Link>
 	</section>
 
 	<section class="margin-top-6">

@@ -1,7 +1,7 @@
 ---
 import Link from "../components/Link.astro";
 import { getCollection } from 'astro:content';
-import { sortCollectionByMostRecent } from '../utils/dates.js';
+import { sortCollectionByMostRecent } from '../lib/dates.js';
 
 const works = sortCollectionByMostRecent(await getCollection('work'));
 

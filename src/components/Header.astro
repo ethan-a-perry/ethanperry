@@ -1,28 +1,26 @@
 ---
 import '../styles/header.css';
 import Link from "./Link.astro";
+import Icon from "../components/Icon.astro";
 ---
 
 <header class="content-grid">
-	<div class="header--container">
-		<Link href="/" classes="logo">Ethan Perry</Link>
-		<button class="nav-toggle" aria-controls="nav" aria-expanded="false">Menu</button>
-		<nav id="nav" class="nav" data-visible="false">
-			<ul class="nav--pages">
-				<li><Link href="/">Home</Link></li>
-				<li><Link href="/work">Work</Link></li>
-			    <li><Link href="/writing">Writing</Link></li>
-			    <li><Link href="/about">About</Link></li>
-			    <li><Link href="/contact">Contact</Link></li>
-			</ul>
+	<button class="nav-toggle" aria-controls="nav" aria-expanded="false">Menu</button>
+	<nav id="nav" class="nav" data-visible="false">
+		<ul class="nav--pages">
+			<li><Link href="/">Home</Link></li>
+			<li><Link href="/work">Work</Link></li>
+		    <li><Link href="/writing">Writing</Link></li>
+		    <li><Link href="/about">About</Link></li>
+		    <li><Link href="/contact">Contact</Link></li>
+		</ul>
 
-			<ul class="nav--socials">
-				<li><Link href="https://instagram.com/_ethan_perry/" variant="icon-only" icon="instagram" external={true} aria-label="instagram"></Link></li>
-	    		<li><Link href="https://linkedin.com/in/ethan-a-perry" variant="icon-only" icon="linkedin" external={true} aria-label="linkedin"></Link></li>
-	      		<li><Link href="https://github.com/ethan-a-perry" variant="icon-only" icon="github" external={true} aria-label="github"></Link></li>
-			</ul>
-		</nav>
-	</div>
+		<ul class="nav--socials">
+			<li><Link href="https://instagram.com/_ethan_perry/"><Icon name="instagram"/></Link></li>
+			<li><Link href="//linkedin.com/in/ethan-a-perry"><Icon name="linkedin"/></Link></li>
+			<li><Link href="https://github.com/ethan-a-perry"><Icon name="github"/></Link></li>
+		</ul>
+	</nav>
 </header>
 
 <script is:inline>

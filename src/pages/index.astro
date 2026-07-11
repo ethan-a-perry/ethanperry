@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Link from "../components/Link.astro";
+import Icon from "../components/Icon.astro";
 import WritingIndex from "../components/WritingIndex.astro";
 import WorkIndex from "../components/WorkIndex.astro";
 
@@ -9,7 +10,5 @@ const description = "Personal website showcasing my work and writing."
 ---
 
 <Base title={title} description={description}>
-	<section class="home">
-		<p>I occassionaly share my projects, work, and writing here. Please reach out to me if you find any of my stuff interesting!</p>
-	</section>
+	<h1 class="max-width-50ch">I share some of my projects, work, and writing here. Please reach out to me if you find any of it interesting!</h1>
 </Base>

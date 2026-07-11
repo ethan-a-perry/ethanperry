@@ -1,6 +1,6 @@
 ---
 import Link from "../components/Link.astro";
-import { formatDate, sortCollectionByMostRecent } from '../utils/dates.js'
+import { formatDate, sortCollectionByMostRecent } from '../lib/dates.js'
 import { getCollection } from 'astro:content';
 
 const posts = sortCollectionByMostRecent(await getCollection('writing'));

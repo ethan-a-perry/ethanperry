@@ -3,43 +3,28 @@ import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"a"> {
 	href: string;
-	variant?: "default" | "blue" | "button" | "icon-only" | "underline";
-	icon?: string;
-	iconSize?: string;
-	external?: boolean;
-	classes?: string;
+	variant?: "default" | "underline";
 }
 
 const {
 	href,
 	variant = "default",
-	icon,
-	iconSize,
-	external,
-	classes,
+	class : classes,
 	...rest
 } = Astro.props as Props;
 
-const isExternal = external || (
-  href.startsWith('http') &&
-  !href.startsWith(Astro.site?.href || '')
-);
+const isExternal = /^(https?:)?\/\//.test(href) && !href.startsWith(Astro.site?.href ?? "\0");
 
 const isCurrentPage = Astro.url.pathname === href;
 ---
 
 <a
 	href={href}
-	class:list={["link", `link--${variant}`, classes, { "with-icon": !!icon }]}
+	class:list={["link", `link--${variant}`, classes]}
 	aria-current={isCurrentPage ? "page" : undefined}
 	target={isExternal ? "_blank" : undefined}
 	rel={isExternal ? "noopener noreferrer" : undefined}
 	{...rest}
-><!--
-	--><slot /><!--
-	-->{icon && (
-		<svg style={`fill:currentColor; aspect-ratio:1; height:${iconSize || "24px"};`}>
-			<use href={`/assets/icons/icons.svg#${icon}`} />
-		</svg>
-	)}<!--
---></a>
+>
+	<slot />
+</a>
