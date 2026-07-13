@@ -1,0 +1,5 @@
+# Ensure Markdoc files are recognized as Markdown
+*.mdoc linguist-language=Markdown
+
+# Ignore public/sudoku
+public/sudoku/** linguist-vendored
