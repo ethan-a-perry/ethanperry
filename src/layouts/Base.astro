@@ -4,23 +4,9 @@ import '../styles/main.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-import { getImage } from 'astro:assets'
-import faviconPngSrc from '../assets/favicon.png'
-import faviconSvgSrc from '../assets/favicon.svg'
-
 import SEO from "../components/SEO.astro";
 
-// for iOS versions < 15.4
-const appleTouchIcon = await getImage({
-    src: faviconPngSrc,
-    width: 180,
-    height: 180,
-    format: 'png'
-})
-
-const faviconSvg = await getImage({ src: faviconSvgSrc, format: 'svg' })
-
-const { title, description, image, metadata = {}, robots, classes } = Astro.props;
+const { title, description, image, metadata = {}, robots, class: classes } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -38,15 +24,15 @@ const { title, description, image, metadata = {}, robots, classes } = Astro.prop
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
-    <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
-    <link rel="apple-touch-icon" href={appleTouchIcon.src} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
 
 <Header />
 
-<main class={`content-grid ${classes || ""}`}>
+<main class:list={["content-grid", classes]}>
     <slot />
 </main>
 

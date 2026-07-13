@@ -15,7 +15,7 @@ const {
 
 const isExternal = /^(https?:)?\/\//.test(href) && !href.startsWith(Astro.site?.href ?? "\0");
 
-const isCurrentPage = Astro.url.pathname === href;
+const isCurrentPage = Astro.url.pathname.split("/")[1] === href.split("/")[1];
 ---
 
 <a

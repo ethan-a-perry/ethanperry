@@ -1,5 +1,4 @@
 ---
-import '../styles/header.css';
 import Link from "./Link.astro";
 import Icon from "../components/Icon.astro";
 ---
@@ -23,18 +22,8 @@ import Icon from "../components/Icon.astro";
 	</nav>
 </header>
 
-<script is:inline>
-    const nav = document.querySelector('.nav');
-    const navToggle = document.querySelector('.nav-toggle');
+<style>
+	@import '../styles/header.css';
+</style>
 
-    navToggle.addEventListener('click', () => {
-        const visibility = nav.getAttribute('data-visible')
-        if (visibility === 'false') {
-            nav.setAttribute('data-visible', 'true')
-            navToggle.setAttribute('aria-expanded', 'true')
-        } else if (visibility === 'true') {
-            nav.setAttribute('data-visible', 'false')
-            navToggle.setAttribute('aria-expanded', 'false')
-        }
-    });
-</script>
+<script src="../lib/header.js"></script>

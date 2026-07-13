@@ -1,53 +1,34 @@
 ---
-import Base from './Base.astro';
-import Link from "../components/Link.astro";
+import { Image } from "astro:assets";
 import { formatDate } from '../lib/dates.js';
 
-const { frontmatter, previousPost, nextPost } = Astro.props;
+import Base from './Base.astro';
+import Link from "../components/Link.astro";
+
+const { frontmatter } = Astro.props;
 const { title, description, seoTitle, seoDescription, datePublished, dateUpdated, image, tags, links, component } = frontmatter;
 ---
 
 <Base title={seoTitle} | Ethan Perry` description={seoDescription} image={image} metadata={{ datePublished, dateUpdated, tags }}>
-	<div class="flow-1 max-width-70ch">
+	<section>
 		<span class="color-text-65 fs-s">{formatDate(datePublished)}</span>
-		<p>{title}</p>
-	</div>
+		<h1 class="margin-top-1">{title}</h1>
+		<p class="margin-top-1">{description}</p>
 
-	{links && (
-		<ul class="flow-1 margin-top-6 max-width-70ch">
+		{links && (
+			<ul class="post--links color-text-65">
                 {links.map((link: any) =>
-                    <li><Link href={link.url} variant="underline">{link.text}</Link></li>
+                    <li><Link href={link.url}>{link.text}</Link></li>
                 )}
-		</ul>
-    )}
+			</ul>
+    	)}
 
-	<div class="prose margin-top-6">
+		{image && (
+			<Image class="post--img margin-top-2" src={image.src} alt={image.alt} layout='constrained' style={`--_pos: ${image.position};`} />
+		)}
+	</section>
+
+	<section class="prose full-width margin-top-2">
 		<slot />
-	</div>
-
-	<!-- {image && (
-		<div class={`post-image-wrapper margin-top-4 ${image.fullWidth ? "" : "max-width-70ch"}`}>
-			<img src={image.src} alt={image.alt} srcset={image.srcset} sizes={image.sizes} style={image.style} />
-		</div>
-    )} -->
-
-	<!-- {(previousPost || nextPost) && (
-		<div class="margin-top-4 with-border-top">
-			<nav class="post-nav max-width-70ch">
-				{previousPost && (
-					<Link href={`/${previousPost.collection}/${previousPost.id}/`}>
-						<span>Previous post:</span>
-                    <div class="three-lines">{previousPost.data.title}</div>
-					</Link>
-				)}
-
-				{nextPost && (
-					<Link href={`/${nextPost.collection}/${nextPost.id}/`}>
-						<span>Next post:</span>
-                    <div class="three-lines">{nextPost.data.title}</div>
-					</Link>
-				)}
-			</nav>
-		</div>
-	)} -->
+	</section>
 </Base>

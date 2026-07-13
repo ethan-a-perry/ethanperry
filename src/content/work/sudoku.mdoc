@@ -101,19 +101,17 @@ The toughest challenge I experienced was implementing the border styling logic, 
 
 On certain regions, drawing a border is quite simple. A one-cell-large region simply receives a top, right, bottom, and left border (I used box-shadows for a very specific reason I can no longer recall). When cells are orthogonally adjacent, remove the border along their shared edge, thus creating a unified region. See variations below.
 
-![small sudoku grid with examples of selected cells and their styles](/assets/images/work/sudoku/sudoku-figure-1.webp)
+![small sudoku grid with examples of selected cells and their styles](../../images/work/sudoku/sudoku-figure-1.webp)
 
 However, an issue arises when drawing borders on L-shaped trominos. As you can see, where the edge turns, the outline breaks visually (see example below).
 
-{% image src="/assets/images/work/sudoku/sudoku-figure-2.webp" alt="Sudoku Figure 2" width=250 /%}
+![small sudoku grid with examples of selected cells and their styles](../../images/work/sudoku/sudoku-figure-2.webp)
 
 One potential solution is to add a small pseudo-element where the break occurs to “cover the gap.” This logic quickly became somewhat involved because every time a cell is selected or unselected, every affected 2x2 region of cells must be processed and styled accordingly. To efficiently determine which cells need to be updated, each region is evaluated according to a designated _anchor cell_, which is always the bottom-right cell of the region.
 
 This function below shows the code that finds an edge turn within a region:
 
-{% CodeBlock filename="BorderStylingService.cs" %}
-
-```c
+```c {% filename="BorderStylingService.cs" %}
 public static (Cell, Border)? FindEdgeTurn(Cell anchor) {
     Cell topLeft = anchor.Neighbors.topLeft;
     Cell topRight = anchor.Neighbors.topRight;
@@ -129,13 +127,9 @@ public static (Cell, Border)? FindEdgeTurn(Cell anchor) {
 }
 ```
 
-{% /CodeBlock %}
-
 Here is the corresponding CSS:
 
-{% CodeBlock filename="site.css" %}
-
-```c
+```c {% filename="site.css" %}
 .cell[aria-selected="true"] {
 	--clr-cell-bg: rgba(255, 255, 255, 0.5);
 	--clr-border: rgba(76, 175, 80, 0.5);
@@ -207,8 +201,6 @@ Here is the corresponding CSS:
 	}
 }
 ```
-
-{% /CodeBlock %}
 
 Drawing the borders included a lot of other code related to checking cell neighbors, and considering the CSS, I ultimately decided to remove the border styling and opt for a minimal cell selection design. If I refactor the app to use the HTML `<canvas>` element, it will be the perfect opportunity to re-implement the border styling.
 

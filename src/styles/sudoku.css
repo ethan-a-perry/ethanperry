@@ -13,6 +13,7 @@
 #sudoku-app {
 	padding: 5px;
 	padding-block: 4rem;
+	padding-inline: 1.5rem;
 
 	background-color: var(--color-grid-primary, var(--color-site-background));
 	color: var(--color-text-primary);
@@ -61,6 +62,8 @@
 }
 
 .sudoku {
+	max-width: 1200px;
+
 	position: relative;
 
 	display: grid;
@@ -161,7 +164,7 @@
 
 	aspect-ratio: 1;
 
-	font-size: 7cqw;
+	font-size: 5cqw;
 
 	line-height: 1;
 	outline: 1px solid var(--color-grid-secondary);
@@ -325,10 +328,10 @@
 			width: 16px;
 			height: 16px;
 
-			-webkit-mask: url("/public/assets/icons/chevron-right.svg")
+			-webkit-mask: url("/public/icons/chevron-right.svg")
 				no-repeat center;
 			-webkit-mask-size: contain;
-			mask: url("/public/assets/icons/chevron-right.svg") no-repeat center;
+			mask: url("/public/icons/chevron-right.svg") no-repeat center;
 			mask-size: contain;
 
 			/* Set the color of the icon */
@@ -499,6 +502,7 @@
 .load-state {
 	position: relative;
 
+	max-width: 1200px;
 	height: 90svh;
 
 	@container content-grid (inline-size < 850px) {
@@ -513,7 +517,7 @@
 		height: 120svh;
 	}
 
-	background: url("/assets/icons/loader.svg") repeat;
+	background: url("/icons/loader.svg") repeat;
 	background-clip: content-box;
 	background-origin: content-box;
 

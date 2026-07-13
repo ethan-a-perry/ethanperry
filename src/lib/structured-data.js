@@ -30,7 +30,7 @@ const baseSchemas = {
         "name": "Ethan Perry",
         "description": "Portfolio website",
         "url": siteData.domain,
-        "logo": `${siteData.domain}/assets/icons/logo.svg`,
+        "logo": `${siteData.domain}/icons/logo.svg`,
         "publisher": {
             "@type": "Person",
             "@id": personId,

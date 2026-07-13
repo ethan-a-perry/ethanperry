@@ -3,50 +3,48 @@ import Base from '../layouts/Base.astro';
 import Link from "../components/Link.astro";
 import Icon from "../components/Icon.astro";
 
-import imgPortraitLagos from "/public/assets/images/about/portrait-lagos.webp";
-import imgPortraitTavira from "/public/assets/images/about/portrait-tavira.webp";
+import imgPortraitLagos from "/public/images/about/portrait-lagos.webp";
+import imgPortraitTavira from "/public/images/about/portrait-tavira.webp";
 
 const title = "About | Ethan Perry"
 const description = "Some info about my background, experience, and interests."
 ---
 
 <Base title={title} description={description}>
-	<section class="flow-1 max-width-70ch">
+	<section class="flow-1">
 		<h1>About</h1>
         <p>I'm 25 years old and currently living in my hometown in Colorado.</p>
-        <p>I do software development for work, and recently began working on a new SaaS idea. I've also been focusing more on my health and fitness this year.</p>
-        <p>"What to know about me" is something I'm still contemplating. I hope my work and writing will sort this out!</p>
 	</section>
 
-	<section class="margin-top-6 max-width-70ch">
+	<section class="margin-top-6">
 		<h2>Experience</h2>
-		<ul class="record margin-top-1">
-			<li>
+		<ul class="records margin-top-1">
+			<li class="record">
 				<span class="color-text-65 fs-s">2026</span>
-				Worked construction and retail
+				Construction and retail
 			</li>
-			<li>
+			<li class="record">
 				<span class="color-text-65 fs-s">2024–2025</span>
 				Traveled throughout Europe and Asia
 			</li>
-			<li>
+			<li class="record">
 				<span class="color-text-65 fs-s">2023–2024</span>
 				Software engineer at HPE
 			</li>
-			<li>
+			<li class="record">
 				<span class="color-text-65 fs-s">2023</span>
 				Data center technician at HPE
 			</li>
-			<li>
+			<li class="record">
 				<span class="color-text-65 fs-s">2020–2021</span>
 				Digital marketing, consulting, web deisgn, and account management
 			</li>
-			<li>
+			<li class="record">
 				<span class="color-text-65 fs-s">2015–2020</span>
 				Server and busser at a BBQ restaurant
 			</li>
 		</ul>
-		<Link class="margin-top-1" href="/resume_ethan_perry.pdf?v=2026-01" variant="underline">
+		<Link href="/resume_ethan_perry.pdf?v=2026-01" variant="underline">
 			Download Resume
 			<Icon name="open-in-new" size="16px"/>
 		</Link>
@@ -54,15 +52,15 @@ const description = "Some info about my background, experience, and interests."
 
 	<section class="margin-top-6">
 		<h2>Current photos</h2>
-		<div class="about-images margin-top-1 color-text-65 fs-s">
+		<div class="about--images margin-top-1 color-text-65 fs-s">
 			<div>
 				<img src={imgPortraitLagos.src} alt="ex1">
-				<p>Taken in Lagos, Portugal (2024)</p>
+				<p>Tavira, Portugal (2024)</p>
 			</div>
 
 			<div>
 				<img src={imgPortraitTavira.src} alt="ex2">
-				<p>Taken in Tavira, Portugal (2024)</p>
+				<p>Tavira, Portugal (2024)</p>
 			</div>
 		</div>
 	</section>

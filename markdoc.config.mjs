@@ -13,36 +13,17 @@ export default defineMarkdocConfig({
 			attributes: {
 				...nodes.link.attributes,
 			}
-		}
-	},
-	extends: [
-		shiki({
-			theme: "github-light",
-		}),
-	],
-	tags: {
-		image: {
-			render: "img",
-			attributes: {
-				src: { type: String, required: true },
-				alt: { type: String, required: true },
-				width: { type: Number },
-				height: { type: Number },
-			},
 		},
-		ExternalLink: {
-			render: component("./src/components/Link.astro"),
-			attributes: {
-				href: { type: String, required: true },
-				external: { type: Boolean, default: true },
-			},
-		},
-		CodeBlock: {
+		fence: {
 			render: component("./src/components/CodeBlock.astro"),
 			attributes: {
-				filename: { type: String },
+    			content:  { type: String, render: true, required: true },
+      			language: { type: String, render: true },
+       			filename: { type: String },
 			},
 		},
+	},
+	tags: {
 		FullWidth: {
 			render: "div",
 			attributes: {

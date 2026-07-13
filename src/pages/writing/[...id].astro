@@ -2,25 +2,20 @@
 import Post from '../../layouts/Post.astro'
 
 import { getCollection, render } from 'astro:content';
-import { sortCollectionByMostRecent } from '../../lib/dates.js';
 
 export async function getStaticPaths() {
-	const posts = sortCollectionByMostRecent(await getCollection('writing'));
+	const posts = await getCollection('writing');
 
-	return posts.map((post, i) => ({
+	return posts.map((post) => ({
 		params: { id: post.id },
-		props: {
-			post,
-			previousPost: posts[i - 1],
-			nextPost: posts[i + 1],
-		},
+		props: post,
 	}));
 }
 
-const { post, previousPost, nextPost } = Astro.props;
+const post = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Post frontmatter={post.data} previousPost={previousPost} nextPost={nextPost}>
+<Post frontmatter={post.data}>
     <Content />
 </Post>

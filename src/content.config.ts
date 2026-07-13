@@ -9,7 +9,7 @@ import { z } from 'astro/zod';
 
 const writing = defineCollection({
     loader: glob({ base: "./src/content/writing", pattern: '**/*.{md,mdx,mdoc}' }),
-    schema: z.object({
+    schema: ({ image }) => z.object({
         slug: z.string(),
         title: z.string(),
         description: z.string().optional(),
@@ -18,13 +18,10 @@ const writing = defineCollection({
         datePublished: z.date(),
         dateUpdated: z.date().optional(),
         image: z.object({
-            src: z.string(),
+            src: image(),
             alt: z.string(),
-            srcset: z.string(),
-            sizes: z.string(),
-            og: z.string(),
-            fullWidth: z.boolean().optional().default(true),
-            style: z.string().optional()
+            og: z.string().optional(),
+            position: z.string().optional()
         }).optional(),
         tags: z.array(z.string()),
 		draft: z.boolean().default(false),
@@ -33,22 +30,19 @@ const writing = defineCollection({
 
 const work = defineCollection({
     loader: glob({ base: "./src/content/work", pattern: '**/*.{md,mdx,mdoc}' }),
-    schema: z.object({
+    schema: ({ image }) => z.object({
         slug: z.string(),
         title: z.string(),
         description: z.string(),
         seoTitle: z.string(),
         seoDescription: z.string(),
         datePublished: z.date(),
-        dateUpdated: z.date().optional(),
+		dateUpdated: z.date().optional(),
         image: z.object({
-            src: z.string(),
+            src: image(),
             alt: z.string(),
-            srcset: z.string(),
-            sizes: z.string(),
             og: z.string(),
-			fullWidth: z.boolean().optional().default(true),
-            style: z.string().optional()
+			position: z.string().optional()
         }).optional(),
         tags: z.array(z.string()),
         links: z.array(
