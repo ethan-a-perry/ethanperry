@@ -1,0 +1,19 @@
+@layer reset, fonts, tokens, elements, layouts, components, utlities;
+
+@import "./reset.css" layer(reset);
+@import "./fonts.css" layer(fonts);
+@import "./tokens.css" layer(tokens);
+@import "./elements.css" layer(elements);
+@import "./layouts.css" layer(layouts);
+@import "./utilities.css" layer(utilities);
+
+.about--images {
+	display: grid;
+	gap: 2rem;
+
+	max-width: 800px;
+
+	img {
+		width: min(400px, 100%);
+	}
+}

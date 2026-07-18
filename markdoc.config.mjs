@@ -9,13 +9,13 @@ export default defineMarkdocConfig({
 		},
 		link: {
 			...nodes.link,
-			render: component("./src/components/Link.astro"),
+			render: component("./src/components/Link/Link.astro"),
 			attributes: {
 				...nodes.link.attributes,
 			}
 		},
 		fence: {
-			render: component("./src/components/CodeBlock.astro"),
+			render: component("./src/components/CodeBlock/CodeBlock.astro"),
 			attributes: {
     			content:  { type: String, render: true, required: true },
       			language: { type: String, render: true },
@@ -31,7 +31,7 @@ export default defineMarkdocConfig({
 			},
 		},
 		Sudoku: {
-			render: component("./src/components/Sudoku.astro"),
+			render: component("./src/components//Sudoku/Sudoku.astro"),
 		},
 	},
 });

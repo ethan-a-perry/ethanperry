@@ -1,14 +1,12 @@
 ---
 import Base from '../layouts/Base.astro'
-import Link from "../components/Link.astro";
+import Link from "../components/Link/Link.astro";
 
 const title = "404: Page Not Found | Ethan Perry";
 const description = "404: The page you're looking for doesn't exist. Return to the homepage or check the URL.";
 ---
 
 <Base title={title} description={description}>
-	<section>
-		<h1>404: Page Not Found</h1>
-		<Link class="margin-top-2" href="/" variant="underline">Go home</Link>
-	</section>
+	<h1>404: Page Not Found</h1>
+	<Link class="margin-top-2" href="/" variant="underline">Go home</Link>
 </Base>

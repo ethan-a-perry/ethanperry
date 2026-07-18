@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro'
-import Link from "../components/Link.astro";
+import Link from "../components/Link/Link.astro";
 
 interface Props {
     error: unknown;
@@ -12,8 +12,6 @@ const title = "500: Internal Server Error | Ethan Perry";
 const description = "500: Something went wrong on our end. Please try again later or contact support.";
 ---
 <Base title={title} description={description}>
-	<section>
-		<h1>500: Internal Server Error — {error instanceof Error ? error.message : "unknown error"}</h1>
-		<Link class="margin-top-2" href="/" variant="underline">Go home</Link>
-	</section>
+	<h1>500: Internal Server Error — {error instanceof Error ? error.message : "unknown error"}</h1>
+	<Link class="margin-top-2" href="/" variant="underline">Go home</Link>
 </Base>

@@ -1,14 +1,27 @@
 ---
 import Base from '../../layouts/Base.astro';
-import WritingIndex from '../../components/WritingIndex.astro';
+import Link from "../../components/Link/Link.astro";
+import { formatDate, sortCollectionByMostRecent } from '../../lib/dates.js'
+import { getCollection } from 'astro:content';
+
+const posts = sortCollectionByMostRecent(await getCollection('writing'));
 
 const title = "Writing | Ethan Perry";
 const description = "A collection of my writing including essays, book reviews, tech insights, poems, and more.";
 ---
 
 <Base title={title} description={description}>
-	<section>
-		<h1>Writing</h1>
-    	<WritingIndex />
-	</section>
+	<h1>Writing</h1>
+	<ul class="records">
+		{posts.map((post: any) =>
+			<li>
+				<Link href={`/writing/${post.id}/`}>
+					<div class="record">
+						<span class="color-text-65 fs-s">{formatDate(post.data.datePublished)}</span>
+						<p>{post.data.title}</p>
+					</div>
+				</Link>
+			</li>
+		)}
+	</ul>
 </Base>

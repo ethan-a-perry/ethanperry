@@ -1,0 +1,35 @@
+/* Content Grid */
+.content-grid {
+	--padding-inline: 1.5rem;
+	--content-max-width: 50ch;
+
+	container: content-grid / inline-size;
+
+	display: grid;
+	grid-template-columns: [full-width-start] var(--padding-inline) [content-start] min(100% - (var(--padding-inline) * 2), var(--content-max-width)) [content-end] 1fr [full-width-end];
+	gap: 0;
+}
+
+.content-grid > :not(.full-width),
+.full-width > :not(.full-width) {
+	grid-column: content;
+}
+
+.content-grid > .full-width {
+	grid-column: full-width;
+
+	display: grid;
+	grid-template-columns: inherit;
+}
+
+/* Records */
+.records {
+	display: grid;
+	gap: 4rem;
+	margin-block: 2rem 4rem;
+}
+
+.record {
+	display: grid;
+	gap: 0.5rem;
+}

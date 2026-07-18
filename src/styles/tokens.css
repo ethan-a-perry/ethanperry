@@ -1,0 +1,21 @@
+:root {
+	--font-sans-serif: "PlusJakartaSans", serif;
+	--font-monospace: "JetBrainsMono", monospace;
+
+	--font-size-base: 1rem;
+	--font-size-s: 0.8rem;
+
+	--color-site-background: white;
+	--color-grey-background: rgb(245, 245, 245);
+
+	--color-text-100: hsl(0, 0%, 10%);
+	--color-text-80: hsl(0, 0%, 20%);
+	--color-text-65: hsl(0, 0%, 30%);
+	--color-text-50: hsl(0, 0%, 41%);
+	--color-text-35: hsl(0, 0%, 60%);
+	--color-text-20: hsl(0, 0%, 85%);
+	--color-text-10: hsl(0, 0%, 93%);
+
+	--_color-accent: 210, 80%, 40%;
+	--color-accent-100: hsla(var(--_color-accent), 1);
+}

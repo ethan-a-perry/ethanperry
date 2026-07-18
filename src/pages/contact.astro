@@ -1,20 +1,18 @@
 ---
 import Base from '../layouts/Base.astro';
-import Link from "../components/Link.astro";
+import Link from "../components/Link/Link.astro";
 
 const title = "Contact | Ethan Perry";
 const description = "Get in touch with me for project inquiries, collaborations, or questions.";
 ---
 
 <Base title={title} description={description}>
-	<section>
-		<h1>Contact</h1>
-		<p class="margin-top-1">Feel free to reach out at any of the following links</p>
-		<ul class="flow-1 margin-top-2">
-	        <li><Link href="mailto:ethan@ethanperry.co" variant="underline">ethan@ethanperry.co</Link></li>
-	        <li><Link href="https://instagram.com/_ethan_perry/" variant="underline">Instagram</Link></li>
-	        <li><Link href="https://linkedin.com/in/ethan-a-perry" variant="underline">LinkedIn</Link></li>
-	        <li><Link href="https://github.com/ethan-a-perry" variant="underline">GitHub</Link></li>
-	    </ul>
-	</section>
+	<h1>Contact</h1>
+	<p class="margin-top-1">Feel free to reach out at any of the following links</p>
+	<ul class="flow-1 margin-top-2">
+        <li><Link href="mailto:ethan@ethanperry.co" variant="underline">ethan@ethanperry.co</Link></li>
+        <li><Link href="https://instagram.com/_ethan_perry/" variant="underline">Instagram</Link></li>
+        <li><Link href="https://linkedin.com/in/ethan-a-perry" variant="underline">LinkedIn</Link></li>
+        <li><Link href="https://github.com/ethan-a-perry" variant="underline">GitHub</Link></li>
+    </ul>
 </Base>

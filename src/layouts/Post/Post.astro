@@ -1,9 +1,11 @@
 ---
-import { Image } from "astro:assets";
-import { formatDate } from '../lib/dates.js';
+import "./post.css";
 
-import Base from './Base.astro';
-import Link from "../components/Link.astro";
+import { Image } from "astro:assets";
+import { formatDate } from '../../lib/dates.js';
+
+import Base from '../Base.astro';
+import Link from "../../components/Link/Link.astro";
 
 const { frontmatter } = Astro.props;
 const { title, description, seoTitle, seoDescription, datePublished, dateUpdated, image, tags, links, component } = frontmatter;
