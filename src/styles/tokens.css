@@ -1,6 +1,7 @@
 :root {
-	--font-sans-serif: "PlusJakartaSans", serif;
-	--font-monospace: "JetBrainsMono", monospace;
+	/*--font-sans-serif: "PlusJakartaSans", serif;*/
+	--font-sans-serif: var(--font-plus-jakarta-sans), serif;
+	--font-monospace: var(--font-jetbrains-mono), monospace;
 
 	--font-size-base: 1rem;
 	--font-size-s: 0.8rem;

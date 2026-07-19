@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 
 import sitemap from "@astrojs/sitemap";
 import markdoc from '@astrojs/markdoc';
@@ -6,5 +6,31 @@ import markdoc from '@astrojs/markdoc';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://ethanperry.co',
-	integrations: [sitemap(), markdoc()]
+	integrations: [sitemap(), markdoc()],
+	fonts: [
+		{
+			provider: fontProviders.local(),
+			name: "PlusJakartaSans",
+			cssVariable: "--font-plus-jakarta-sans",
+			options: {
+				variants: [{
+					src: ["./src/assets/fonts/PlusJakartaSans-Variable.woff2"],
+					weight: "400 500",
+					style: "normal"
+				}]
+			}
+		},
+		{
+			provider: fontProviders.local(),
+			name: "JetBrainsMono",
+			cssVariable: "--font-jetbrains-mono",
+			options: {
+				variants: [{
+					src: ["./src/assets/fonts/JetBrainsMono-Variable.woff2"],
+					weight: 400,
+					style: "normal"
+				}]
+			}
+		}
+	]
 });

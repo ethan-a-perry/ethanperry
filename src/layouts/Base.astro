@@ -1,4 +1,6 @@
 ---
+import { Font } from "astro:assets";
+
 import '../styles/index.css';
 
 import Header from '../components/Header/Header.astro';
@@ -26,6 +28,9 @@ const { title, description, image, metadata = {}, robots, class: classes } = Ast
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <Font cssVariable="--font-plus-jakarta-sans" />
 </head>
 <body>
 
