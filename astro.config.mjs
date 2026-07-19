@@ -10,11 +10,11 @@ export default defineConfig({
 	fonts: [
 		{
 			provider: fontProviders.local(),
-			name: "PlusJakartaSans",
-			cssVariable: "--font-plus-jakarta-sans",
+			name: "Sentient",
+			cssVariable: "--font-sentient",
 			options: {
 				variants: [{
-					src: ["./src/assets/fonts/PlusJakartaSans-Variable.woff2"],
+					src: ["./src/assets/fonts/Sentient-Variable.woff2"],
 					weight: "400 500",
 					style: "normal"
 				}]
@@ -31,6 +31,6 @@ export default defineConfig({
 					style: "normal"
 				}]
 			}
-		}
+		},
 	]
 });
